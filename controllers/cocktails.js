@@ -1,5 +1,6 @@
 const Cocktail = require('../models/cocktail');
 
+
 function indexRoute(req, res, next) {
   Cocktail
     .find()
@@ -129,5 +130,6 @@ module.exports = {
   addComment: addCommentRoute,
   deleteComment: deleteCommentRoute,
   favorite: favoriteRoute,
-  unfavorite: unfavoriteRoute
+  unfavorite: unfavoriteRoute,
+  verifPage: verifPageRoute
 };
