@@ -3,7 +3,9 @@
   "description": "wdi group project",
   "main": "index.js",
   "authors": [
-    "Put group member names here"
+    "Alin Chindea",
+    "Anish Vadher",
+    "William Floissac"
   ],
   "license": "ISC",
   "homepage": "",
