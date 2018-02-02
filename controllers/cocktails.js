@@ -130,6 +130,5 @@ module.exports = {
   addComment: addCommentRoute,
   deleteComment: deleteCommentRoute,
   favorite: favoriteRoute,
-  unfavorite: unfavoriteRoute,
-  verifPage: verifPageRoute
+  unfavorite: unfavoriteRoute
 };
