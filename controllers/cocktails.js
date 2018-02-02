@@ -131,8 +131,4 @@ module.exports = {
   deleteComment: deleteCommentRoute,
   favorite: favoriteRoute,
   unfavorite: unfavoriteRoute
-<<<<<<< HEAD
-  // verifPage: verifPageRoute
-=======
->>>>>>> 55a590f96d97f812c02bac547c439d98135eacad
 };
