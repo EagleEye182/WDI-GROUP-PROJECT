@@ -9,11 +9,12 @@ const commentSchema = new mongoose.Schema({
 
 const cocktailSchema = new mongoose.Schema({
   name: {type: String, required: true},
-  descriptionPlain: {type: String, required: true},
+  description: {type: String, required: true},
   story: {type: String},
   userRating: {type: Number},
   video: {type: String},
-  ingredients: {type: String},
+  spirit: [{type: String}],
+  mixer: [{type: String}],
   alcoholic: {type: Boolean},
   occasion: {type: String},
   tastes: {type: String},
