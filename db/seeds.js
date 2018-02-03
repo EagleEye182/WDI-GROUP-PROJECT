@@ -12,8 +12,9 @@ User.collection.drop();
 User
   .create([{
     username: 'test',
-    email: 'test',
-    password: 'test'
+    email: 'test@mail.com',
+    password: 'test',
+    passwordConfirmation: 'test'
   }])
   .then((users) => {
     console.log(`${users.length} users created!`);
@@ -35,10 +36,6 @@ User
         createdBy: users[0]
       }]);
   })
-  .then((cocktails) => {
-    console.log(`${cocktails.length} cocktails created!`);
-  })
-  .finally(() => {
-    return mongoose.connection.close();
-  })
-  .catch(err => console.log(err));
+  .then((cocktails) => console.log(`${cocktails.length} cocktails created!`))
+  .catch(err => console.log(err))
+  .finally(() => mongoose.connection.close());
