@@ -21,7 +21,7 @@ const cocktailSchema = new mongoose.Schema({
   image: {type: String},
   color: {type: String},
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
-  favorites: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true }],
+  // favorites: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true }],
   comments: [ commentSchema ]
 });
 
