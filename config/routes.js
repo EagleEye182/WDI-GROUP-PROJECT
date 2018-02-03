@@ -12,7 +12,7 @@ const secureRoute = require('../lib/secureRoute');
 
 router.route('/search/cocktails')
   .get(cocktails.index);
-//
+
 router.route('/search/cocktails/:id')
   .get(cocktails.show)
   .delete(cocktails.delete);

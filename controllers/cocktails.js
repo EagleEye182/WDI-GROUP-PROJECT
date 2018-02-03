@@ -1,5 +1,12 @@
 const Cocktail = require('../models/cocktail');
 
+function searchRoute(req, res, next) {
+  Cocktail
+    .find()
+    .exec()
+    .then((cocktails) => res.json(cocktails))
+    .catch(next);
+}
 
 function indexRoute(req, res, next) {
   Cocktail
@@ -130,5 +137,6 @@ module.exports = {
   addComment: addCommentRoute,
   deleteComment: deleteCommentRoute,
   favorite: favoriteRoute,
-  unfavorite: unfavoriteRoute
+  unfavorite: unfavoriteRoute,
+  search: searchRoute
 };
