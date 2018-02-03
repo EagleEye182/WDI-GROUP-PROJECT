@@ -38,7 +38,7 @@ router.route('/login')
 //
 router.route('/users/:id')
   .get(secureRoute, users.show);
- 
+
 router.all('/*', (req, res) => res.notFound());
 
 module.exports = router;
