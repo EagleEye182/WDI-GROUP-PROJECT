@@ -5,7 +5,7 @@ angular
 CocktailsNewCtrl.$inject = ['Cocktail', '$state'];
 function CocktailsNewCtrl(Cocktail, $state) {
   const vm = this;
-  vm.post = {};
+  vm.cocktail = {};
 
   function cocktailsCreate() {
     if(vm.newForm.$valid) {
