@@ -1,0 +1,33 @@
+<section class="section">
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+      <form name="vm.loginForm" ng-submit="vm.submit()" novalidate>
+        <div class="field">
+          <label class="label" for="email">Email</label>
+          <p class="control">
+            <input class="input" type="text" name="email" id="email" ng-model="vm.credentials.email" required>
+          </p>
+          <div ng-messages="vm.loginForm.email.$error" role="alert" ng-show="(vm.loginForm.$submitted || vm.loginForm.email.$touched) && vm.loginForm.email.$invalid" class="error">
+          <div ng-message="required">Please enter a value for this field.</div>
+          <div ng-message="email">This field must be a valid email address.</div>
+        </div>
+        </div>
+        <div class="field">
+          <label class="label" for="password">Password</label>
+          <p class="control">
+            <input class="input" type="password" name="password" id="password" ng-model="vm.credentials.password" required>
+          </p>
+          <div ng-messages="vm.loginForm.password.$error" role="alert" ng-show="(vm.loginForm.$submitted || vm.loginForm.password.$touched) && vm.loginForm.password.$invalid" class="error">
+          <div ng-message="required">Please enter a value for this field.</div>
+        </div>
+        </div>
+
+        <div class="field">
+          <p class="control">
+            <input type="submit" class="button is-primary is-fullwidth" value="Login">
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
