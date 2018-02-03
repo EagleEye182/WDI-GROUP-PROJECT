@@ -13,9 +13,9 @@ const cocktails = require('../controllers/cocktails');
 router.route('/search/cocktails')
   .get(cocktails.index);
 //
-// router.route('/search/cocktails/:id')
-//   .get(cocktails.show)
-//   .delete(cocktails.delete);
+router.route('/search/cocktails/:id')
+  .get(cocktails.show)
+  .delete(cocktails.delete);
 //
 // router.route('/search/cocktails/:id/favorite')
 //   .post(secureRoute, cocktails.favorite);
