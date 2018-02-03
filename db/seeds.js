@@ -30,7 +30,7 @@ User
         alcoholic: true,
         occasion: 'Party',
         tastes: 'Lime, salt, citrus, lemon',
-        image: 'https://www.google.co.uk/search?q=margarita+drink+images&tbm=isch&source=iu&ictx=1&fir=BZH7NN8dULVwDM%253A%252C7nf2shJMl8WcTM%252C_&usg=__rYb9gIQI_qlbIoCm4iXY-QWArjs%3D&sa=X&ved=0ahUKEwiD0OyAlIrZAhWHDMAKHdlPBAAQ9QEIMzAE#imgrc=BZH7NN8dULVwDM:',
+        image: 'https://www.google.co.uk/search?q=margarita+drink+images&tbm=isch&source=iu&ictx=1&fir=BZH7NN8dULVwDM%253A%252C7nf2shJMl8WcTM%252C_&usg=__rYb9gIQI_qlbIoCm4iXY-QWArjs%3D&sa=X&ved=0ahUKEwiD0OyAlIrZAhWHDMAKHdlPBAAQ9QEIMzAE#imgrc=BZH7NN8dULVwDM',
         color: 'green',
         createdBy: users[0]
       }]);
