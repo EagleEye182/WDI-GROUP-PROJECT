@@ -13,15 +13,15 @@ const cocktailSchema = new mongoose.Schema({
   story: {type: String},
   userRating: {type: Number},
   video: {type: String},
-  spirit: { type: mongoose.Schema.ObjectId, ref: 'Spirit', required: true },
-  mixer: { type: mongoose.Schema.ObjectId, ref: 'Mixer', required: true },
+  spirit: {type: String},
+  mixer: {type: String},
   alcoholic: {type: Boolean},
   occasion: {type: String},
   tastes: {type: String},
   image: {type: String},
   color: {type: String},
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
-  favorites: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true }],
+  // favorites: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true }],
   comments: [ commentSchema ]
 });
 

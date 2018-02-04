@@ -13,7 +13,7 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('cocktailsSearch', {
       url: '/search',
-      templateUrl: 'js/views/cocktails/search.jhtml',
+      templateUrl: 'js/views/cocktails/search.html',
       controller: 'CocktailsSearchCtrl as vm'
     })
     .state('cocktailsIndex', {

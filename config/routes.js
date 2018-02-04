@@ -7,28 +7,27 @@ const secureRoute = require('../lib/secureRoute');
 
 // Routes go here
 
-// router.route('/search')
-//   .get(cocktails.search);
+router.route('/search')
+  .get(cocktails.search);
 
 router.route('/search/cocktails')
   .get(cocktails.index);
-//
+
 router.route('/search/cocktails/:id')
   .get(cocktails.show)
   .delete(cocktails.delete);
 
-//
-// router.route('/search/cocktails/:id/favorite')
-//   .post(secureRoute, cocktails.favorite);
-//
-// router.route('/search/cocktails/:id/unfavorite')
-//   .delete(secureRoute, cocktails.unfavorite);
-//
-// router.route('/search/cocktails/:id/comments')
-//   .post(secureRoute, cocktails.addComment);
-//
-// router.route('/search/cocktails/:id/comments/:commentId')
-//   .delete(secureRoute, cocktails.deleteComment);
+router.route('/search/cocktails/:id/favorite')
+  .post(secureRoute, cocktails.favorite);
+
+router.route('/search/cocktails/:id/unfavorite')
+  .delete(secureRoute, cocktails.unfavorite);
+
+router.route('/search/cocktails/:id/comments')
+  .post(secureRoute, cocktails.addComment);
+
+router.route('/search/cocktails/:id/comments/:commentId')
+  .delete(secureRoute, cocktails.deleteComment);
 
 router.route('/register')
   .post(auth.register);
