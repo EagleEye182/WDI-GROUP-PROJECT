@@ -11,11 +11,14 @@ router.route('/search')
   .get(cocktails.search);
 
 router.route('/search/cocktails')
-  .get(cocktails.index);
+  .get(cocktails.index)
+  .post(secureRoute, cocktails.create);
 
 router.route('/search/cocktails/:id')
+  .all(secureRoute)
   .get(cocktails.show)
   .delete(cocktails.delete);
+//add cocktails.update above delete; all secured
 
 router.route('/search/cocktails/:id/favorite')
   .post(secureRoute, cocktails.favorite);
