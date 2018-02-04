@@ -1,1 +1,18 @@
 <h1 class="title is-1">index with cocktails</h1>
+
+<section class="section">
+  <div class="columns is-multiline">
+    <div ng-repeat="cocktail in vm.all" class="column is-half">
+      <h2 class="title">{{ cocktail.name }}</h2>
+      <h3>Story: <em>{{ cocktail.story }}</em></h3>
+      <h3>Description: <em>{{ cocktail.description }}</em></h3>
+      <h4>When should you drink it: <em>{{ cocktail.occasion }}</em></h4>
+      <h4>Tastes like: <em>{{ cocktail.tastes }}</em></h4>
+      <img ng-src="{{ cocktail.image }}" alt="{{ cocktail.name }}">
+      <p>Recipe posted by: <strong>{{ cocktail.createdBy.username }}</strong></p>
+      <div>
+        <button class="button is-small" ui-sref="cocktailsShow({ id: cocktail.id })">View</button>
+      </div>
+    </div>
+  </div>
+</section>
