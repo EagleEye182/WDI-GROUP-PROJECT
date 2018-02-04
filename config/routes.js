@@ -17,6 +17,7 @@ router.route('/search/cocktails')
 router.route('/search/cocktails/:id')
   .all(secureRoute)
   .get(cocktails.show)
+  .put(cocktails.update)
   .delete(cocktails.delete);
 //add cocktails.update above delete; all secured
 

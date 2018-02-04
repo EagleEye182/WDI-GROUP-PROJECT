@@ -39,6 +39,20 @@ function showRoute(req, res, next) {
     .catch(next);
 }
 
+function updateRoute(req, res, next) {
+  Cocktail
+    .findById(req.params.id)
+    .exec()
+    .then((cocktail) => {
+      if(!cocktail) return res.notFound();
+
+      Object.assign(cocktail, req.body);
+      return cocktail.save();
+    })
+    .then((cocktail) => res.json(cocktail))
+    .catch(next);
+}
+
 function deleteRoute(req, res, next) {
   Cocktail
     .findById(req.params.id)
@@ -133,6 +147,7 @@ module.exports = {
   index: indexRoute,
   create: createRoute,
   show: showRoute,
+  update: updateRoute,
   delete: deleteRoute,
   addComment: addCommentRoute,
   deleteComment: deleteCommentRoute,
