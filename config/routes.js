@@ -11,7 +11,8 @@ router.route('/search')
   .get(cocktails.search);
 
 router.route('/search/cocktails')
-  .get(cocktails.index);
+  .get(cocktails.index)
+  .post(cocktails.create);
 
 router.route('/search/cocktails/:id')
   .get(cocktails.show)
