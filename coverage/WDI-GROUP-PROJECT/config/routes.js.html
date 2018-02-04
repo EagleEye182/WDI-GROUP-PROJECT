@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">87.5% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>7/8</span>
+        <span class='fraction'>19/19</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/1</span>
+        <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>7/7</span>
+        <span class='fraction'>18/18</span>
       </div>
     </div>
   </div>
@@ -89,12 +89,9 @@
 44</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -104,72 +101,75 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const express = require('express');
 const router  = express.Router();
 const cocktails = require('../controllers/cocktails');
-// const auth = require('../controllers/auth');
-// const users = require('../controllers/users');
-// const secureRoute = require('../lib/secureRoute');
+const auth = require('../controllers/auth');
+const users = require('../controllers/users');
+const secureRoute = require('../lib/secureRoute');
 &nbsp;
 // Routes go here
 &nbsp;
-// router.route('/search')
-//   .get(cocktails.search);
+router.route('/search')
+  .get(cocktails.search);
 &nbsp;
 router.route('/search/cocktails')
   .get(cocktails.index);
-//
+&nbsp;
 router.route('/search/cocktails/:id')
   .get(cocktails.show)
   .delete(cocktails.delete);
-//
-// router.route('/search/cocktails/:id/favorite')
-//   .post(secureRoute, cocktails.favorite);
-//
-// router.route('/search/cocktails/:id/unfavorite')
-//   .delete(secureRoute, cocktails.unfavorite);
-//
-// router.route('/search/cocktails/:id/comments')
-//   .post(secureRoute, cocktails.addComment);
-//
-// router.route('/search/cocktails/:id/comments/:commentId')
-//   .delete(secureRoute, cocktails.deleteComment);
 &nbsp;
-// router.route('/register')
-//   .post(auth.register);
-//
-// router.route('/login')
-//   .post(auth.login);
-//
-// router.route('/users/:id')
-//   .get(users.show);
+router.route('/search/cocktails/:id/favorite')
+  .post(secureRoute, cocktails.favorite);
 &nbsp;
-router.all('/*', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; <span class="cstat-no" title="statement not covered" >res.notFound())</span>;
+router.route('/search/cocktails/:id/unfavorite')
+  .delete(secureRoute, cocktails.unfavorite);
+&nbsp;
+router.route('/search/cocktails/:id/comments')
+  .post(secureRoute, cocktails.addComment);
+&nbsp;
+router.route('/search/cocktails/:id/comments/:commentId')
+  .delete(secureRoute, cocktails.deleteComment);
+&nbsp;
+router.route('/register')
+  .post(auth.register);
+//
+router.route('/login')
+  .post(auth.login);
+//
+router.route('/users/:id')
+  .get(secureRoute, users.show);
+&nbsp;
+router.all('/*', (req, res) =&gt; res.notFound());
 &nbsp;
 module.exports = router;
 &nbsp;</pre></td></tr>
@@ -178,7 +178,7 @@ module.exports = router;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Feb 03 2018 13:40:00 GMT+0000 (GMT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Feb 04 2018 11:31:00 GMT+0000 (GMT)
 </div>
 </div>
 <script src="../../prettify.js"></script>
