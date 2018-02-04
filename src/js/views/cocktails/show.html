@@ -1,1 +1,66 @@
 <h1 class="title is-1">One cocktail at a time</h1>
+
+<section ng-controller="CocktailsShowCtrl as vm" class="section">
+  <div class="columns">
+    <div class="column is-two-fifths">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img ng-src="{{vm.cocktail.image}}" alt="{{ vm.cocktail.name }}">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <h2 class="title is-2">{{ vm.cocktail.name }}</h2>
+              <h3 class="subtitle is-3">Story: <em>{{ vm.cocktail.story }}</em></h3>
+              <h4>When should you drink it: <em>{{ vm.cocktail.occasion }}</em></h4>
+              <h4>Tastes like: <em>{{ vm.cocktail.tastes }}</em></h4>
+            </div>
+          </div>
+
+          <div class="content">
+            <p>Recipe posted by: <a ui-sref="usersShow({id:vm.cocktail.createdBy.id})"><strong>{{ vm.cocktail.createdBy.username }}</strong></a></p>
+            <!-- <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time> -->
+          </div>
+        </div>
+        <footer class="card-footer">
+          <button class="button is-info is-outlined is-large card-footer-item" ui-sref="cocktailsEdit({ id: vm.cocktail.id })" ng-show="!vm.isAuthenticated()"><span>Edit</span><span class="icon is-small"><i class="fas fa-edit"></i></span></button>
+          <button class="button is-danger is-outlined is-large card-footer-item" ng-click="vm.delete()" ng-if="!main.isAuthenticated() && main.currentUserId === vm.cocktail.createdBy.id"><span>Delete</span><span class="icon is-small">
+            <i class="fas fa-trash-alt"></i>
+          </span></button>
+        </footer>
+      </div>
+    </div>
+    <div class="column is-three-fifths">
+      <div class="tabs is-boxed">
+        <ul>
+          <li class="is-active">
+            <a>
+              <span class="icon is-small"><i class="fab fa-mix"></i></span>
+              <span>Instructions</span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <span class="icon is-small"><i class="fas fa-balance-scale"></i></span>
+              <span>Ingredients</span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <span class="icon is-small"><i class="fas fa-film"></i></span>
+              <span>Video</span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <span class="icon is-small"><i class="fas fa-comments"></i></span>
+              <span>Comments</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
