@@ -25,6 +25,13 @@ const cocktailSchema = new mongoose.Schema({
   comments: [ commentSchema ]
 });
 
+cocktailSchema.pre('save', function splitUrl(next){
+  if(this.isModified('video')) {
+    this.video = this.video.match(/[a-zA-Z0-9_-]{11}/);
+  }
+  next();
+});
+
 cocktailSchema.set('toJSON', { virtuals: true });
 
 module.exports = mongoose.model('Cocktail', cocktailSchema);

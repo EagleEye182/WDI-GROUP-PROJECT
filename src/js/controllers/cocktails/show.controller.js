@@ -2,11 +2,22 @@ angular
   .module('cocktailApp')
   .controller('CocktailsShowCtrl', CocktailsShowCtrl);
 
-CocktailsShowCtrl.$inject = ['Cocktail', 'CocktailComment', '$state', '$auth'];
-function CocktailsShowCtrl(Cocktail, CocktailComment, $state, $auth) {
+CocktailsShowCtrl.$inject = ['Cocktail', 'CocktailComment', '$state', '$auth', '$sce'];
+function CocktailsShowCtrl(Cocktail, CocktailComment, $state, $auth, $sce) {
   const vm = this;
   vm.newComment = {};
   vm.cocktail = Cocktail.get($state.params);
+
+  Cocktail.get($state.params)
+    .$promise
+    .then((cocktail) => {
+      vm.cocktail = cocktail;
+
+      vm.isAuthenticated = $auth.isAuthenticated;
+
+      // https://code.angularjs.org/1.6.8/docs/api/ng/service/$sce
+      vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="100%" height="315" src="https://www.youtube.com/embed/${vm.cocktail.video}" frameborder="0" allowfullscreen></iframe>`);
+    });
 
   function cocktailsDelete() {
     vm.cocktail
