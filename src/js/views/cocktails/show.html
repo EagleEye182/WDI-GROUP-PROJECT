@@ -31,6 +31,7 @@
         </footer>
       </div>
     </div>
+
     <div class="column is-three-fifths">
       <div class="tabs is-boxed">
         <ul>
@@ -73,7 +74,6 @@
         <div class="column is-9">
           <p ng-if="!vm.cocktail.comments.length">0 comments</p>
           <div class="comments">
-
             <form ng-submit="vm.addComment()" ng-if="main.isAuthenticated()">
               <label>Add comment</label>
               <textarea class="textarea is-medium" type="text" ng-model="vm.newComment.text"></textarea>
@@ -103,4 +103,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
