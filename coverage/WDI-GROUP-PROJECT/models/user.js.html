@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">88.89% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>16/18</span>
+        <span class='fraction'>18/18</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">66.67% </span>
+        <span class="strong">83.33% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>4/6</span>
+        <span class='fraction'>5/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/4</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">88.89% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>16/18</span>
+        <span class='fraction'>18/18</span>
       </div>
     </div>
   </div>
@@ -96,6 +96,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -103,32 +105,30 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const bcrypt   = require('bcrypt');
 &nbsp;
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
@@ -136,8 +136,10 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true }
 });
 &nbsp;
-userSchema.virtual('posts', {
-  ref: 'Post',
+userSchema.set('toJSON', { virtuals: true });
+&nbsp;
+userSchema.virtual('cocktails', {
+  ref: 'Cocktail',
   localField: '_id',
   foreignField: 'createdBy'
 });
@@ -149,8 +151,8 @@ userSchema
   });
 &nbsp;
 userSchema.pre('validate', function checkPassword(next) {
-  <span class="missing-if-branch" title="if path not taken" >I</span>if(!this._passwordConfirmation || this._passwordConfirmation !== this.password) {
-<span class="cstat-no" title="statement not covered" >    this.invalidate('passwordConfirmation', 'does not match');</span>
+  if(!this._passwordConfirmation || this._passwordConfirmation !== this.password) {
+    this.invalidate('passwordConfirmation', 'does not match');
   }
   next();
 });
@@ -162,11 +164,9 @@ userSchema.pre('save', function hashPassword(next) {
   next();
 });
 &nbsp;
-userSchema.methods.validatePassword = function <span class="fstat-no" title="function not covered" >validatePassword(</span>password) {
-<span class="cstat-no" title="statement not covered" >  return bcrypt.compareSync(password, this.password);</span>
+userSchema.methods.validatePassword = function validatePassword(password) {
+  return bcrypt.compareSync(password, this.password);
 };
-&nbsp;
-userSchema.set('toJSON', { virtuals: true });
 &nbsp;
 module.exports = mongoose.model('User', userSchema);
 &nbsp;</pre></td></tr>
@@ -175,7 +175,7 @@ module.exports = mongoose.model('User', userSchema);
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Feb 04 2018 11:31:00 GMT+0000 (GMT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Feb 05 2018 12:45:07 GMT+0000 (GMT)
 </div>
 </div>
 <script src="../../prettify.js"></script>

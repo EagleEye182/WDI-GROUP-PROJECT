@@ -8,13 +8,13 @@ function searchRoute(req, res, next) {
     .catch(next);
 }
 
-function indexRoute(req, res, next) {
+function indexRoute(req, res) {
   Cocktail
     .find()
     .populate('createdBy')
     .exec()
-    .then((cocktails) => res.json(cocktails))
-    .catch(next);
+    .then(shoes => res.status(200).json(shoes))
+    .catch(err => res.status(500).json(err));
 }
 
 function createRoute(req, res, next) {
