@@ -25,8 +25,8 @@
           </div>
         </div>
         <footer class="card-footer">
-          <button class="button is-info is-outlined is-large card-footer-item" ui-sref="cocktailsEdit({ id: vm.cocktail.id })" ng-show="!vm.isAuthenticated()"><span>Edit</span><span class="icon is-small"><i class="fas fa-edit"></i></span></button>
-          <button class="button is-danger is-outlined is-large card-footer-item" ng-click="vm.delete()" ng-if="!main.isAuthenticated() && main.currentUserId === vm.cocktail.createdBy.id"><span>Delete</span><span class="icon is-small">
+          <button class="button is-info is-outlined is-large card-footer-item" ui-sref="cocktailsEdit({ id: vm.cocktail.id })" ng-show="vm.isAuthenticated()"><span>Edit</span><span class="icon is-small"><i class="fas fa-edit"></i></span></button>
+          <button class="button is-danger is-outlined is-large card-footer-item" ng-click="vm.delete()" ng-if="main.isAuthenticated() && main.currentUserId === vm.cocktail.createdBy.id"><span>Delete</span><span class="icon is-small">
             <i class="fas fa-trash-alt"></i>
           </span></button>
         </footer>
@@ -35,31 +35,42 @@
     <div class="column is-three-fifths">
       <div class="tabs is-boxed">
         <ul>
-          <li class="is-active">
+          <li ng-click="vm.selectTab('instructions')" ng-class="{'is-active' : vm.currentTab === 'instructions'}">
             <a>
               <span class="icon is-small"><i class="fab fa-mix"></i></span>
               <span>Instructions</span>
             </a>
           </li>
-          <li>
+          <li ng-click="vm.selectTab('ingredients')" ng-class="{'is-active' : vm.currentTab === 'ingredients'}">
             <a>
               <span class="icon is-small"><i class="fas fa-balance-scale"></i></span>
               <span>Ingredients</span>
             </a>
           </li>
-          <li>
+          <li ng-click="vm.selectTab('video')" ng-class="{'is-active' : vm.currentTab === 'video'}">
             <a>
               <span class="icon is-small"><i class="fas fa-film"></i></span>
               <span>Video</span>
             </a>
           </li>
-          <li>
+          <li ng-click="vm.selectTab('comments')" ng-class="{'is-active' : vm.currentTab === 'comments'}">
             <a>
               <span class="icon is-small"><i class="fas fa-comments"></i></span>
               <span>Comments</span>
             </a>
           </li>
         </ul>
+      </div>
+      <div ng-if="vm.tabs.instructions">
+        <p>Hi I'm the div</p>
+        {{vm.cocktail.description}}
+      </div>
+      <div ng-if="vm.tabs.ingredients">
+        <p>Hi I'm the div</p>
+        {{vm.cocktail.mixer}}
+      </div>
+      <div ng-if="vm.tabs.video">
+        <div ng-bind-html="vm.cocktail.youtubePlayer"></div>
       </div>
     </div>
   </div>

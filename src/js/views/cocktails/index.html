@@ -1,8 +1,18 @@
 <h1 class="title is-1">index with cocktails</h1>
+<div class="l-box">
+  <input type="checkbox" id="spirit" ng-model="vm.useSpirit">
+  <label for="spirit">
+  <input type="text" ng-model="vm.spirit" ng-disabled="!vm.useSpirit" class="input">Spirit</label>
+</div>
+<div class="l-box">
+  <input type="checkbox" id="userRating" ng-model="vm.useUserRating">
+  <label for="userRating">User Rating</label>
+  <input type="range" ng-model="vm.userRating" min="1" max="5" ng-disabled="!vm.useUserRating">
+</div>
 
 <section class="section">
   <div class="columns is-multiline">
-    <div ng-repeat="cocktail in vm.all" class="column is-half">
+    <div ng-repeat="cocktail in vm.filtered" class="column is-one-third">
       <h2 class="title">{{ cocktail.name }}</h2>
       <h3>Story: <em>{{ cocktail.story }}</em></h3>
       <h3>Description: <em>{{ cocktail.description }}</em></h3>

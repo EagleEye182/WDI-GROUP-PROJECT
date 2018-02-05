@@ -1,33 +1,48 @@
-<section class="section">
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
-      <form name="vm.loginForm" ng-submit="vm.submit()" novalidate>
-        <div class="field">
-          <label class="label" for="email">Email</label>
-          <p class="control">
-            <input class="input" type="text" name="email" id="email" ng-model="vm.credentials.email" required>
-          </p>
-          <div ng-messages="vm.loginForm.email.$error" role="alert" ng-show="(vm.loginForm.$submitted || vm.loginForm.email.$touched) && vm.loginForm.email.$invalid" class="error">
-          <div ng-message="required">Please enter a value for this field.</div>
-          <div ng-message="email">This field must be a valid email address.</div>
-        </div>
-        </div>
-        <div class="field">
-          <label class="label" for="password">Password</label>
-          <p class="control">
-            <input class="input" type="password" name="password" id="password" ng-model="vm.credentials.password" required>
-          </p>
-          <div ng-messages="vm.loginForm.password.$error" role="alert" ng-show="(vm.loginForm.$submitted || vm.loginForm.password.$touched) && vm.loginForm.password.$invalid" class="error">
-          <div ng-message="required">Please enter a value for this field.</div>
-        </div>
-        </div>
+<section class="hero is-success is-fullheight">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <div class="column is-4 is-offset-4">
+        <form name="vm.loginForm" ng-submit="vm.submit()" novalidate>
+        <h3 class="title has-text-grey">Login</h3>
+        <p class="subtitle has-text-grey">Please login to proceed.</p>
+        <div class="box">
+          <figure class="avatar">
+            <img src="https://placehold.it/128x128">
+          </figure>
+          <form>
+            <div class="field">
+              <div class="control">
+                <input class="input is-large" type="email" placeholder="Your Email" autofocus="" name="email" id="email" ng-model="vm.credentials.email" required>
+              </div>
+              <div ng-messages="vm.loginForm.email.$error" role="alert" ng-show="(vm.loginForm.$submitted || vm.loginForm.email.$touched) && vm.loginForm.email.$invalid" class="error">
+              <div ng-message="required">Please enter a value for this field.</div>
+              <div ng-message="email">This field must be a valid email address.</div>
+            </div>
+            </div>
 
-        <div class="field">
-          <p class="control">
-            <input type="submit" class="button is-primary is-fullwidth" value="Login">
-          </p>
+            <div class="field">
+              <div class="control">
+                <input class="input is-large" type="password" placeholder="Your Password" name="password" id="password" ng-model="vm.credentials.password" required>
+              </div>
+              <div ng-messages="vm.loginForm.password.$error" role="alert" ng-show="(vm.loginForm.$submitted || vm.loginForm.password.$touched) && vm.loginForm.password.$invalid" class="error">
+              <div ng-message="required">Please enter a value for this field.</div>
+            </div>
+            </div>
+            <div class="field">
+              <label class="checkbox">
+                <input type="checkbox">
+                Remember me
+              </label>
+            </div>
+            <input type="submit" class="button is-block is-info is-large is-fullwidth" value="Login">
+          </form>
         </div>
+        <p class="has-text-grey">
+          <a href="../register">Sign Up</a> &nbsp;·&nbsp;
+          <a href="https://gph.is/YCfPKJ">Need Help?</a>
+        </p>
       </form>
+      </div>
     </div>
   </div>
 </section>
