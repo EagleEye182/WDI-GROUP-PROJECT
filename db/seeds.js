@@ -76,6 +76,20 @@ User
         image: 'http://www.thehungrytravelerblog.com/wp-content/uploads/2015/04/El-Campadre-4-edited.jpg',
         color: 'Orange',
         createdBy: users[0]
+      },{
+        name: 'Ani-Damn!',
+        description: 'A shot... just hit it',
+        story: 'Bourbon lover that likes a citrus twist',
+        userRating: 5,
+        video: '',
+        spirit: 'Bourbon',
+        mixer: 'Lemon Juice, Orange Juice',
+        alcoholic: true,
+        occasion: 'Halloween',
+        tastes: 'Sweet, Citrus',
+        image: 'http://www.thehungrytravelerblog.com/wp-content/uploads/2015/04/El-Campadre-4-edited.jpg',
+        color: 'Orange',
+        createdBy: users[0]
       }]);
   })
   .then((cocktails) => console.log(`${cocktails.length} cocktails created!`))
