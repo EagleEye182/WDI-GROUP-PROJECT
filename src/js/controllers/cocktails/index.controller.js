@@ -22,12 +22,7 @@ function CocktailsIndexCtrl(Cocktail, filterFilter, $scope) {
 
     vm.filtered = filterFilter(vm.all, params);
   }
-
-  // $scope.$watch(() => vm.query, filterCoffee);
-  // $scope.$watch(() => vm.useStrength, filterCoffee);
-  // $scope.$watch(() => vm.useRoast, filterCoffee);
-  // $scope.$watch(() => vm.strength, filterCoffee);
-  // $scope.$watch(() => vm.roast, filterCoffee);
+  
   $scope.$watchGroup([
     () => vm.query,
     () => vm.useSpirit,

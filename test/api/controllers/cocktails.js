@@ -47,9 +47,9 @@ describe('cocktails Controller Tests', () => {
             .to.be.an('array')
             .and.have.property(0)
             .and.have.all.keys([
-              // '_id',
-              // 'id',
-              // '__v',
+              '_id',
+              'id',
+              '__v',
               'id',
               'name',
               'description'
