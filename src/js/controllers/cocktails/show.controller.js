@@ -6,7 +6,6 @@ CocktailsShowCtrl.$inject = ['Cocktail', '$state', '$auth', '$sce'];
 function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
   const vm = this;
   vm.newComment = {};
-  // vm.cocktail = Cocktail.get($state.params);
 
   Cocktail
     .get($state.params)

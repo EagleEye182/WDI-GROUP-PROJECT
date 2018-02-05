@@ -11,11 +11,7 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/',
       templateUrl: 'js/views/cocktails/verif.html'
     })
-    // .state('cocktailsSearch', {
-    //   url: '/search',
-    //   templateUrl: 'js/views/cocktails/search.html',
-    //   controller: 'CocktailsSearchCtrl as vm'
-    // })
+
     .state('cocktailsIndex', {
       url: '/cocktails',
       templateUrl: 'js/views/cocktails/index.html',
