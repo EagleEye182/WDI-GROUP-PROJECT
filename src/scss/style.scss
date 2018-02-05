@@ -40,3 +40,9 @@ p {
 p.subtitle {
   padding-top: 1rem;
 }
+
+section {
+  &.hero {
+    margin-bottom: 10px;
+  }
+}
