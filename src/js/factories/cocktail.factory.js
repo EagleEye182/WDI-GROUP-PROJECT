@@ -1,7 +1,6 @@
 angular
   .module('cocktailApp')
   .factory('Cocktail', Cocktail);
-// .factory('CocktailsFilter', CocktailsFilter);
 
 Cocktail.$inject = ['$resource'];
 function Cocktail($resource) {

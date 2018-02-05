@@ -1,3 +1,3 @@
-angular
-  .module('cocktailApp')
-  .constant('API', 'http://localhost:7000/api');
+// angular
+//   .module('cocktailApp')
+//   .constant('API', 'http://localhost:7000/api');
