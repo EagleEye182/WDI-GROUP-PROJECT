@@ -93,7 +93,7 @@
                   <div class="media-content">
                     <div class="content">
                       <p>
-                        <a ui-sref="usersShow({ id: comment.createdBy.id })">{{ comment.createdBy.username }}</strong></a> posted on {{comment.createdAt}}  &nbsp;
+                        <a ui-sref="usersShow({ id: comment.createdBy.id })"><strong>{{ comment.createdBy.username }}</strong></a> posted on {{comment.createdAt}}  &nbsp;
                       </p>
                     </div>
                     <button class="button" ng-click="vm.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUserId === comment.createdBy.id">Delete</button>
