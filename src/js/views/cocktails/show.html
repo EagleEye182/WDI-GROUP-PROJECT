@@ -21,7 +21,6 @@
 
           <div class="content">
             <p>Recipe posted by: <a ui-sref="usersShow({id:vm.cocktail.createdBy.id})"><strong>{{ vm.cocktail.createdBy.username }}</strong></a></p>
-            <!-- <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time> -->
           </div>
         </div>
         <footer class="card-footer">
@@ -62,16 +61,46 @@
         </ul>
       </div>
       <div ng-if="vm.tabs.instructions">
-        <p>Hi I'm the div</p>
         {{vm.cocktail.description}}
       </div>
       <div ng-if="vm.tabs.ingredients">
-        <p>Hi I'm the div</p>
         {{vm.cocktail.mixer}}
       </div>
       <div ng-if="vm.tabs.video">
         <div ng-bind-html="vm.cocktail.youtubePlayer"></div>
       </div>
-    </div>
-  </div>
-</section>
+      <div ng-if="vm.tabs.comments">
+        <div class="column is-9">
+          <p ng-if="!vm.cocktail.comments.length">0 comments</p>
+          <div class="comments">
+
+            <form ng-submit="vm.addComment()" ng-if="main.isAuthenticated()">
+              <label>Add comment</label>
+              <textarea class="textarea is-medium" type="text" ng-model="vm.newComment.text"></textarea>
+              <button type="submit" class="button is-info">Comment</button>
+            </form>
+
+            <div class="box content">
+              <article class="post" ng-repeat="comment in vm.cocktail.comments track by $index">
+                <h4>{{ comment.text }}</h4>
+                <span class="pull-right has-text-grey-light"><i class="fa fa-comments"></i> 1</span>
+                <div class="media">
+                  <div class="media-left">
+                    <p class="image is-32x32">
+                      <img src="http://bulma.io/images/placeholders/128x128.png">
+                    </p>
+                  </div>
+                  <div class="media-content">
+                    <div class="content">
+                      <p>
+                        <a ui-sref="usersShow({ id: comment.createdBy.id })">{{ comment.createdBy.username }}</strong></a> posted on {{comment.createdAt}}  &nbsp;
+                      </p>
+                    </div>
+                    <button class="button" ng-click="vm.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUserId === comment.createdBy.id">Delete</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>

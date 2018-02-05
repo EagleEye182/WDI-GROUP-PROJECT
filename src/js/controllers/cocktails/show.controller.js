@@ -45,10 +45,12 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
 
   function addComment() {
     Cocktail
-      .save({ cocktailId: vm.cocktail.id }, vm.newComment)
+      .addComment({ cocktailId: vm.cocktail.id }, vm.newComment)
       .$promise
       .then((comment) => {
+        console.log(comment);
         vm.cocktail.comments.push(comment);
+        console.log(vm.cocktail);
         vm.newComment = {};
       });
   }
@@ -57,7 +59,7 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
 
   function deleteComment(comment) {
     Cocktail
-      .delete({ cocktailId: vm.cocktail.id, id: comment.id })
+      .deleteComment({ cocktailId: vm.cocktail.id, id: comment._id })
       .$promise
       .then(() => {
         const index = vm.cocktail.comments.indexOf(comment);
