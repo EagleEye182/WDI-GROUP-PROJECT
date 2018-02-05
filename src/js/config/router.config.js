@@ -7,17 +7,10 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
   $stateProvider
-<<<<<<< HEAD
-    .state('homePage', {
-      url: '/',
-      templateUrl: 'js/views/homePage.html'
-=======
     .state('homepage', {
       url: '/',
       templateUrl: 'js/views/homepage.html'
->>>>>>> development
     })
-
     .state('cocktailsIndex', {
       url: '/cocktails',
       templateUrl: 'js/views/cocktails/index.html',
