@@ -7,15 +7,17 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
   $stateProvider
-    .state('verif', {
+<<<<<<< HEAD
+    .state('homePage', {
       url: '/',
-      templateUrl: 'js/views/cocktails/verif.html'
+      templateUrl: 'js/views/homePage.html'
+=======
+    .state('homepage', {
+      url: '/',
+      templateUrl: 'js/views/homepage.html'
+>>>>>>> development
     })
-    // .state('cocktailsSearch', {
-    //   url: '/search',
-    //   templateUrl: 'js/views/cocktails/search.html',
-    //   controller: 'CocktailsSearchCtrl as vm'
-    // })
+
     .state('cocktailsIndex', {
       url: '/cocktails',
       templateUrl: 'js/views/cocktails/index.html',

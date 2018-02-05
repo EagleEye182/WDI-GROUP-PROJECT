@@ -49,6 +49,7 @@ describe('Users Controller Tests', () => {
           expect(res.body)
             .to.be.an('object')
             .and.have.all.keys([
+              'cocktails',
               '__v',
               '_id',
               'id',

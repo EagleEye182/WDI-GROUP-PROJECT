@@ -5,6 +5,7 @@ const auth = require('../controllers/auth');
 const users = require('../controllers/users');
 const secureRoute = require('../lib/secureRoute');
 
+
 // Routes go here
 
 router.route('/cocktails')
