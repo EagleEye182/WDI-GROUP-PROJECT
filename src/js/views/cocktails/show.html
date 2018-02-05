@@ -73,7 +73,6 @@
         <div class="column is-9">
           <p ng-if="!vm.cocktail.comments.length">0 comments</p>
           <div class="comments">
-
             <form ng-submit="vm.addComment()" ng-if="main.isAuthenticated()">
               <label>Add comment</label>
               <textarea class="textarea is-medium" type="text" ng-model="vm.newComment.text"></textarea>
