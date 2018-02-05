@@ -13,7 +13,7 @@ function indexRoute(req, res) {
     .find()
     .populate('createdBy')
     .exec()
-    .then(shoes => res.status(200).json(shoes))
+    .then(cocktails => res.status(200).json(cocktails))
     .catch(err => res.status(500).json(err));
 }
 

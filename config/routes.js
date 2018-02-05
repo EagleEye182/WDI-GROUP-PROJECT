@@ -5,11 +5,9 @@ const auth = require('../controllers/auth');
 const users = require('../controllers/users');
 const secureRoute = require('../lib/secureRoute');
 
-<<<<<<< HEAD
-=======
+
 // Routes go here
 
->>>>>>> development
 router.route('/cocktails')
   .get(cocktails.index)
   .post(secureRoute, cocktails.create);
@@ -19,10 +17,6 @@ router.route('/cocktails/:id')
   .get(cocktails.show)
   .put(cocktails.update)
   .delete(cocktails.delete);
-<<<<<<< HEAD
-
-=======
->>>>>>> development
 
 router.route('/cocktails/:id/favorite')
   .post(secureRoute, cocktails.favorite);
