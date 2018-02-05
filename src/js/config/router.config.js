@@ -7,9 +7,9 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
   $stateProvider
-    .state('verif', {
+    .state('homepage', {
       url: '/',
-      templateUrl: 'js/views/cocktails/verif.html'
+      templateUrl: 'js/views/homepage.html'
     })
     // .state('cocktailsSearch', {
     //   url: '/search',
