@@ -2,9 +2,10 @@ angular
   .module('cocktailApp')
   .controller('CocktailsIndexCtrl', CocktailsIndexCtrl);
 
-CocktailsIndexCtrl.$inject = ['Cocktail', 'filterFilter', '$scope'];
-function CocktailsIndexCtrl(Cocktail, filterFilter, $scope) {
+CocktailsIndexCtrl.$inject = ['Cocktail', 'filterFilter', '$scope', '$http'];
+function CocktailsIndexCtrl(Cocktail, filterFilter, $scope, $http) {
   const vm = this;
+  getCocktails();
 
   Cocktail
     .query()
@@ -22,7 +23,7 @@ function CocktailsIndexCtrl(Cocktail, filterFilter, $scope) {
 
     vm.filtered = filterFilter(vm.all, params);
   }
-  
+
   $scope.$watchGroup([
     () => vm.query,
     () => vm.useSpirit,
@@ -30,4 +31,14 @@ function CocktailsIndexCtrl(Cocktail, filterFilter, $scope) {
     () => vm.spirit,
     () => vm.userRating
   ], filterCocktails);
+
+  function getCocktails() {
+    $http
+      .get('/api/cocktails')
+      .then((response) => {
+        vm.cocktails = response.data.result;
+        console.log(vm.cocktails);
+      });
+  }
+
 }

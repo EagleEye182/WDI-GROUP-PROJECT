@@ -4,12 +4,12 @@ const cocktails = require('../controllers/cocktails');
 const auth = require('../controllers/auth');
 const users = require('../controllers/users');
 const secureRoute = require('../lib/secureRoute');
-
+const cocktail = require('../controllers/cocktailApi');
 
 // Routes go here
 
 router.route('/cocktails')
-  .get(cocktails.index)
+  .get(cocktail.proxy, cocktails.index )
   .post(secureRoute, cocktails.create);
 
 router.route('/cocktails/:id')
@@ -38,6 +38,8 @@ router.route('/login')
 //
 router.route('/users/:id')
   .get(secureRoute, users.show);
+
+// router.get('/cocktails', cocktail.proxy);
 
 router.all('/*', (req, res) => res.notFound());
 
