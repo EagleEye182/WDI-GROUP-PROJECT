@@ -12,6 +12,7 @@ function CocktailsShowCtrl(Cocktail, CocktailComment, $state, $auth, $sce) {
     .$promise
     .then((cocktail) => {
       vm.cocktail = cocktail;
+      console.log(vm.cocktail);
 
       vm.isAuthenticated = $auth.isAuthenticated;
 
