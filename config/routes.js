@@ -7,9 +7,6 @@ const secureRoute = require('../lib/secureRoute');
 
 // Routes go here
 
-// router.route('/search')
-//   .get(cocktails.search);
-
 router.route('/cocktails')
   .get(cocktails.index)
   .post(secureRoute, cocktails.create);
@@ -19,7 +16,6 @@ router.route('/cocktails/:id')
   .get(cocktails.show)
   .put(cocktails.update)
   .delete(cocktails.delete);
-//add cocktails.update above delete; all secured
 
 router.route('/cocktails/:id/favorite')
   .post(secureRoute, cocktails.favorite);

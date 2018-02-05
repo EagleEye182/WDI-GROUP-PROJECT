@@ -1,0 +1,21 @@
+.columns-filter {
+  height: 60px;
+  width: 100%;
+  .user-slider {
+    width: auto;
+    height: 50px;
+    label {
+      padding-right: 10px;
+    }
+  }
+  .name-search {
+    width: auto;
+    height: 50px;
+    label {
+      padding-right: 10px;
+    }
+    input {
+      height: 100%;
+    }
+  }
+}
