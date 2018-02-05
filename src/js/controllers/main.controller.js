@@ -8,7 +8,6 @@ function MainCtrl($transitions, $rootScope, $state, $auth) {
   vm.isAuthenticated = $auth.isAuthenticated;
 
   $rootScope.$on('error', (e, err) => {
-    //attaching API error to the MainCtrl
     vm.message = err.data.message;
     if (err.status === 401 && vm.pageName !== 'login') {
       vm.stateHasChanged = false;
@@ -22,6 +21,7 @@ function MainCtrl($transitions, $rootScope, $state, $auth) {
     vm.pageName = transition.to().name;
     if (vm.stateHasChanged) vm.message = null;
     if (!vm.stateHasChanged) vm.stateHasChanged = true;
+    if($auth.getPayload()) vm.currentUserId = $auth.getPayload().userId;
   });
 
   vm.logout = logout;

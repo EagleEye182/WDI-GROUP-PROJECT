@@ -16,9 +16,14 @@ function CocktailsShowCtrl(Cocktail, CocktailComment, $state, $auth, $sce) {
 
       vm.isAuthenticated = $auth.isAuthenticated;
 
-      // https://code.angularjs.org/1.6.8/docs/api/ng/service/$sce
       vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="100%" height="315" src="https://www.youtube.com/embed/${vm.cocktail.video}" frameborder="0" allowfullscreen></iframe>`);
     });
+
+  // function selectTab(type) {
+  //   vm.currentTab = type;
+  // }
+  //
+  // vm.selectTab = selectTab;
 
   function cocktailsDelete() {
     vm.cocktail
