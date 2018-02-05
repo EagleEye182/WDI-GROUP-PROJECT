@@ -11,28 +11,28 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/',
       templateUrl: 'js/views/cocktails/verif.html'
     })
-    .state('cocktailsSearch', {
-      url: '/search',
-      templateUrl: 'js/views/cocktails/search.html',
-      controller: 'CocktailsSearchCtrl as vm'
-    })
+    // .state('cocktailsSearch', {
+    //   url: '/search',
+    //   templateUrl: 'js/views/cocktails/search.html',
+    //   controller: 'CocktailsSearchCtrl as vm'
+    // })
     .state('cocktailsIndex', {
-      url: '/search/cocktails',
+      url: '/cocktails',
       templateUrl: 'js/views/cocktails/index.html',
       controller: 'CocktailsIndexCtrl as vm'
     })
     .state('cocktailsNew', {
-      url: '/search/cocktails/new',
+      url: '/cocktails/new',
       templateUrl: 'js/views/cocktails/new.html',
       controller: 'CocktailsNewCtrl as vm'
     })
     .state('cocktailsShow', {
-      url: '/search/cocktails/:id',
+      url: '/cocktails/:id',
       templateUrl: 'js/views/cocktails/show.html',
       controller: 'CocktailsShowCtrl as vm'
     })
     .state('cocktailsEdit', {
-      url: '/search/cocktails/:id/edit',
+      url: '/cocktails/:id/edit',
       templateUrl: 'js/views/cocktails/edit.html',
       controller: 'CocktailsEditCtrl as vm'
     })

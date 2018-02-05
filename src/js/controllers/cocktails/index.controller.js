@@ -2,11 +2,17 @@ angular
   .module('cocktailApp')
   .controller('CocktailsIndexCtrl', CocktailsIndexCtrl);
 
-CocktailsIndexCtrl.$inject = ['CocktailsFilter', 'filterFilter', '$scope'];
-function CocktailsIndexCtrl(CocktailsFilter, filterFilter, $scope) {
+CocktailsIndexCtrl.$inject = ['Cocktail', 'filterFilter', '$scope'];
+function CocktailsIndexCtrl(Cocktail, filterFilter, $scope) {
   const vm = this;
-  vm.all = CocktailsFilter.query();
-  console.log(vm.all);
+
+  Cocktail
+    .query()
+    .$promise
+    .then(cocktails => {
+      vm.all = cocktails;
+      filterCocktails();
+    });
 
   function filterCocktails() {
     const params = { name: vm.query };

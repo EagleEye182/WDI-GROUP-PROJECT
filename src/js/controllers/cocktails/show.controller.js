@@ -2,15 +2,16 @@ angular
   .module('cocktailApp')
   .controller('CocktailsShowCtrl', CocktailsShowCtrl);
 
-CocktailsShowCtrl.$inject = ['Cocktail', 'CocktailComment', '$state', '$auth', '$sce'];
-function CocktailsShowCtrl(Cocktail, CocktailComment, $state, $auth, $sce) {
+CocktailsShowCtrl.$inject = ['Cocktail', '$state', '$auth', '$sce'];
+function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
   const vm = this;
   vm.newComment = {};
-  vm.cocktail = Cocktail.get($state.params);
+  // vm.cocktail = Cocktail.get($state.params);
 
-  Cocktail.get($state.params)
+  Cocktail
+    .get($state.params)
     .$promise
-    .then((cocktail) => {
+    .then(cocktail => {
       vm.cocktail = cocktail;
       console.log(vm.cocktail);
       vm.tabs = {
@@ -44,7 +45,7 @@ function CocktailsShowCtrl(Cocktail, CocktailComment, $state, $auth, $sce) {
   vm.delete = cocktailsDelete;
 
   function addComment() {
-    CocktailComment
+    Cocktail
       .save({ cocktailId: vm.cocktail.id }, vm.newComment)
       .$promise
       .then((comment) => {
@@ -56,7 +57,7 @@ function CocktailsShowCtrl(Cocktail, CocktailComment, $state, $auth, $sce) {
   vm.addComment = addComment;
 
   function deleteComment(comment) {
-    CocktailComment
+    Cocktail
       .delete({ cocktailId: vm.cocktail.id, id: comment.id })
       .$promise
       .then(() => {
