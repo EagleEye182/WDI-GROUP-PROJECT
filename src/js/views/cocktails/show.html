@@ -61,6 +61,17 @@
           </li>
         </ul>
       </div>
+      <div ng-if="vm.tabs.instructions">
+        <p>Hi I'm the div</p>
+        {{vm.cocktail.description}}
+      </div>
+      <div ng-if="vm.tabs.ingredients">
+        <p>Hi I'm the div</p>
+        {{vm.cocktail.mixer}}
+      </div>
+      <div ng-if="vm.tabs.video">
+        <div ng-bind-html="vm.cocktail.youtubePlayer"></div>
+      </div>
     </div>
   </div>
 </section>
