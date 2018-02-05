@@ -1,51 +1,62 @@
-<section class="section">
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
-      <form name="vm.registerForm" ng-submit="vm.submit()" novalidate>
-        <div class="field">
-          <label class="label" for="email">Username</label>
-          <p class="control">
-            <input class="input" type="text" name="username" id="username" ng-model="vm.user.username" required>
-          </p>
-          <div ng-messages="vm.registerForm.username.$error" role="alert" ng-show="(vm.registerForm.$submitted || vm.registerForm.username.$touched) && vm.registerForm.username.$invalid" class="error">
-            <div ng-message="required">Please enter a value for this field.</div>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label" for="email">Email</label>
-          <p class="control">
-            <input class="input" type="text" name="email" id="email" ng-model="vm.user.email" required>
-          </p>
-          <div ng-messages="vm.registerForm.email.$error" role="alert" ng-show="(vm.registerForm.$submitted || vm.registerForm.email.$touched) && vm.registerForm.email.$invalid" class="error">
-            <div ng-message="required">Please enter a value for this field.</div>
-            <div ng-message="email">This field must be a valid email address.</div>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label" for="password">Password</label>
-          <p class="control">
-            <input class="input" type="password" name="password" id="password" ng-model="vm.user.password" required>
-          </p>
-          <div ng-messages="vm.registerForm.password.$error" role="alert" ng-show="(vm.registerForm.$submitted || vm.registerForm.password.$touched) && vm.registerForm.password.$invalid" class="error">
-            <div ng-message="required">Please enter a value for this field.</div>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label" for="passwordConfirmation">Password Confirmation</label>
-          <p class="control">
-            <input class="input" type="password" name="passwordConfirmation" id="passwordConfirmation" ng-model="vm.user.passwordConfirmation" required>
-          </p>
-          <div ng-messages="vm.registerForm.passwordConfirmation.$error" role="alert" ng-show="(vm.registerForm.$submitted || vm.registerForm.passwordConfirmation.$touched) && vm.registerForm.passwordConfirmation.$invalid" class="error">
-            <div ng-message="required">Please enter a value for this field.</div>
-          </div>
-        </div>
+<section class="hero is-success is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column is-4 is-offset-4">
+          <form name="vm.registerForm" ng-submit="vm.submit()" novalidate>
+            <div class="box">
+              <label class="label" for="name">Name</label>
+              <p class="control">
+                <input class="input is-large" type="text" name="name" id="name" autofocus="" ng-model="vm.user.username" required>
+              </p>
+              <div ng-messages="vm.registerForm.name.$error" role="alert" ng-show="(vm.registerForm.$submitted || vm.registerForm.name.$touched) && vm.registerForm.name.$invalid" class="error">
+                <div ng-message="required">Please enter a value for this field.</div>
+              </div>
+              <!-- <div class="field"> -->
+              <label class="label" for="username">Username</label>
+              <p class="control">
+                <input class="input is-large" type="text" name="username" id="username" autofocus="" ng-model="vm.user.username" required>
+              </p>
+              <div ng-messages="vm.registerForm.username.$error" role="alert" ng-show="(vm.registerForm.$submitted || vm.registerForm.username.$touched) && vm.registerForm.username.$invalid" class="error">
+                <div ng-message="required">Please enter a value for this field.</div>
+              </div>
+              <!-- </div> -->
+              <!-- <div class="field"> -->
+              <label class="label" for="email">Email</label>
+              <p class="control">
+                <input class="input is-large" type="text" name="email" id="email" autofocus="" ng-model="vm.user.email" required>
+              </p>
+              <div ng-messages="vm.registerForm.email.$error" role="alert" ng-show="(vm.registerForm.$submitted || vm.registerForm.email.$touched) && vm.registerForm.email.$invalid" class="error">
+                <div ng-message="required">Please enter a value for this field.</div>
+                <div ng-message="email">This field must be a valid email address.</div>
+              </div>
+              <hr>
+              <label class="label" for="password">Password</label>
+              <p class="control">
+                <input class="input is-large" type="password" name="password" id="password" autofocus="" ng-model="vm.user.password" required>
+              </p>
+              <div ng-messages="vm.registerForm.password.$error" role="alert" ng-show="(vm.registerForm.$submitted || vm.registerForm.password.$touched) && vm.registerForm.password.$invalid" class="error">
+                <div ng-message="required">Please enter a value for this field.</div>
+              </div>
+              <!-- </div> -->
+              <label class="label" for="passwordConfirmation">Password Confirmation</label>
+              <p class="control">
+                <input class="input is-large" type="password" name="passwordConfirmation" id="passwordConfirmation" autofocus="" ng-model="vm.user.passwordConfirmation" required>
+              </p>
+              <div ng-messages="vm.registerForm.passwordConfirmation.$error" role="alert" ng-show="(vm.registerForm.$submitted || vm.registerForm.passwordConfirmation.$touched) && vm.registerForm.passwordConfirmation.$invalid" class="error">
+                <div ng-message="required">Please enter a value for this field.</div>
+              </div>
+              <!-- </div> -->
 
-        <div class="field">
-          <p class="control">
-            <input type="submit" class="button is-primary is-fullwidth" value="Register">
-          </p>
+              <hr>
+
+              <p class="control">
+                <input type="submit" class="button is-block is-info is-large" value="Register">
+              </p>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </section>
