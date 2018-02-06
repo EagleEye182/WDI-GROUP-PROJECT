@@ -15,20 +15,25 @@
 <section class="section">
   <div class="columns is-multiline">
     <div ng-repeat="cocktail in vm.all" class="column is-one-third">
-      <h2 class="title">{{ cocktail.name }}</h2>
-      <h3>Skill: <em>{{ cocktail.skill.name }}</em></h3>
-      <h3>Description: <em>{{ cocktail.descriptionPlain }}</em></h3>
+      <h2 class="title">{{ cocktail.name }}</h2><br>
+      <h3 class="subtitle">Mix difficulty: <em>{{ cocktail.skill.name }}</em></h3>
 
-      <h4>Tastes like:
-        <h5 ng-repeat="taste in cocktail.tastes"><em>{{ cocktail.tastes}}</em></h5>
-      </h4>
-      <!-- <img ng-src="{{ cocktail.image }}" alt="{{ cocktail.name }}"> -->
-      <p>Recipe posted by: <strong>{{ cocktail.createdBy.username }}</strong></p>
+      <ul class="tools">
+        <h4 class="subtitle">Occasion:
+          <li ng-repeat="occasion in cocktail.occasions"><em>{{ occasion.text }}</em></li>
+        </h4>
+        </ul>
+    <br>
+      <ul class="flavour">
+        <h4 class="subtitle">Flavour:
+          <li ng-repeat="taste in cocktail.tastes"><em>{{ taste.text }}</em></li>
+        </h4>
+        </ul>
+
+      <img ng-src="{{cocktail.imagePath}}" alt="{{ cocktail.name }}">
       <div>
-        <button class="button is-small" ui-sref="cocktailsShow({ id: cocktail.id })">View</button>
+        <button class="button is-info if-fullwidth" ui-sref="cocktailsShow({ id: cocktail.id })">View</button>
       </div>
     </div>
   </div>
-
-  <!-- {{ vm.cocktails }} -->
 </section>
