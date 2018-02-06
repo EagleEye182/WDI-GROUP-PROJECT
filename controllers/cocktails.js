@@ -1,9 +1,5 @@
 const Cocktail = require('../models/cocktail');
-<<<<<<< HEAD
 const rp       = require('request-promise');
-=======
-const rp = require('request-promise');
->>>>>>> development
 
 function searchRoute(req, res, next) {
   Cocktail
@@ -31,9 +27,6 @@ function createRoute(req, res, next) {
     .catch(next);
 }
 function showRoute(req, res, next) {
-<<<<<<< HEAD
-  console.log(req.params.id);
-=======
   //left in incase API files
   // Cocktail
   //   .findById(req.params.id)
@@ -46,7 +39,6 @@ function showRoute(req, res, next) {
   //   })
   //   .catch(next);
   // console.log(req.params.id);
->>>>>>> development
   rp({
     method: 'GET',
     url: `http://addb.absolutdrinks.com/drinks/${req.params.id}?apiKey=f2e2f533899b416ca6705e91908172f2`,
@@ -54,11 +46,7 @@ function showRoute(req, res, next) {
   })
     .then((response) => {
       console.log(response);
-<<<<<<< HEAD
-      res.json(response.result);
-=======
       res.json(response);
->>>>>>> development
     })
     .catch(next);
 }
