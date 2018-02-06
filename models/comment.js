@@ -7,4 +7,4 @@ const commentSchema = new mongoose.Schema({
 
 commentSchema.set('toJSON', { virtuals: true });
 
-module.exports = mongoose.model('Cocktail', commentSchema);
+module.exports = mongoose.model('Comment', commentSchema);

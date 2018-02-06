@@ -1,4 +1,5 @@
 const Cocktail = require('../models/cocktail');
+const Comment = require('../models/comment');
 const rp = require('request-promise');
 
 function searchRoute(req, res, next) {
@@ -156,6 +157,16 @@ function unfavoriteRoute(req, res, next) {
     .catch(next);
 }
 
+function apiCommentRoute(req, res, next) {
+  Comment
+    .find({cocktailId: req.params.id})
+    .exec()
+    .then((res) => {
+      console.log(res);
+    })
+    .catch(next);
+}
+
 module.exports = {
   index: indexRoute,
   create: createRoute,
@@ -166,5 +177,6 @@ module.exports = {
   deleteComment: deleteCommentRoute,
   favorite: favoriteRoute,
   unfavorite: unfavoriteRoute,
-  search: searchRoute
+  search: searchRoute,
+  apiComment: apiCommentRoute
 };
