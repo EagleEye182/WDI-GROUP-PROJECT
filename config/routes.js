@@ -28,7 +28,8 @@ router.route('/cocktails/:id/unfavorite')
   .delete(secureRoute, cocktails.unfavorite);
 
 router.route('/cocktails/:id/comments')
-  .post(secureRoute, cocktails.addComment, cocktails.apiComment);
+  .get(cocktails.getComments)
+  .post(cocktails.addComment);
 
 router.route('/cocktails/:id/comments/:commentId')
   .delete(secureRoute, cocktails.deleteComment);

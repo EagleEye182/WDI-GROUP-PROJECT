@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const commentSchema = new mongoose.Schema({
   content: {type: String},
-  cocktailId: {type: String}
+  cocktailId: {type: String},
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'}
 });
 
 commentSchema.set('toJSON', { virtuals: true });

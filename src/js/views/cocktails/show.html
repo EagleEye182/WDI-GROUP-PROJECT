@@ -95,13 +95,13 @@
           <div class="comments">
             <form ng-submit="vm.addComment()" ng-if="main.isAuthenticated()">
               <label>Add comment</label>
-              <textarea class="textarea is-medium" type="text" ng-model="vm.newComment.text"></textarea>
+              <textarea class="textarea is-medium" type="text" ng-model="vm.newComment.content"></textarea>
               <button type="submit" class="button is-info">Comment</button>
             </form>
 
             <div class="box content">
               <article class="post" ng-repeat="comment in vm.cocktail.comments track by $index">
-                <h4>{{ comment.text }}</h4>
+                <h4>{{ comment.content }}</h4>
                 <span class="pull-right has-text-grey-light"><i class="fa fa-comments"></i> 1</span>
                 <div class="media">
                   <div class="media-left">

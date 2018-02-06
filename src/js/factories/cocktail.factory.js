@@ -9,6 +9,7 @@ function Cocktail($resource) {
     favorite: { method: 'POST', url: '/api/cocktails/:id/favorite' },
     unfavorite: { method: 'DELETE', url: '/api/cocktails/:id/unfavorite' },
     addComment: { method: 'POST', url: '/api/cocktails/:cocktailId/comments' },
-    deleteComment: { method: 'DELETE', url: '/api/cocktails/:cocktailId/comments/:id'}
+    deleteComment: { method: 'DELETE', url: '/api/cocktails/:cocktailId/comments/:id'},
+    getComments: { method: 'GET', url: '/api/cocktails/:id/comments' }
   });
 }

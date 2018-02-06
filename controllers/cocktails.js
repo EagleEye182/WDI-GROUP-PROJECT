@@ -93,19 +93,30 @@ function deleteRoute(req, res, next) {
 
 function addCommentRoute(req, res, next) {
 
+  // req.body.createdBy = req.user;
+  //
+  // Cocktail
+  //   .findById(req.params.id)
+  //   .exec()
+  //   .then((cocktail) => {
+  //     if(!cocktail) return res.notFound();
+  //
+  //     const comment = cocktail.comments.create(req.body);
+  //     cocktail.comments.push(comment);
+  //
+  //     return cocktail.save()
+  //       .then(() => res.json(comment));
+  //   })
+  //   .catch(next);
+
   req.body.createdBy = req.user;
+  req.body.cocktailId = req.params.id;
 
-  Cocktail
-    .findById(req.params.id)
-    .exec()
-    .then((cocktail) => {
-      if(!cocktail) return res.notFound();
-
-      const comment = cocktail.comments.create(req.body);
-      cocktail.comments.push(comment);
-
-      return cocktail.save()
-        .then(() => res.json(comment));
+  Comment
+    .create(req.body)
+    .then((comment) => {
+      console.log(comment);
+      return res.status(200).json(comment);
     })
     .catch(next);
 }
@@ -168,12 +179,13 @@ function unfavoriteRoute(req, res, next) {
     .catch(next);
 }
 
-function apiCommentRoute(req, res, next) {
+function getCommentsRoute(req, res, next) {
+  // console.log(req.params.id);
   Comment
     .find({cocktailId: req.params.id})
     .exec()
-    .then((res) => {
-      console.log(res);
+    .then((comments) => {
+      return res.status(200).json({comments});
     })
     .catch(next);
 }
@@ -189,5 +201,5 @@ module.exports = {
   favorite: favoriteRoute,
   unfavorite: unfavoriteRoute,
   search: searchRoute,
-  apiComment: apiCommentRoute
+  getComments: getCommentsRoute
 };
