@@ -8,7 +8,7 @@
       <div class="card">
         <div class="card-image">
           <figure class="image is-4by3">
-            <img ng-src="{{vm.cocktail.image}}" alt="{{ vm.cocktail.name }}">
+          <img ng-src="{{cocktail.imagePath}}" alt="{{ cocktail.name }}">
           </figure>
         </div>
         <div class="card-content">
@@ -21,9 +21,9 @@
             </div>
           </div>
 
-          <div class="content">
+          <!-- <div class="content">
             <p>Recipe posted by: <a ui-sref="usersShow({id:vm.cocktail.createdBy.id})"><strong>{{ vm.cocktail.createdBy.username }}</strong></a></p>
-          </div>
+          </div> -->
         </div>
         <footer class="card-footer">
           <button class="button is-info is-outlined is-large card-footer-item" ui-sref="cocktailsEdit({ id: vm.cocktail.id })" ng-show="vm.isAuthenticated()"><span>Edit</span><span class="icon is-small"><i class="fas fa-edit"></i></span></button>

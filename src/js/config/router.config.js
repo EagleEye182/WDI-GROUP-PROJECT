@@ -41,10 +41,14 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: 'js/views/auth/register.html',
       controller: 'RegisterCtrl as vm'
     })
-    .state('usersShow', {
-      url: '/users/:id',
-      templateUrl: 'js/views/user/show.html',
-      controller: 'UsersShowCtrl as vm'
+    // .state('usersShow', {
+    //   url: '/users/:id',
+    //   templateUrl: 'js/views/user/show.html',
+    //   controller: 'UsersShowCtrl as vm'
+    .state('userProfile', {
+      url: '/userProfile',
+      templateUrl: 'js/views/user/userProfile.html',
+      controller: 'yourProfileCtrl as vm'
     });
 
   $urlRouterProvider.otherwise('/');

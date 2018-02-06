@@ -22,7 +22,7 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
       };
       vm.isAuthenticated = $auth.isAuthenticated;
 
-      vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="100%" height="315" src="https://www.youtube.com/embed/${vm.cocktail.video}" frameborder="0" allowfullscreen></iframe>`);
+      vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="100%" height="315" src="https://www.youtube.com/embed/${vm.cocktail.videos}" frameborder="0" allowfullscreen></iframe>`);
     });
 
   function selectTab(type) {

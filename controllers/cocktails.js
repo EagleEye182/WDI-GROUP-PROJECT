@@ -45,7 +45,7 @@ function showRoute(req, res, next) {
     json: true
   })
     .then((response) => {
-      console.log(response);
+      // console.log(response);
       res.json(response);
     })
     .catch(next);

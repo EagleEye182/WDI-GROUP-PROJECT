@@ -42,6 +42,9 @@ router.route('/login')
 router.route('/users/:id')
   .get(secureRoute, users.show);
 
+router.route('/userProfile')
+  .get(secureRoute, users.userProfile);
+
 // router.get('/cocktails', cocktail.proxy);
 
 router.all('/*', (req, res) => res.notFound());
