@@ -10,20 +10,8 @@
     <input type="text" name="name" ng-model="vm.nameSearch" placeholder="Enter Cocktail Name">
   </div>
   <div class="column is-one-quarter name-search">
-    <!-- <label for="tastes">Search By Flavour</label>
-    <input type="text" name="tastes" ng-model="vm.tastesSearch" placeholder="Enter a tastes type"> -->
-
-    <!-- <select ng-model="vm.flavourSearch">
-      <option value="" disabled selected>Please select a filter</option>
-      <option value="fruity">Fruity</option>
-      <option value="fresh">Fresh</option>
-      <option value="sweet">Sweet</option>
-    </select> -->
-
     <select ng-model="vm.flavourSearch" ng-options="flavour for flavour in vm.flavourFilters"></select>
   </div>
-
-  {{ vm.flavourSearch }}
 
 </div>
 

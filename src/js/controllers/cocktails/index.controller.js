@@ -17,7 +17,6 @@ function CocktailsIndexCtrl(Cocktail, filterFilter, $scope, $http) {
         cocktail.imagePath = `http://assets.absolutdrinks.com/drinks/${cocktail.id}.png`;
       });
       filterCocktails();
-      // filterFlavor();
     });
 
   function filterCocktails() {
