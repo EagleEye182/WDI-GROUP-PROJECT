@@ -1,0 +1,13 @@
+
+
+<div class="row user">
+  <div class="col-md-12">
+    <h3>{{ vm.user.username }}'s cocktails</h3>
+    <p ng-if="!vm.user.cocktails.length">0 posts</p>
+  </div>
+  <div ng-repeat="cocktail in vm.user.cocktails" class="col-sm-6 col-md-4 col-lg-3">
+    <div>
+      <div class="posts__single-image" style="background-image:url('{{ post.image }}')" ui-sref="cocktailsShow({ id: cocktail.id })"></div>
+    </div>
+  </div>
+</div>

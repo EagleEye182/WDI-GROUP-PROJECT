@@ -5,12 +5,14 @@ function usersShow(req, res, next) {
     .findById(req.params.id)
     .exec()
     .then((user) => {
+      console.log(user);
       if(!user) return res.notFound();
 
       res.status(200).json(user);
     })
     .catch(next);
 }
+
 
 module.exports = {
   show: usersShow

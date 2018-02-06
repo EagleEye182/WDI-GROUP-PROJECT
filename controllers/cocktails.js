@@ -27,7 +27,6 @@ function createRoute(req, res, next) {
     .then((cocktail) => res.status(201).json(cocktail))
     .catch(next);
 }
-
 function showRoute(req, res, next) {
   //left in incase API files
   // Cocktail
@@ -51,6 +50,18 @@ function showRoute(req, res, next) {
     })
     .catch(next);
 }
+// function showRoute(req, res, next) {
+//   Cocktail
+//     .findById(req.params.id)
+//     .populate('createdBy comments.createdBy')
+//     .exec()
+//     .then((cocktail) => {
+//       if(!cocktail) return res.notFound();
+//
+//       res.json(cocktail);
+//     })
+//     .catch(next);
+// }
 
 
 function updateRoute(req, res, next) {
