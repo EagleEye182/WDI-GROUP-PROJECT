@@ -1,8 +1,6 @@
-<h1 class="title is-1">One cocktail at a time</h1>
-
 <section ng-controller="CocktailsShowCtrl as vm" class="section">
   <div class="columns">
-    <div class="column is-two-fifths">
+    <div class="column is-one-third">
       <div class="card">
         <div class="card-image">
           <figure class="image is-4by3">
@@ -13,7 +11,7 @@
           <div class="media">
             <div class="media-content">
               <h2 class="title is-2">{{ vm.cocktail.name }}</h2>
-              <h3 class="subtitle is-3">Bartender rating: <em>{{ vm.cocktail.rating }} of 100</em></h3>
+              <h4 class="subtitle is-3">Bartender rating: <em>{{ vm.cocktail.rating }} of 100</em></h4>
               <p>{{ !vm.cocktail.isAlcoholic ? !vm.cocktail.isAlcoholic : 'This is an alcoholic drink'}}</p>
             </div>
           </div>
@@ -27,8 +25,8 @@
       </div>
     </div>
 
-    <div class="column is-three-fifths">
-      <div class="tabs is-boxed">
+    <div class="column is-two-thirds">
+      <div class="tabs is-boxed is-medium">
         <ul>
           <li ng-click="vm.selectTab('instructions')" ng-class="{'is-active' : vm.currentTab === 'instructions'}">
             <a>

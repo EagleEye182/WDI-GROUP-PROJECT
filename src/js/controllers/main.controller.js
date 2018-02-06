@@ -27,6 +27,6 @@ function MainCtrl($transitions, $rootScope, $state, $auth) {
   vm.logout = logout;
   function logout() {
     $auth.logout();
-    $state.go('cocktailsSearch');
+    $state.go('cocktailsIndex');
   }
 }

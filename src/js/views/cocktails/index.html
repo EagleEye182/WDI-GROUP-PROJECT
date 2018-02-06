@@ -1,11 +1,28 @@
 <div class="columns columns-filter">
 
-  <div class="column is-one-quarter is-offset-one-quarter user-slider name-search">
-    <label for="name">Search By Cocktail</label>
-    <input type="text" name="name" ng-model="vm.nameSearch" placeholder="Enter Cocktail Name">
+  <div class="hero-body has-text-centered">
+    <div class="columns is-mobile is-centered">
+      <div class="column is-two-thirds is-narrow">
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <input class="input is-medium" name="name" ng-model="vm.nameSearch" placeholder="Type Cocktail Name">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="column is-one-quarter name-search">
-    <select ng-model="vm.flavourSearch" ng-options="flavour for flavour in vm.flavourFilters"></select>
+  <div class="hero-body has-text-centered">
+    <div class="columns is-mobile is-centered">
+      <div class="column is-one-third">
+        <div class="field has-addons">
+          <div class="control select is-medium">
+            <select ng-model="vm.flavourSearch" ng-options="flavour for flavour in vm.flavourFilters">
+              <option value="">Filter by flavour</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>
@@ -22,7 +39,7 @@
         <h4 class="subtitle">Flavour(s):
           <li ng-repeat="taste in cocktail.tastes"><em>{{ taste.text }}</em></li>
         </h4>
-        </ul>
+      </ul>
       <div>
         <button class="button is-info if-fullwidth" ui-sref="cocktailsShow({ id: cocktail.id })">View</button>
       </div>
