@@ -6,6 +6,8 @@ CocktailsIndexCtrl.$inject = ['Cocktail', 'filterFilter', '$scope', '$http'];
 function CocktailsIndexCtrl(Cocktail, filterFilter, $scope, $http) {
   const vm = this;
 
+  vm.flavourFilters = ['fruity', 'fresh', 'sweet', 'sour', 'herb', 'bitter', 'spicy'];
+
   $http
     .get('/api/getcocktails')
     .then(response => {
@@ -18,20 +20,22 @@ function CocktailsIndexCtrl(Cocktail, filterFilter, $scope, $http) {
     });
 
   function filterCocktails() {
-    const params = { name: vm.query };
+    const params = { name: vm.nameSearch};
 
-    if(vm.useSpirit) params.spirit = vm.spirit;
-    if(vm.useUserRating) params.userRating = vm.userRating;
+    if(vm.useNameSearch) params.name = vm.nameSearch;
 
     vm.filtered = filterFilter(vm.all, params);
+
+    if(vm.flavourSearch) {
+      vm.filtered = vm.filtered.filter(cocktail => {
+        if(cocktail.tastes.find(obj => obj.id === vm.flavourSearch)) return cocktail;
+      });
+    }
   }
 
   $scope.$watchGroup([
-    () => vm.query,
-    () => vm.useSpirit,
-    () => vm.useUserRating,
-    () => vm.spirit,
-    () => vm.userRating
+    () => vm.nameSearch,
+    () => vm.useNameSearch,
+    () => vm.flavourSearch
   ], filterCocktails);
-
 }
