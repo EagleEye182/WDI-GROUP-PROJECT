@@ -1,11 +1,13 @@
 angular
   .module('cocktailApp')
-  .controller('yourProfileCtrl', YourProfileCtrl);
+  .controller('UserProfileCtrl', UserProfileCtrl);
 
-YourProfileCtrl.$inject = ['Cocktail', '$state'];
-function YourProfileCtrl(Cocktail, $state) {
+UserProfileCtrl.$inject = ['User', '$auth'];
+function UserProfileCtrl(User, $auth) {
   const vm = this;
-  vm.user = Cocktail.get($state.params);
+  if($auth.getPayload()) vm.currentUserId = $auth.getPayload().userId;
+  console.log(vm.currentUserId);
+  vm.user = User.get({id: vm.currentUserId});
 
   console.log(vm.user);
 }

@@ -48,7 +48,7 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('userProfile', {
       url: '/userProfile',
       templateUrl: 'js/views/user/userProfile.html',
-      controller: 'yourProfileCtrl as vm'
+      controller: 'UserProfileCtrl as vm'
     });
 
   $urlRouterProvider.otherwise('/');
