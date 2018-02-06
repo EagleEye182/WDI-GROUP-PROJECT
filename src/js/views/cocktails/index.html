@@ -1,20 +1,35 @@
 <div class="columns columns-filter">
 
-  <div class="column is-one-quarter is-offset-one-quarter user-slider">
+  <!-- <div class="column is-one-quarter is-offset-one-quarter user-slider">
     <input type="checkbox" id="userRating" ng-model="vm.useUserRating">
     <label for="userRating">User Rating</label>
     <input type="range" ng-model="vm.userRating" min="1" max="5" ng-disabled="!vm.useUserRating">
+  </div> -->
+  <div class="column is-one-quarter is-offset-one-quarter user-slider name-search">
+    <label for="name">Search By Cocktail</label>
+    <input type="text" name="name" ng-model="vm.nameSearch" placeholder="Enter Cocktail Name">
   </div>
   <div class="column is-one-quarter name-search">
-    <label for="name">Search By Cocktail</label>
-    <input type="text" name="name" ng-model="vm.query" placeholder="Enter Cocktail Name">
+    <!-- <label for="tastes">Search By Flavour</label>
+    <input type="text" name="tastes" ng-model="vm.tastesSearch" placeholder="Enter a tastes type"> -->
+
+    <!-- <select ng-model="vm.flavourSearch">
+      <option value="" disabled selected>Please select a filter</option>
+      <option value="fruity">Fruity</option>
+      <option value="fresh">Fresh</option>
+      <option value="sweet">Sweet</option>
+    </select> -->
+
+    <select ng-model="vm.flavourSearch" ng-options="flavour for flavour in vm.flavourFilters"></select>
   </div>
+
+  {{ vm.flavourSearch }}
 
 </div>
 
 <section class="section">
   <div class="columns is-multiline">
-    <div ng-repeat="cocktail in vm.all" class="column is-one-third">
+    <div ng-repeat="cocktail in vm.filtered track by $index" class="column is-one-third">
       <h2 class="title">{{ cocktail.name }}</h2><br>
       <h3 class="subtitle">Mix difficulty: <em>{{ cocktail.skill.name }}</em></h3>
 

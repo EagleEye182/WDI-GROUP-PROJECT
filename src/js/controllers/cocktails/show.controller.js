@@ -14,6 +14,10 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
       console.log(response);
       vm.cocktail = response.result[0];
 
+      vm.cocktail.map((cocktail) => {
+        cocktail.imagePath = `http://assets.absolutdrinks.com/drinks/${cocktail.id}.png`;
+      });
+
       vm.tabs = {
         instructions: true,
         ingredients: false,
