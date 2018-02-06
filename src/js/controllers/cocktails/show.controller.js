@@ -38,7 +38,6 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
       .getComments({id: $state.params.id})
       .$promise
       .then((response) => {
-        console.log(response.comments);
         vm.cocktail.comments = response.comments;
       });
   }
@@ -63,12 +62,12 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
   vm.delete = cocktailsDelete;
 
   function addComment() {
-    // console.log(vm.newComment);
+
     Cocktail
       .addComment({ cocktailId: $state.params.id}, vm.newComment)
       .$promise
       .then((comment) => {
-        // console.log('gettting here');
+
         vm.cocktail.comments.push(comment);
 
         vm.newComment = {};
@@ -78,11 +77,14 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
   vm.addComment = addComment;
 
   function deleteComment(comment) {
+
     Cocktail
-      .deleteComment({ cocktailId: vm.cocktail.id, id: comment._id })
+      .deleteComment({ id: comment._id, cocktailId: $state.params.id })
       .$promise
       .then(() => {
+
         const index = vm.cocktail.comments.indexOf(comment);
+
         vm.cocktail.comments.splice(index, 1);
       });
   }

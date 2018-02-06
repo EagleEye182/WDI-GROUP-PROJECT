@@ -32,7 +32,7 @@ router.route('/cocktails/:id/comments')
   .post(cocktails.addComment);
 
 router.route('/cocktails/:id/comments/:commentId')
-  .delete(secureRoute, cocktails.deleteComment);
+  .delete(cocktails.deleteComment);
 
 router.route('/register')
   .post(auth.register);
