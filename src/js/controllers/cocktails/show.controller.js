@@ -11,8 +11,11 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
     .get({ id: $state.params.id})
     .$promise
     .then(response => {
-      console.log(response);
       vm.cocktail = response.result[0];
+
+      vm.cocktail.imagePath = `http://assets.absolutdrinks.com/drinks/${vm.cocktail.id}.png`;
+
+      // vm.cocktail.videoUrl = `https://www.youtube.com/embed/${vm.cocktail.videos[0].video}`;
 
       vm.tabs = {
         instructions: true,
@@ -22,7 +25,7 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
       };
       vm.isAuthenticated = $auth.isAuthenticated;
 
-      vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="100%" height="315" src="https://www.youtube.com/embed/${vm.cocktail.videos}" frameborder="0" allowfullscreen></iframe>`);
+      vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="100%" height="515" src="https://www.youtube.com/embed/${vm.cocktail.videos[0].video}" frameborder="0" allowfullscreen></iframe>`);
     });
 
   function selectTab(type) {

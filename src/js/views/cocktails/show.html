@@ -1,32 +1,27 @@
 <h1 class="title is-1">One cocktail at a time</h1>
 
-{{ vm.all }}
-
 <section ng-controller="CocktailsShowCtrl as vm" class="section">
   <div class="columns">
     <div class="column is-two-fifths">
       <div class="card">
         <div class="card-image">
           <figure class="image is-4by3">
-          <img ng-src="{{cocktail.imagePath}}" alt="{{ cocktail.name }}">
+            <img src="{{vm.cocktail.imagePath}}" alt="{{ vm.cocktail.name }}">
           </figure>
         </div>
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <h2 class="title is-2">{{ cocktail.name }}</h2>
-              <h3 class="subtitle is-3">Story: <em>{{ vm.cocktail.story }}</em></h3>
-              <h4>When should you drink it: <em>{{ vm.cocktail.occasion }}</em></h4>
+              <h2 class="title is-2">{{ vm.cocktail.name }}</h2>
+              <h3 class="subtitle is-3">Bartender rating: <em>{{ vm.cocktail.rating }} of 100</em></h3>
+              <h4>When should you drink it: <em>{{ vm.cocktail.occasions }}</em></h4>
+              <p>{{ !vm.cocktail.isAlcoholic ? !vm.cocktail.isAlcoholic : 'This is an alcoholic drink'}}</p>
               <h4>Tastes like: <em>{{ vm.cocktail.tastes }}</em></h4>
             </div>
           </div>
-
-          <!-- <div class="content">
-            <p>Recipe posted by: <a ui-sref="usersShow({id:vm.cocktail.createdBy.id})"><strong>{{ vm.cocktail.createdBy.username }}</strong></a></p>
-          </div> -->
         </div>
         <footer class="card-footer">
-          <button class="button is-info is-outlined is-large card-footer-item" ui-sref="cocktailsEdit({ id: vm.cocktail.id })" ng-show="vm.isAuthenticated()"><span>Edit</span><span class="icon is-small"><i class="fas fa-edit"></i></span></button>
+          <button class="button is-info is-outlined is-large card-footer-item" ui-sref="cocktailsEdit({ id: vm.cocktail.id })" ng-if="main.isAuthenticated() && main.currentUserId === vm.cocktail.createdBy.id"><span>Edit</span><span class="icon is-small"><i class="fas fa-edit"></i></span></button>
           <button class="button is-danger is-outlined is-large card-footer-item" ng-click="vm.delete()" ng-if="main.isAuthenticated() && main.currentUserId === vm.cocktail.createdBy.id"><span>Delete</span><span class="icon is-small">
             <i class="fas fa-trash-alt"></i>
           </span></button>
@@ -64,13 +59,26 @@
         </ul>
       </div>
       <div ng-if="vm.tabs.instructions">
-        {{vm.cocktail.description}}
+        {{vm.cocktail.descriptionPlain}}
+
+        <p>To make this drink, you also need the following tools:</p>
+
+        <ul>
+          <li ng-repeat="tool in vm.cocktail.tools"><em>{{ tool.text }}</em></li>
+        </ul>
+
       </div>
       <div ng-if="vm.tabs.ingredients">
-        {{vm.cocktail.mixer}}
+        <ul>
+          <li ng-repeat="ingredient in vm.cocktail.ingredients">{{ingredient.textPlain}}
+          </li>
+        </ul>
+
       </div>
       <div ng-if="vm.tabs.video">
-        <div ng-bind-html="vm.cocktail.youtubePlayer"></div>
+        <div ng-bind-html="vm.cocktail.youtubePlayer">
+          <!-- <iframe width="100%" height="400" src="{{ vm.cocktail.videoUrl }}" frameborder="0" allowfullscreen></iframe> -->
+        </div>
       </div>
       <div ng-if="vm.tabs.comments">
         <div class="column is-9">
