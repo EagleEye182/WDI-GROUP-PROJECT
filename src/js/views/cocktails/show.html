@@ -14,9 +14,7 @@
             <div class="media-content">
               <h2 class="title is-2">{{ vm.cocktail.name }}</h2>
               <h3 class="subtitle is-3">Bartender rating: <em>{{ vm.cocktail.rating }} of 100</em></h3>
-              <h4>When should you drink it: <em>{{ vm.cocktail.occasions }}</em></h4>
               <p>{{ !vm.cocktail.isAlcoholic ? !vm.cocktail.isAlcoholic : 'This is an alcoholic drink'}}</p>
-              <h4>Tastes like: <em>{{ vm.cocktail.tastes }}</em></h4>
             </div>
           </div>
         </div>
@@ -61,12 +59,23 @@
       <div ng-if="vm.tabs.instructions">
         {{vm.cocktail.descriptionPlain}}
 
+      <br>
+
         <p>To make this drink, you also need the following tools:</p>
 
         <ul>
           <li ng-repeat="tool in vm.cocktail.tools"><em>{{ tool.text }}</em></li>
         </ul>
 
+        <br>
+
+        <ul class="flavour">
+          <h4>Enjoy it as
+            <li ng-repeat="event in vm.cocktail.occasions">
+              {{event.text}}
+            </li>
+          </h4>
+        </ul>
       </div>
       <div ng-if="vm.tabs.ingredients">
         <ul>
