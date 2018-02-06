@@ -7,7 +7,7 @@
             <div class="box">
               <label class="label" for="name">Name</label>
               <p class="control">
-                <input class="input is-large" type="text" name="name" id="name" autofocus="" ng-model="vm.user.username" required>
+                <input class="input is-large" type="text" name="name" id="name" autofocus="" ng-model="vm.user.name" required>
               </p>
               <div ng-messages="vm.registerForm.name.$error" role="alert" ng-show="(vm.registerForm.$submitted || vm.registerForm.name.$touched) && vm.registerForm.name.$invalid" class="error">
                 <div ng-message="required">Please enter a value for this field.</div>

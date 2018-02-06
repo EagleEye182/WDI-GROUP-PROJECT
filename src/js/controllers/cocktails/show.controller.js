@@ -25,8 +25,23 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
       };
       vm.isAuthenticated = $auth.isAuthenticated;
 
-      vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="100%" height="435" src="https://www.youtube.com/embed/${vm.cocktail.videos[0].video}" frameborder="0" allowfullscreen></iframe>`);
+      vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="100%" height="515" src="https://www.youtube.com/embed/${vm.cocktail.videos[0].video}" frameborder="0" allowfullscreen></iframe>`);
+
+      getCommentsOnCocktail();
+
     });
+
+
+
+  function getCommentsOnCocktail() {
+    Cocktail
+      .getComments({id: $state.params.id})
+      .$promise
+      .then((response) => {
+        console.log(response.comments);
+        vm.cocktail.comments = response.comments;
+      });
+  }
 
   function selectTab(type) {
     vm.currentTab = type;
@@ -48,13 +63,14 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
   vm.delete = cocktailsDelete;
 
   function addComment() {
+    // console.log(vm.newComment);
     Cocktail
-      .addComment({ cocktailId: vm.cocktail.id }, vm.newComment)
+      .addComment({ cocktailId: $state.params.id}, vm.newComment)
       .$promise
       .then((comment) => {
-        console.log(comment);
+        // console.log('gettting here');
         vm.cocktail.comments.push(comment);
-        console.log(vm.cocktail);
+
         vm.newComment = {};
       });
   }
