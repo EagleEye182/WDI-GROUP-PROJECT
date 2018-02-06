@@ -24,24 +24,35 @@
       </div>
     </div>
   </div>
-
 </div>
 
 <section class="section">
   <div class="columns is-multiline">
     <div ng-repeat="cocktail in vm.filtered track by $index" class="column is-3">
-      <a ui-sref="cocktailsShow({ id: cocktail.id })"><h2 class="title">{{ cocktail.name }}</h2></a>
-      <img ng-src="{{cocktail.imagePath}}" alt="{{ cocktail.name }}">
-      <h3 class="subtitle">Mix difficulty: <em>{{ cocktail.skill.name }}</em></h3>
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img src="{{cocktail.imagePath}}" alt="{{ cocktail.name }}">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <a ui-sref="cocktailsShow({ id: cocktail.id })"><h2 class="title">{{ cocktail.name }}</h2></a>
+              <br>
+              <h3 class="subtitle">Mix difficulty: <em>{{ cocktail.skill.name }}</em></h3>
 
-
-      <ul class="flavour">
-        <h4 class="subtitle">Flavour(s):
-          <li ng-repeat="taste in cocktail.tastes"><em>{{ taste.text }}</em></li>
-        </h4>
-      </ul>
-      <div>
-        <button class="button is-info if-fullwidth" ui-sref="cocktailsShow({ id: cocktail.id })">View</button>
+              <ul class="flavour">
+                <h4 class="subtitle">Flavour(s):
+                  <li ng-repeat="taste in cocktail.tastes"><em>{{ taste.text }}</em></li>
+                </h4>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- <div>
+          <button class="button is-info if-fullwidth" ui-sref="cocktailsShow({ id: cocktail.id })">View</button>
+        </div> -->
       </div>
     </div>
   </div>
