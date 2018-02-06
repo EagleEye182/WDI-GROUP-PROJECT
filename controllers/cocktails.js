@@ -1,4 +1,5 @@
 const Cocktail = require('../models/cocktail');
+const rp       = require('request-promise');
 
 function searchRoute(req, res, next) {
   Cocktail
@@ -25,19 +26,31 @@ function createRoute(req, res, next) {
     .then((cocktail) => res.status(201).json(cocktail))
     .catch(next);
 }
-
 function showRoute(req, res, next) {
-  Cocktail
-    .findById(req.params.id)
-    .populate('createdBy comments.createdBy')
-    .exec()
-    .then((cocktail) => {
-      if(!cocktail) return res.notFound();
-
-      res.json(cocktail);
+  console.log(req.params.id);
+  rp({
+    method: 'GET',
+    url: `http://addb.absolutdrinks.com/drinks/${req.params.id}?apiKey=f2e2f533899b416ca6705e91908172f2`,
+    json: true
+  })
+    .then((response) => {
+      console.log(response);
+      res.json(response.result);
     })
     .catch(next);
 }
+// function showRoute(req, res, next) {
+//   Cocktail
+//     .findById(req.params.id)
+//     .populate('createdBy comments.createdBy')
+//     .exec()
+//     .then((cocktail) => {
+//       if(!cocktail) return res.notFound();
+//
+//       res.json(cocktail);
+//     })
+//     .catch(next);
+// }
 
 function updateRoute(req, res, next) {
   Cocktail

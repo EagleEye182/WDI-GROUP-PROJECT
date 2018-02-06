@@ -95,13 +95,4 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
   }
 
   vm.userHasFavorited = userHasFavorited;
-
-  // function getCocktails() {
-  //   $http
-  //     .get('/api/cocktails')
-  //     .then((response) => {
-  //       vm.cocktails = response.data.result;
-  //       console.log(vm.cocktails);
-  //     });
-  // }
 }
