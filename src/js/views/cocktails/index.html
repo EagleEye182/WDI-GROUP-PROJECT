@@ -14,18 +14,14 @@
 
 <section class="section">
   <div class="columns is-multiline">
-    <div ng-repeat="cocktail in vm.all" class="column is-one-third">
-      <h2 class="title">{{ cocktail.name }}</h2><br>
+    <div ng-repeat="cocktail in vm.all" class="column is-3">
+      <a ui-sref="cocktailsShow({ id: cocktail.id })"><h2 class="title">{{ cocktail.name }}</h2></a>
       <img ng-src="{{cocktail.imagePath}}" alt="{{ cocktail.name }}">
       <h3 class="subtitle">Mix difficulty: <em>{{ cocktail.skill.name }}</em></h3>
 
-      <!-- <ul class="tools">
-        <h4 class="subtitle">Occasion:
-          <li ng-repeat="occasion in cocktail.occasions"><em>{{ occasion.text }}</em></li>
-        </h4>
-        </ul> -->
+
       <ul class="flavour">
-        <h4 class="subtitle">Flavour:
+        <h4 class="subtitle">Flavour(s):
           <li ng-repeat="taste in cocktail.tastes"><em>{{ taste.text }}</em></li>
         </h4>
         </ul>
