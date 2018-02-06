@@ -16,7 +16,7 @@ router.route('/cocktails')
   .post(secureRoute, cocktails.create);
 
 router.route('/cocktails/:id')
-  // .all(secureRoute)
+  .all(secureRoute)
   .get(cocktails.show)
   .put(cocktails.update)
   .delete(cocktails.delete);
@@ -41,8 +41,6 @@ router.route('/login')
 //
 router.route('/users/:id')
   .get(secureRoute, users.show);
-
-// router.get('/cocktails', cocktail.proxy);
 
 router.all('/*', (req, res) => res.notFound());
 
