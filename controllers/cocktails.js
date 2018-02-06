@@ -39,7 +39,7 @@ function showRoute(req, res, next) {
   //     res.json(cocktail);
   //   })
   //   .catch(next);
-  // console.log(req.params.id);
+
   rp({
     method: 'GET',
     url: `http://addb.absolutdrinks.com/drinks/${req.params.id}?apiKey=f2e2f533899b416ca6705e91908172f2`,
@@ -115,27 +115,30 @@ function addCommentRoute(req, res, next) {
   Comment
     .create(req.body)
     .then((comment) => {
-      console.log(comment);
+
       return res.status(200).json(comment);
     })
     .catch(next);
 }
 
 function deleteCommentRoute(req, res, next) {
-  Cocktail
-    .findById(req.params.id)
+
+  Comment
+    .findOne({cocktailId: req.params.id})
     .exec()
-    .then((cocktail) => {
-      if(!cocktail) return res.notFound();
+    .then((comment) => {
 
-      const comment = cocktail.comments.id(req.params.commentId);
-      comment.remove();
+      if(!comment) return res.notFound();
 
-      return cocktail.save();
+      const cocktail = comment.cocktailId;
+      comment.remove(cocktail);
+
+      return comment.save();
     })
     .then(() => res.status(204).end())
     .catch(next);
 }
+
 
 
 function favoriteRoute(req, res, next) {
@@ -180,7 +183,7 @@ function unfavoriteRoute(req, res, next) {
 }
 
 function getCommentsRoute(req, res, next) {
-  // console.log(req.params.id);
+
   Comment
     .find({cocktailId: req.params.id})
     .exec()
