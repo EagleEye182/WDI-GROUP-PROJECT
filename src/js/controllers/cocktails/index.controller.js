@@ -11,6 +11,9 @@ function CocktailsIndexCtrl(Cocktail, filterFilter, $scope, $http) {
     .then(response => {
       console.log('api cocktails', response.data);
       vm.all = response.data;
+      vm.all.map((cocktail) => {
+        cocktail.imagePath = `http://assets.absolutdrinks.com/drinks/${cocktail.id}.png`;
+      });
       filterCocktails();
     });
 

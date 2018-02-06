@@ -62,3 +62,33 @@ hr {
   padding: 0;
   border-top: 1px solid #ccc;
 }
+
+ul {
+  &.tools {
+    li {
+      display: inline;
+      &:after {
+        content: ", ";
+      }
+      &:last-child:after {
+        content: "";
+      }
+    }
+  }
+  &.flavour {
+    li {
+      display: inline;
+      &:after {
+        content: ", ";
+      }
+      &:last-child:after {
+        content: "";
+      }
+    }
+  }
+}
+
+
+// ul.tools li:last-child:after {
+//     content: "";
+// }
