@@ -5,13 +5,12 @@ angular
 CocktailsIndexCtrl.$inject = ['Cocktail', 'filterFilter', '$scope', '$http'];
 function CocktailsIndexCtrl(Cocktail, filterFilter, $scope, $http) {
   const vm = this;
-  getCocktails();
 
-  Cocktail
-    .query()
-    .$promise
-    .then(cocktails => {
-      vm.all = cocktails;
+  $http
+    .get('/api/getcocktails')
+    .then(response => {
+      // console.log('api cocktails', response.data);
+      vm.all = response.data;
       filterCocktails();
     });
 
@@ -31,14 +30,5 @@ function CocktailsIndexCtrl(Cocktail, filterFilter, $scope, $http) {
     () => vm.spirit,
     () => vm.userRating
   ], filterCocktails);
-
-  function getCocktails() {
-    $http
-      .get('/api/cocktails')
-      .then((response) => {
-        vm.cocktails = response.data.result;
-        console.log(vm.cocktails);
-      });
-  }
 
 }

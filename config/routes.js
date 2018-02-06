@@ -8,8 +8,11 @@ const cocktail = require('../controllers/cocktailApi');
 
 // Routes go here
 
+router.route('/getcocktails')
+  .get(cocktail.proxy);
+
 router.route('/cocktails')
-  .get(cocktail.proxy, cocktails.index )
+  .get(cocktails.index)
   .post(secureRoute, cocktails.create);
 
 router.route('/cocktails/:id')
