@@ -9,7 +9,7 @@ function CocktailsIndexCtrl(Cocktail, filterFilter, $scope, $http) {
   $http
     .get('/api/getcocktails')
     .then(response => {
-      // console.log('api cocktails', response.data);
+      console.log('api cocktails', response.data);
       vm.all = response.data;
       filterCocktails();
     });

@@ -6,14 +6,13 @@ CocktailsShowCtrl.$inject = ['Cocktail', '$state', '$auth', '$sce'];
 function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
   const vm = this;
   vm.newComment = {};
-  // getCocktails();
 
   Cocktail
-    .get($state.params)
+    .get({ id: $state.params.id})
     .$promise
-    .then(cocktail => {
-      console.log(cocktail);
-      vm.cocktail = cocktail;
+    .then(response => {
+      console.log(response);
+      vm.cocktail = response.result[0];
 
       vm.tabs = {
         instructions: true,
@@ -95,4 +94,5 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
   }
 
   vm.userHasFavorited = userHasFavorited;
+
 }

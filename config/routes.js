@@ -16,7 +16,7 @@ router.route('/cocktails')
   .post(secureRoute, cocktails.create);
 
 router.route('/cocktails/:id')
-  .all(secureRoute)
+  // .all(secureRoute)
   .get(cocktails.show)
   .put(cocktails.update)
   .delete(cocktails.delete);
