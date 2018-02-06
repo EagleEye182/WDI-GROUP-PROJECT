@@ -14,13 +14,13 @@
 
 <section class="section">
   <div class="columns is-multiline">
-    <div ng-repeat="cocktail in vm.cocktails" class="column is-one-third">
+    <div ng-repeat="cocktail in vm.all" class="column is-one-third">
       <h2 class="title">{{ cocktail.name }}</h2>
       <h3>Skill: <em>{{ cocktail.skill.name }}</em></h3>
       <h3>Description: <em>{{ cocktail.descriptionPlain }}</em></h3>
 
       <h4>Tastes like:
-        <h5 ng-repeat="tastes in cocktail.tastes[1]"><em>{{ cocktail.tastes}}</em></h5>
+        <h5 ng-repeat="taste in cocktail.tastes"><em>{{ cocktail.tastes}}</em></h5>
       </h4>
       <!-- <img ng-src="{{ cocktail.image }}" alt="{{ cocktail.name }}"> -->
       <p>Recipe posted by: <strong>{{ cocktail.createdBy.username }}</strong></p>

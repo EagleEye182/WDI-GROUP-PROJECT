@@ -8,8 +8,7 @@ function cocktailProxy(req, res, next) {
     json: true
   })
     .then((response) => {
-      console.log(response);
-      res.json(response);
+      res.json(response.result);
     })
     .catch(next);
 }
