@@ -29,7 +29,18 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
         getCommentsOnCocktail();
       } else {
         console.log('not in an array');
-        console.log(response);
+        vm.cocktail = response;
+        console.log(vm.cocktail.ingredients);
+
+        vm.tabs = {
+          instructions: true,
+          ingredients: false,
+          video: false,
+          comments: false
+        };
+        vm.isAuthenticated = $auth.isAuthenticated;
+
+        vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="100%" height="515" src="https://www.youtube.com/embed/${vm.cocktail.videos[0].video}" frameborder="0" allowfullscreen></iframe>`);
       }
     });
 
