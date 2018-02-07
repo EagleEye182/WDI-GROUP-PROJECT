@@ -12,41 +12,42 @@
   <!-- endinject -->
 </head>
 <body ng-controller="MainCtrl as main">
-<div class="hero-head">
-  <nav class="navbar" ng-if="main.pageName !== 'homepage'">
-    <div class="navbar-brand">
-
-      <a class="navbar-item" href="/">
-        Home
-      </a>
-      <button class="button navbar-burger" data-target="navMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-    <div class="navbar-menu" id="navMenu">
-      <div class="navbar-start">
-        <a class="navbar-item" ui-sref="cocktailsIndex"><i class="fas fa-glass-martini"></i>
-          Cocktails
-        </a>
-        <a class="navbar-item" ui-sref="userProfile" ng-if="main.isAuthenticated()">
-          Profile
-        </a>
-        <a class="navbar-item" ng-click="main.logout()" ng-if="main.isAuthenticated()">
-          Logout
-        </a>
-        <a class="navbar-item" ui-sref="login" ng-if="!main.isAuthenticated()">
-          Login
-        </a>
-        <a class="navbar-item" ui-sref="register" ng-if="!main.isAuthenticated()">
-          Register
-        </a>
+  <section class="hero" ng-if="main.pageName !== 'homepage'">
+    <div class="hero-head">
+      <nav class="navbar is-transparent">
+        <div class="container">
+          <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+              Home
+            </a>
+            <div class="navbar-burger burger" ng-class="{'is-active': vm.burgerMenuOpen}" ng-click="vm.burgerMenuOpen = !vm.burgerMenuOpen">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="navbar-menu" ng-class="{'is-active': vm.burgerMenuOpen}">
+            <div class="navbar-start">
+              <a ng-click="vm.burgerMenuOpen = false" class="navbar-item" ui-sref="cocktailsIndex"><i class="fas fa-glass-martini"></i>
+                Cocktails
+              </a>
+              <a ng-click="vm.burgerMenuOpen = false" class="navbar-item" ui-sref="userProfile" ng-if="main.isAuthenticated()">
+                Profile
+              </a>
+              <a ng-click="vm.burgerMenuOpen = false; main.logout()" class="navbar-item" ng-if="main.isAuthenticated()">
+                Logout
+              </a>
+              <a ng-click="vm.burgerMenuOpen = false" class="navbar-item" ui-sref="login" ng-if="!main.isAuthenticated()">
+                Login
+              </a>
+              <a ng-click="vm.burgerMenuOpen = false" class="navbar-item" ui-sref="register" ng-if="!main.isAuthenticated()">
+                Register
+              </a>
+            </div>
+          </div>
+        </nav>
       </div>
     </div>
-  </nav>
-</div>
-  <section class="hero is-medium is-bold" ng-if="main.pageName !== 'homepage'">
     <div class="hero-body">
       <div class="container">
         <h1 class="title sitename">
