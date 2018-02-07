@@ -88,6 +88,19 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
       });
   }
 
+  function addFavorite() {
+
+    // console.log(vm.newFavorite);
+
+    Cocktail
+      .favorite({favorites: $state.params.id})
+      .$promise
+      .then(() => {
+        console.log('getting here');
+      });
+  }
+  vm.addFavorite = addFavorite;
+
   function deleteComment(comment) {
 
     Cocktail
