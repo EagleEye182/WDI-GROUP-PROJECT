@@ -6,6 +6,13 @@ CocktailsShowCtrl.$inject = ['Cocktail', '$state', '$auth', '$sce'];
 function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
   const vm = this;
   vm.newComment = {};
+  vm.addComment = addComment;
+  vm.selectTab = selectTab;
+  vm.delete = cocktailsDelete;
+  vm.deleteComment = deleteComment;
+  vm.favorite = favorite;
+  vm.unfavorite = unfavorite;
+  vm.userHasFavorited = userHasFavorited;
 
   Cocktail
     .get({ id: $state.params.id})
@@ -62,15 +69,11 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
     vm.tabs[type] = true;
   }
 
-  vm.selectTab = selectTab;
-
   function cocktailsDelete() {
     vm.cocktail
       .$remove()
       .then(() => $state.go('cocktailsIndex'));
   }
-
-  vm.delete = cocktailsDelete;
 
   function addComment() {
 
@@ -85,8 +88,6 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
       });
   }
 
-  vm.addComment = addComment;
-
   function deleteComment(comment) {
 
     Cocktail
@@ -100,16 +101,12 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
       });
   }
 
-  vm.deleteComment = deleteComment;
-
   function favorite() {
     Cocktail
       .favorite({ id: vm.cocktail.id })
       .$promise
       .then((response) => vm.cocktail.favorites = response.favorites);
   }
-
-  vm.favorite = favorite;
 
   function unfavorite() {
     Cocktail
@@ -118,13 +115,9 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
       .then((response) => vm.cocktail.favorites = response.favorites);
   }
 
-  vm.unfavorite = unfavorite;
-
   function userHasFavorited() {
     const userId = $auth.getPayload().userId;
     return vm.cocktail && vm.cocktail.favorites && vm.cocktail.favorites.indexOf(userId) > -1;
   }
-
-  vm.userHasFavorited = userHasFavorited;
 
 }
