@@ -44,13 +44,31 @@ function showRoute(req, res, next) {
   //   })
   //   .catch(next);
 
+  const localDb = function(req) {
+    Cocktail
+      .findOne({req})
+      .exec()
+      .then((cocktail) => {
+        // console.log(cocktail);
+        if(!cocktail) return res.notFound();
+
+        res.json(cocktail);
+      });
+  };
+  // console.log(req);
+
   rp({
     method: 'GET',
     url: `http://addb.absolutdrinks.com/drinks/${req.params.id}?apiKey=f2e2f533899b416ca6705e91908172f2`,
     json: true
   })
     .then((response) => {
-      res.json(response);
+      if(!response.totalResult) {
+        localDb();
+      } else {
+        res.json(response);
+      }
+
     })
     .catch(next);
 }

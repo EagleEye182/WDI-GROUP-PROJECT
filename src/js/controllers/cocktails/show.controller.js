@@ -11,24 +11,26 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
     .get({ id: $state.params.id})
     .$promise
     .then(response => {
-      vm.cocktail = response.result[0];
+      if(response.result) {
+        vm.cocktail = response.result[0];
 
-      vm.cocktail.imagePath = `http://assets.absolutdrinks.com/drinks/${vm.cocktail.id}.png`;
+        vm.cocktail.imagePath = `http://assets.absolutdrinks.com/drinks/${vm.cocktail.id}.png`;
 
-      // vm.cocktail.videoUrl = `https://www.youtube.com/embed/${vm.cocktail.videos[0].video}`;
+        vm.tabs = {
+          instructions: true,
+          ingredients: false,
+          video: false,
+          comments: false
+        };
+        vm.isAuthenticated = $auth.isAuthenticated;
 
-      vm.tabs = {
-        instructions: true,
-        ingredients: false,
-        video: false,
-        comments: false
-      };
-      vm.isAuthenticated = $auth.isAuthenticated;
+        vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="100%" height="515" src="https://www.youtube.com/embed/${vm.cocktail.videos[0].video}" frameborder="0" allowfullscreen></iframe>`);
 
-      vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="100%" height="515" src="https://www.youtube.com/embed/${vm.cocktail.videos[0].video}" frameborder="0" allowfullscreen></iframe>`);
-
-      getCommentsOnCocktail();
-
+        getCommentsOnCocktail();
+      } else {
+        console.log('not in an array');
+        console.log(response);
+      }
     });
 
 
