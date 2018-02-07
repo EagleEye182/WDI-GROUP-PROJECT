@@ -8,20 +8,42 @@ const commentSchema = new mongoose.Schema({
 });
 
 const cocktailSchema = new mongoose.Schema({
-  name: {type: String, required: true},
-  description: {type: String, required: true},
   story: {type: String},
-  userRating: {type: Number},
-  video: {type: String},
-  spirit: {type: String},
-  mixer: {type: String},
-  alcoholic: {type: Boolean},
-  occasion: {type: String},
-  tastes: {type: String},
-  image: {type: String},
   color: {type: String},
+  rating: {type: Number},
+  skill: {
+    name: {type: String}
+  },
+  video: {type: String},
+  isAlcoholic: {type: Boolean},
+  isCarbonated: {type: Boolean},
+  servedIn: {
+    text: {type: String}
+  },
+  ingredients: [
+    {
+      textPlain: {type: String}
+    }
+  ],
+  tastes: [
+    {
+      text: {type: String}
+    }
+  ],
+  occasions: [
+    {
+      text: {type: String}
+    }
+  ],
+  tools: [
+    {
+      text: {type: String}
+    }
+  ],
+  id: {type: String},
+  name: {type: String},
+  descriptionPlain: {type: String},
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'},
-  // favorites: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true }],
   comments: [ commentSchema ]
 });
 
