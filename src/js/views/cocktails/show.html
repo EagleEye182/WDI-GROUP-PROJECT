@@ -14,7 +14,6 @@
               <h4 class="subtitle is-3">Bartender rating: <em>{{ vm.cocktail.rating }} of 100</em></h4>
               <p>{{ !vm.cocktail.isAlcoholic ? !vm.cocktail.isAlcoholic : 'This is an alcoholic drink'}}</p>
               <form ng-submit="vm.addFavorite()" ng-if="main.isAuthenticated()">
-                <label>Add comment</label>
                 <button type="submit" class="button is-info" ng-if="!vm.hasFavorited()">❤️</button>
               </form>
               <p></p>
@@ -22,8 +21,8 @@
           </div>
         </div>
         <footer class="card-footer">
-          <button class="button is-info is-outlined is-large card-footer-item" ui-sref="cocktailsEdit({ id: vm.cocktail.id })" ng-if="main.isAuthenticated() && main.currentUserId === vm.cocktail.createdBy.id"><span>Edit</span><span class="icon is-small"><i class="fas fa-edit"></i></span></button>
-          <button class="button is-danger is-outlined is-large card-footer-item" ng-click="vm.delete()" ng-if="main.isAuthenticated() && main.currentUserId === vm.cocktail.createdBy.id"><span>Delete</span><span class="icon is-small">
+          <button class="button is-info is-outlined is-large card-footer-item" ui-sref="cocktailsEdit({ id: vm.cocktail.id })" ng-if="main.isAuthenticated() && main.currentUserId === vm.cocktail.createdBy"><span>Edit</span><span class="icon is-small"><i class="fas fa-edit"></i></span></button>
+          <button class="button is-danger is-outlined is-large card-footer-item" ng-click="vm.delete()" ng-if="main.isAuthenticated() && main.currentUserId === vm.cocktail.createdBy"><span>Delete</span><span class="icon is-small">
             <i class="fas fa-trash-alt"></i>
           </span></button>
         </footer>

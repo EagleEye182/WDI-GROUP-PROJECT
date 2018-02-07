@@ -38,6 +38,7 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce, User) {
 
       } else {
         vm.cocktail = response;
+        console.log(vm.cocktail);
 
         vm.tabs = {
           instructions: true,
