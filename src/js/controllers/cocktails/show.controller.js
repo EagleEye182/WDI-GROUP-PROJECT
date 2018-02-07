@@ -2,8 +2,8 @@ angular
   .module('cocktailApp')
   .controller('CocktailsShowCtrl', CocktailsShowCtrl);
 
-CocktailsShowCtrl.$inject = ['Cocktail', '$state', '$auth', '$sce'];
-function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
+CocktailsShowCtrl.$inject = ['Cocktail', '$state', '$auth', '$sce', 'User'];
+function CocktailsShowCtrl(Cocktail, $state, $auth, $sce, User) {
   const vm = this;
   vm.newComment = {};
   vm.addComment = addComment;
@@ -13,15 +13,15 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
   vm.favorite = favorite;
   vm.unfavorite = unfavorite;
   vm.userHasFavorited = userHasFavorited;
+  const currentUserId = $auth.getPayload().userId;
+  vm.currentUser = User.get({ id: currentUserId });
 
   Cocktail
     .get({ id: $state.params.id})
     .$promise
     .then(response => {
       if(response.result) {
-        console.log(response.result);
         vm.cocktail = response.result[0];
-
 
         vm.cocktail.imagePath = `http://assets.absolutdrinks.com/drinks/${vm.cocktail.id}.png`;
 
@@ -35,11 +35,9 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
 
         vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="100%" height="515" src="https://www.youtube.com/embed/${vm.cocktail.videos[0].video}" frameborder="0" allowfullscreen></iframe>`);
 
+
       } else {
-        console.log('not in an array');
         vm.cocktail = response;
-        console.log('from our api', vm.cocktail);
-        console.log(vm.cocktail.ingredients);
 
         vm.tabs = {
           instructions: true,
@@ -50,6 +48,8 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
         vm.isAuthenticated = $auth.isAuthenticated;
 
         vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="100%" height="515" src="https://www.youtube.com/embed/${vm.cocktail.video}" frameborder="0" allowfullscreen></iframe>`);
+
+
       }
       getCommentsOnCocktail();
     });
@@ -93,13 +93,11 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
 
   function addFavorite() {
 
-    // console.log(vm.newFavorite);
-
     Cocktail
-      .favorite({favorites: $state.params.id})
+      .favorite({cocktailId: $state.params.id})
       .$promise
-      .then(() => {
-        console.log('getting here');
+      .then((res) => {
+        vm.currentUser = res;
       });
   }
   vm.addFavorite = addFavorite;
@@ -135,5 +133,11 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
     const userId = $auth.getPayload().userId;
     return vm.cocktail && vm.cocktail.favorites && vm.cocktail.favorites.indexOf(userId) > -1;
   }
+
+  function hasFavorited() {
+    return vm.currentUser &&  vm.currentUser.favorites && vm.currentUser.favorites.indexOf($state.params.id) > -1;
+  }
+
+  vm.hasFavorited = hasFavorited;
 
 }

@@ -24,7 +24,8 @@ userSchema
   });
 
 userSchema.pre('validate', function checkPassword(next) {
-  if(!this._passwordConfirmation || this._passwordConfirmation !== this.password) {
+  if(this.isNew && (!this._passwordConfirmation || this._passwordConfirmation !== this.password)) {
+    console.log('in here');
     this.invalidate('passwordConfirmation', 'does not match');
   }
   next();
