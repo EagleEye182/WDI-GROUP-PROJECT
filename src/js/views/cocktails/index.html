@@ -1,7 +1,7 @@
 <div class="columns is-mobile columns-filter">
 
   <div class="hero-body has-text-centered">
-    <div class="columns is-mobile is-centered">
+    <div class="columns is-centered">
       <div class="column is-two-thirds is-narrow">
         <div class="field has-addons">
           <div class="control is-expanded">
@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="hero-body has-text-centered">
-    <div class="columns is-mobile is-centered">
+    <div class="columns is-centered">
       <div class="column is-one-third">
         <div class="field has-addons">
           <div class="control select is-medium">
@@ -32,6 +32,7 @@
 
   <div class="columns is-multiline">
     <div ng-repeat="cocktail in vm.filtered track by $index" class="column is-3">
+      <a ui-sref="cocktailsShow({ id: cocktail.id })">
       <div class="card">
         <div class="card-image">
           <figure class="image is-4by3">
@@ -41,7 +42,7 @@
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <a ui-sref="cocktailsShow({ id: cocktail.id })"><h2 class="title">{{ cocktail.name }}</h2></a>
+              <h2 class="title">{{ cocktail.name }}</h2>
               <br>
               <h3 class="subtitle">Mix difficulty: <em>{{ cocktail.skill.name }}</em></h3>
 
@@ -53,10 +54,12 @@
             </div>
           </div>
         </div>
+
         <!-- <div>
           <button class="button is-info if-fullwidth" ui-sref="cocktailsShow({ id: cocktail.id })">View</button>
         </div> -->
       </div>
+      </a>
     </div>
   </div>
 
