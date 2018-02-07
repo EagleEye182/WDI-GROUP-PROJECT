@@ -33,30 +33,18 @@ function createRoute(req, res, next) {
 }
 
 function showRoute(req, res, next) {
-  //left in incase API files
-  // Cocktail
-  //   .findById(req.params.id)
-  //   .populate('createdBy comments.createdBy')
-  //   .exec()
-  //   .then((cocktail) => {
-  //     if(!cocktail) return res.notFound();
-  //
-  //     res.json(cocktail);
-  //   })
-  //   .catch(next);
 
   const localDb = function(req) {
     Cocktail
       .findOne({req})
       .exec()
       .then((cocktail) => {
-        // console.log(cocktail);
+
         if(!cocktail) return res.notFound();
 
         res.json(cocktail);
       });
   };
-  // console.log(req);
 
   rp({
     method: 'GET',
@@ -73,19 +61,6 @@ function showRoute(req, res, next) {
     })
     .catch(next);
 }
-// function showRoute(req, res, next) {
-//   Cocktail
-//     .findById(req.params.id)
-//     .populate('createdBy comments.createdBy')
-//     .exec()
-//     .then((cocktail) => {
-//       if(!cocktail) return res.notFound();
-//
-//       res.json(cocktail);
-//     })
-//     .catch(next);
-// }
-
 
 function updateRoute(req, res, next) {
   Cocktail
@@ -115,22 +90,6 @@ function deleteRoute(req, res, next) {
 }
 
 function addCommentRoute(req, res, next) {
-
-  // req.body.createdBy = req.user;
-  //
-  // Cocktail
-  //   .findById(req.params.id)
-  //   .exec()
-  //   .then((cocktail) => {
-  //     if(!cocktail) return res.notFound();
-  //
-  //     const comment = cocktail.comments.create(req.body);
-  //     cocktail.comments.push(comment);
-  //
-  //     return cocktail.save()
-  //       .then(() => res.json(comment));
-  //   })
-  //   .catch(next);
 
   req.body.createdBy = req.user;
   req.body.cocktailId = req.params.id;
@@ -162,18 +121,11 @@ function deleteCommentRoute(req, res, next) {
     .catch(next);
 }
 
-
-
 function favoriteRoute(req, res, next) {
-
-  // const userId = req.user.id;
-
-  console.log(req.params);
 
   User
     .findById(req.user.id)
     .then((user) => {
-      console.log(user);
 
       if(!user) return res.notFound();
 
