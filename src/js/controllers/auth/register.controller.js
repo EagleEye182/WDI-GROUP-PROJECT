@@ -2,8 +2,8 @@ angular
   .module('cocktailApp')
   .controller('RegisterCtrl', RegisterCtrl);
 
-RegisterCtrl.$inject = ['$auth', '$state'];
-function RegisterCtrl($auth, $state) {
+RegisterCtrl.$inject = ['$auth', '$state', '$scope', '$rootScope'];
+function RegisterCtrl($auth, $state, $scope, $rootScope) {
   const vm = this;
   vm.user = {};
 
@@ -14,6 +14,12 @@ function RegisterCtrl($auth, $state) {
         .catch(() => $state.go('register'));
     }
   }
+
+  $rootScope.$on('uploadedImage', (e, data) => {
+    vm.user.image = data.file.url;
+    console.log(vm.user.image);
+    $scope.$apply();
+  });
 
   vm.submit = submit;
 }

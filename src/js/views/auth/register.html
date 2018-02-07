@@ -50,13 +50,49 @@
 
               <hr>
 
-              <p class="control">
-                <input type="submit" class="button is-block is-info is-large" value="Register">
-              </p>
+              {{ vm.user.image }}
+
+              <label class="label">Profile Picture</label>
+              <div class="file">
+                <label class="file-label">
+                  <input class="file-input" type="file" ng-model="vm.user.image" upload-image>
+                  <span class="file-cta">
+                    <span class="file-icon">
+                      <i class="fa fa-upload"></i>
+                    </span>
+                    <span class="file-label">
+                      Choose a file…
+                    </span>
+                  </span>
+                </label>
+              </div>
             </div>
-          </form>
-        </div>
+            <div class="field" ng-if="vm.user.image">
+              <label class="label">Profile picture review</label>
+              <div class="control">
+                <figure class="image is-128x128">
+                  <img src="{{ vm.user.image }}" alt="">
+                </figure>
+              </div>
+            </div>
+            <div class="field is-grouped">
+              <!-- <div class="control">
+                <button class="button is-success">Submit</button>
+              </div> -->
+              <div class="control">
+                <a class="button is-text" ui-sref="usersIndex">Cancel</a>
+              </div>
+            </div>
+            <div class="control">
+                  <button class="button is-success" ng-submit="vm.addProfilePic()">Submit</button>
+                </div>
+            <p class="control">
+              <input type="submit" class="button is-block is-info is-large" value="Register">
+            </p>
+
+        </form>
       </div>
     </div>
   </div>
+</div>
 </section>

@@ -38,11 +38,12 @@ p.subtitle {
 }
 
 section {
-  &.hero {
+  &.mainHeader {
     margin-bottom: 10px;
     background: url('http://cdn1.bostonmagazine.com/wp-content/uploads/sites/2/2017/07/Flaming-shots-iStock.jpg');
     background-position: center;
     background-size: cover;
+    height: 300px;
   }
 }
 
@@ -148,4 +149,19 @@ a.navbar-item {
 .image.is-4by3 {
   width: 60%;
   margin: 0 auto;
+}
+
+//search bar and filters
+.searchBar input {
+  margin-left: 19px;
+  border: none;
+  border-bottom: 1px solid #bbb;
+  box-shadow: none;
+  margin-top: 5px;
+  width: 350px;
+}
+
+.filterSearch select {
+  margin-top: 5px;
+  margin-left: 19px;
 }

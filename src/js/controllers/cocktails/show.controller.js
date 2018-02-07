@@ -21,7 +21,9 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce, User) {
     .$promise
     .then(response => {
       if(response.result) {
+        console.log(response.result);
         vm.cocktail = response.result[0];
+
 
         vm.cocktail.imagePath = `http://assets.absolutdrinks.com/drinks/${vm.cocktail.id}.png`;
 
