@@ -1,3 +1,9 @@
 // angular module goes here
 angular
-  .module('cocktailApp', ['ui.router', 'ngResource', 'satellizer', 'ngMessages']);
+  .module('cocktailApp', [
+    'ui.router',
+    'ngResource',
+    'satellizer',
+    'ngMessages',
+    'angular-filepicker'
+  ]);
