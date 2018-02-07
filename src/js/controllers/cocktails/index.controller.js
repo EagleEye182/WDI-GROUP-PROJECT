@@ -15,6 +15,15 @@ function CocktailsIndexCtrl(Cocktail, filterFilter, $scope, $http) {
       vm.all.map((cocktail) => {
         cocktail.imagePath = `http://assets.absolutdrinks.com/drinks/${cocktail.id}.png`;
       });
+
+      filterCocktails();
+    });
+
+  $http
+    .get('/api/cocktails')
+    .then((localresponse) => {
+      vm.local = localresponse.data;
+      console.log(vm.local);
       filterCocktails();
     });
 
