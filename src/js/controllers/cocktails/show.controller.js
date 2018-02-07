@@ -44,8 +44,6 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
       }
     });
 
-
-
   function getCommentsOnCocktail() {
     Cocktail
       .getComments({id: $state.params.id})
