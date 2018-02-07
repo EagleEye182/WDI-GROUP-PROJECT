@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   image: { type: String },
-  favourites: { type: Array }
+  favorites: { type: Array }
 });
 
 userSchema.set('toJSON', { virtuals: true });
@@ -25,7 +25,6 @@ userSchema
 
 userSchema.pre('validate', function checkPassword(next) {
   if(this.isNew && (!this._passwordConfirmation || this._passwordConfirmation !== this.password)) {
-    console.log('in here');
     this.invalidate('passwordConfirmation', 'does not match');
   }
   next();
