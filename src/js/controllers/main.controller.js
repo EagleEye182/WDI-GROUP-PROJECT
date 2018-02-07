@@ -6,6 +6,7 @@ MainCtrl.$inject = ['$transitions', '$rootScope', '$state', '$auth'];
 function MainCtrl($transitions, $rootScope, $state, $auth) {
   const vm = this;
   vm.isAuthenticated = $auth.isAuthenticated;
+  const protectedStates = ['cocktailsNew', 'cocktailsShow'];
 
   vm.burgerMenuOpen = false;
 
@@ -20,6 +21,11 @@ function MainCtrl($transitions, $rootScope, $state, $auth) {
 
   $transitions.onSuccess({}, (transition) => {
     vm.pageName = transition.to().name;
+
+    if(!$auth.isAuthenticated() && protectedStates.includes(vm.pageName)) {
+      vm.message = 'You must be logged in to view this page.';
+      return $state.go('login');
+    }
     if (vm.stateHasChanged) vm.message = null;
     if (!vm.stateHasChanged) vm.stateHasChanged = true;
     if($auth.getPayload()) vm.currentUserId = $auth.getPayload().userId;
