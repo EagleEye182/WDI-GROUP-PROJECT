@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Barlow:400,700" rel="stylesheet">
   <!-- inject:js -->
   <!-- endinject -->
   <!-- inject:css -->
@@ -33,6 +34,9 @@
               </a>
               <a ng-click="vm.burgerMenuOpen = false" class="navbar-item" ui-sref="userProfile" ng-if="main.isAuthenticated()">
                 Profile
+              </a>
+              <a ng-click="vm.burgerMenuOpen = false" class="navbar-item" ui-sref="cocktailsNew" ng-if="main.isAuthenticated()">
+                Add a cocktail
               </a>
               <a ng-click="vm.burgerMenuOpen = false; main.logout()" class="navbar-item" ng-if="main.isAuthenticated()">
                 Logout

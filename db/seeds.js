@@ -82,7 +82,8 @@ User
         ],
         id: 'vadher',
         name: 'Vadher',
-        descriptionPlain: 'Fill shaker with ice. Juice the lime using the Citrus Press. Add Lime Juice to shaker, with 1 Part Tequila, 1 Part Triple Sec. Shake until tired'
+        descriptionPlain: 'Fill shaker with ice. Juice the lime using the Citrus Press. Add Lime Juice to shaker, with 1 Part Tequila, 1 Part Triple Sec. Shake until tired',
+        createdBy: users[0]
       }]);
   })
   .then((cocktails) => console.log(`${cocktails.length} cocktails created!`))

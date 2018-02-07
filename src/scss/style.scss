@@ -9,7 +9,7 @@
   box-shadow: none;
 }
 .box {
-  margin-top: 5rem;
+  margin-top: 1rem;
 }
 .avatar {
   margin-top: -70px;
@@ -39,7 +39,6 @@ p.subtitle {
 
 section {
   &.mainHeader {
-    margin-bottom: 10px;
     background: url('http://cdn1.bostonmagazine.com/wp-content/uploads/sites/2/2017/07/Flaming-shots-iStock.jpg');
     background-position: center;
     background-size: cover;
@@ -103,7 +102,8 @@ ul {
   color: #fff;
 }
 body, html {
-  height: 100%
+  height: 100%;
+  font-family: "Barlow", sans-serif;
 }
 //frontpage styling
 section.frontpage {
@@ -123,6 +123,10 @@ section.frontpage {
 .landcontent {
   padding-top: 15%;
 }
+.accessbutton {
+  font-weight: 700;
+  font-size: 20px;
+}
 
 main.ng-scope {
   padding-left: 0;
@@ -131,6 +135,13 @@ main.ng-scope {
 
 a.navbar-item {
   color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 20px;
+  &:hover {
+    text-decoration: underline;
+    color: #fff;
+  }
 }
 
 .is-active {
