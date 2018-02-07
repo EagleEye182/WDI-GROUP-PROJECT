@@ -6,6 +6,7 @@ Cocktail.$inject = ['$resource'];
 function Cocktail($resource) {
   return new $resource('/api/cocktails/:id', { id: '@id' }, {
     update: { method: 'PUT' },
+    // create: { method: 'POST', url: '/api/cocktails' },
     favorite: { method: 'POST', url: '/api/cocktails/:id/favorite' },
     unfavorite: { method: 'DELETE', url: '/api/cocktails/:id/unfavorite' },
     addComment: { method: 'POST', url: '/api/cocktails/:cocktailId/comments' },

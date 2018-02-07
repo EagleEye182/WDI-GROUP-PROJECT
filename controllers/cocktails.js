@@ -15,18 +15,22 @@ function indexRoute(req, res) {
     .find()
     .populate('createdBy')
     .exec()
-    .then(cocktails => res.status(200).json(cocktails))
+    .then((cocktails) => {
+      res.status(200).json(cocktails);
+    })
     .catch(err => res.status(500).json(err));
 }
 
 function createRoute(req, res, next) {
   req.body.createdBy = req.user;
-
   Cocktail
     .create(req.body)
-    .then((cocktail) => res.status(201).json(cocktail))
+    .then((cocktail) => {
+      res.status(201).json(cocktail);
+    })
     .catch(next);
 }
+
 function showRoute(req, res, next) {
   //left in incase API files
   // Cocktail
