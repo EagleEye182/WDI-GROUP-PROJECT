@@ -32,6 +32,7 @@ function CocktailsIndexCtrl(Cocktail, filterFilter, $scope, $http) {
     }
   }
 
+
   $scope.$watchGroup([
     () => vm.nameSearch,
     () => vm.useNameSearch,
