@@ -15,7 +15,7 @@
               <p>{{ !vm.cocktail.isAlcoholic ? !vm.cocktail.isAlcoholic : 'This is an alcoholic drink'}}</p>
               <form ng-submit="vm.addFavorite()" ng-if="main.isAuthenticated()">
                 <label>Add comment</label>
-                <button type="submit" class="button is-info">❤️</button>
+                <button type="submit" class="button is-info" ng-if="!vm.hasFavorited()">❤️</button>
               </form>
               <p></p>
             </div>

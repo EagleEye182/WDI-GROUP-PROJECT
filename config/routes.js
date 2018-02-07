@@ -22,7 +22,7 @@ router.route('/cocktails/:id')
   .delete(cocktails.delete);
 
 router.route('/cocktails/:id/favorite')
-  .post(cocktails.favorite);
+  .post(secureRoute, cocktails.favorite);
 
 router.route('/cocktails/:id/unfavorite')
   .delete(secureRoute, cocktails.unfavorite);

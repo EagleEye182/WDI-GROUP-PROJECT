@@ -1,5 +1,6 @@
 const Cocktail = require('../models/cocktail');
 const Comment = require('../models/comment');
+const User = require('../models/user');
 const rp = require('request-promise');
 
 function searchRoute(req, res, next) {
@@ -165,20 +166,22 @@ function deleteCommentRoute(req, res, next) {
 
 function favoriteRoute(req, res, next) {
 
-  const userId = req.user.id;
+  // const userId = req.user.id;
 
-  Cocktail
-    .findById(req.params.id)
-    .exec()
-    .then((cocktail) => {
-      if(!cocktail) return res.notFound();
+  console.log(req.params);
 
-      cocktail.favorites.push(userId);
+  User
+    .findById(req.user.id)
+    .then((user) => {
+      console.log(user);
 
-      return cocktail.save();
+      if(!user) return res.notFound();
+
+      user.favorites.push(req.params.id);
+      return user.save();
     })
-    .then((cocktail) => {
-      return res.json(cocktail);
+    .then((user) => {
+      return res.json(user);
     })
     .catch(next);
 }
