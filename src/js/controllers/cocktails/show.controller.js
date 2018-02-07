@@ -19,7 +19,9 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
     .$promise
     .then(response => {
       if(response.result) {
+        console.log(response.result);
         vm.cocktail = response.result[0];
+
 
         vm.cocktail.imagePath = `http://assets.absolutdrinks.com/drinks/${vm.cocktail.id}.png`;
 
@@ -33,10 +35,10 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
 
         vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="100%" height="515" src="https://www.youtube.com/embed/${vm.cocktail.videos[0].video}" frameborder="0" allowfullscreen></iframe>`);
 
-        getCommentsOnCocktail();
       } else {
         console.log('not in an array');
         vm.cocktail = response;
+        console.log('from our api', vm.cocktail);
         console.log(vm.cocktail.ingredients);
 
         vm.tabs = {
@@ -47,8 +49,9 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
         };
         vm.isAuthenticated = $auth.isAuthenticated;
 
-        vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="100%" height="515" src="https://www.youtube.com/embed/${vm.cocktail.videos[0].video}" frameborder="0" allowfullscreen></iframe>`);
+        vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="100%" height="515" src="https://www.youtube.com/embed/${vm.cocktail.video}" frameborder="0" allowfullscreen></iframe>`);
       }
+      getCommentsOnCocktail();
     });
 
   function getCommentsOnCocktail() {
@@ -87,6 +90,19 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
         vm.newComment = {};
       });
   }
+
+  function addFavorite() {
+
+    // console.log(vm.newFavorite);
+
+    Cocktail
+      .favorite({favorites: $state.params.id})
+      .$promise
+      .then(() => {
+        console.log('getting here');
+      });
+  }
+  vm.addFavorite = addFavorite;
 
   function deleteComment(comment) {
 

@@ -12,8 +12,6 @@ function usersShow(req, res, next) {
     })
     .catch(next);
 }
-
-
 module.exports = {
   show: usersShow
 };
