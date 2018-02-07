@@ -12,13 +12,13 @@
   <!-- endinject -->
 </head>
 <body ng-controller="MainCtrl as main">
-  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <nav class="navbar" role="navigation" aria-label="main navigation" ng-if="main.pageName !== 'homepage'">
   <div class="navbar-brand">
     <!-- navbar items, navbar burger... -->
     <a class="navbar-item" ui-sref="/">
       Home
     </a>
-    <a class="navbar-item" ui-sref="cocktailsIndex">
+    <a class="navbar-item" ui-sref="cocktailsIndex"><i class="fas fa-glass-martini"></i>
       Cocktails
     </a>
     <a class="navbar-item" ui-sref="userProfile" ng-if="main.isAuthenticated()">
@@ -35,13 +35,13 @@
     </a>
   </div>
 </nav>
-<section class="hero is-medium is-bold">
+<section class="hero is-medium is-bold" ng-if="main.pageName !== 'homepage'">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title">
-        3 Amigo's Cocktails
+      <h1 class="title sitename">
+        3 Amigos Cocktails
       </h1>
-      <h2 class="subtitle">
+      <h2 class="subtitle sitename">
         Yeh Boi!
       </h2>
     </div>

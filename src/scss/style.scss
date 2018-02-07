@@ -1,16 +1,5 @@
 @import "search-filters";
 
-//error messages on the login, registration and add new forms
-.error {
-  text-transform: uppercase;
-  padding: 6px 8px;
-  font-size: 12px;
-  background-color: #ccc;
-  font-weight: 300;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-}
-
 //login form and registration form
 .hero.is-success {
   background: #F2F6FA;
@@ -51,8 +40,9 @@ p.subtitle {
 section {
   &.hero {
     margin-bottom: 10px;
-    background-image: url('https://www.virginexperiencedays.co.uk/content/img/product/large/royal-cocktails-with-sharing-18100237.jpg');
+    background: url('https://www.virginexperiencedays.co.uk/content/img/product/large/royal-cocktails-with-sharing-18100237.jpg');
     background-position: center;
+    background-size: cover;
   }
 }
 
@@ -97,3 +87,43 @@ ul {
     padding-left: 2em;
     padding-right: 2em;
   }
+
+//error messages on the login, registration and add new forms
+.notification.ng-active {
+  height: 18px;
+  padding: 0.5rem 1.5rem 1.5rem 0.5rem;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+//jumbotron text
+.sitename {
+  color: #fff;
+}
+body, html {
+  height: 100%
+}
+//frontpage styling
+section.frontpage {
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url('https://goo.gl/fCTH8f') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  height: -webkit-fill-available;
+  color: #fff;
+}
+
+.landcontent {
+  padding-top: 15%;
+}
+
+main.ng-scope {
+  padding-left: 0;
+  padding-right: 0;
+}

@@ -9,7 +9,7 @@
               <p class="control">
                 <input class="input is-large" type="text" name="name" id="name" autofocus="" ng-model="vm.user.name" required>
               </p>
-              <div ng-messages="vm.registerForm.name.$error" role="alert" ng-show="(vm.registerForm.$submitted || vm.registerForm.name.$touched) && vm.registerForm.name.$invalid" class="error">
+              <div ng-messages="vm.registerForm.name.$error" role="alert" ng-show="(vm.registerForm.$submitted || vm.registerForm.name.$touched) && vm.registerForm.name.$invalid" class="notification">
                 <div ng-message="required">Please enter a value for this field.</div>
               </div>
               <!-- <div class="field"> -->
@@ -17,7 +17,7 @@
               <p class="control">
                 <input class="input is-large" type="text" name="username" id="username" autofocus="" ng-model="vm.user.username" required>
               </p>
-              <div ng-messages="vm.registerForm.username.$error" role="alert" ng-show="(vm.registerForm.$submitted || vm.registerForm.username.$touched) && vm.registerForm.username.$invalid" class="error">
+              <div ng-messages="vm.registerForm.username.$error" role="alert" ng-show="(vm.registerForm.$submitted || vm.registerForm.username.$touched) && vm.registerForm.username.$invalid" class="notification">
                 <div ng-message="required">Please enter a value for this field.</div>
               </div>
               <!-- </div> -->
@@ -26,7 +26,7 @@
               <p class="control">
                 <input class="input is-large" type="text" name="email" id="email" autofocus="" ng-model="vm.user.email" required>
               </p>
-              <div ng-messages="vm.registerForm.email.$error" role="alert" ng-show="(vm.registerForm.$submitted || vm.registerForm.email.$touched) && vm.registerForm.email.$invalid" class="error">
+              <div ng-messages="vm.registerForm.email.$error" role="alert" ng-show="(vm.registerForm.$submitted || vm.registerForm.email.$touched) && vm.registerForm.email.$invalid" class="notification">
                 <div ng-message="required">Please enter a value for this field.</div>
                 <div ng-message="email">This field must be a valid email address.</div>
               </div>
@@ -35,7 +35,7 @@
               <p class="control">
                 <input class="input is-large" type="password" name="password" id="password" autofocus="" ng-model="vm.user.password" required>
               </p>
-              <div ng-messages="vm.registerForm.password.$error" role="alert" ng-show="(vm.registerForm.$submitted || vm.registerForm.password.$touched) && vm.registerForm.password.$invalid" class="error">
+              <div ng-messages="vm.registerForm.password.$error" role="alert" ng-show="(vm.registerForm.$submitted || vm.registerForm.password.$touched) && vm.registerForm.password.$invalid" class="notification">
                 <div ng-message="required">Please enter a value for this field.</div>
               </div>
               <!-- </div> -->
@@ -43,7 +43,7 @@
               <p class="control">
                 <input class="input is-large" type="password" name="passwordConfirmation" id="passwordConfirmation" autofocus="" ng-model="vm.user.passwordConfirmation" required>
               </p>
-              <div ng-messages="vm.registerForm.passwordConfirmation.$error" role="alert" ng-show="(vm.registerForm.$submitted || vm.registerForm.passwordConfirmation.$touched) && vm.registerForm.passwordConfirmation.$invalid" class="error">
+              <div ng-messages="vm.registerForm.passwordConfirmation.$error" role="alert" ng-show="(vm.registerForm.$submitted || vm.registerForm.passwordConfirmation.$touched) && vm.registerForm.passwordConfirmation.$invalid" class="notification">
                 <div ng-message="required">Please enter a value for this field.</div>
               </div>
               <!-- </div> -->
