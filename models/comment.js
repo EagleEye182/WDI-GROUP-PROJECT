@@ -4,6 +4,8 @@ const commentSchema = new mongoose.Schema({
   content: {type: String},
   cocktailId: {type: String},
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'}
+},{
+  timestamps: true
 });
 
 commentSchema.set('toJSON', { virtuals: true });

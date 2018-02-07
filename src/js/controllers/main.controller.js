@@ -7,6 +7,8 @@ function MainCtrl($transitions, $rootScope, $state, $auth) {
   const vm = this;
   vm.isAuthenticated = $auth.isAuthenticated;
 
+  vm.burgerMenuOpen = false;
+
   $rootScope.$on('error', (e, err) => {
     vm.message = err.data.message;
     if (err.status === 401 && vm.pageName !== 'login') {
@@ -17,7 +19,6 @@ function MainCtrl($transitions, $rootScope, $state, $auth) {
   });
 
   $transitions.onSuccess({}, (transition) => {
-    vm.menuIsOpen = false;
     vm.pageName = transition.to().name;
     if (vm.stateHasChanged) vm.message = null;
     if (!vm.stateHasChanged) vm.stateHasChanged = true;

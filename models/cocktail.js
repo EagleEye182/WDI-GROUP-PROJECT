@@ -1,12 +1,5 @@
 const mongoose = require('mongoose');
 
-const commentSchema = new mongoose.Schema({
-  text: { type: String, required: true },
-  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
-},{
-  timestamps: true
-});
-
 const cocktailSchema = new mongoose.Schema({
   story: {type: String},
   color: {type: String},
@@ -43,8 +36,7 @@ const cocktailSchema = new mongoose.Schema({
   id: {type: String},
   name: {type: String},
   descriptionPlain: {type: String},
-  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'},
-  comments: [ commentSchema ]
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'}
 });
 
 cocktailSchema.pre('save', function splitUrl(next){

@@ -40,7 +40,7 @@ p.subtitle {
 section {
   &.hero {
     margin-bottom: 10px;
-    background: url('https://www.virginexperiencedays.co.uk/content/img/product/large/royal-cocktails-with-sharing-18100237.jpg');
+    background: url('http://cdn1.bostonmagazine.com/wp-content/uploads/sites/2/2017/07/Flaming-shots-iStock.jpg');
     background-position: center;
     background-size: cover;
   }
@@ -126,4 +126,26 @@ section.frontpage {
 main.ng-scope {
   padding-left: 0;
   padding-right: 0;
+}
+
+a.navbar-item {
+  color: #fff;
+}
+
+.is-active {
+  color: #fff;
+  background: transparent;
+}
+
+.is-active a {
+  color: #FFF;
+}
+
+.navbar-burger {
+  color: #fff;
+}
+
+.image.is-4by3 {
+  width: 60%;
+  margin: 0 auto;
 }

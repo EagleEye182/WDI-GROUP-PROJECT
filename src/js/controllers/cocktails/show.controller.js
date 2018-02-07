@@ -6,32 +6,50 @@ CocktailsShowCtrl.$inject = ['Cocktail', '$state', '$auth', '$sce'];
 function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
   const vm = this;
   vm.newComment = {};
+  vm.addComment = addComment;
+  vm.selectTab = selectTab;
+  vm.delete = cocktailsDelete;
+  vm.deleteComment = deleteComment;
+  vm.favorite = favorite;
+  vm.unfavorite = unfavorite;
+  vm.userHasFavorited = userHasFavorited;
 
   Cocktail
     .get({ id: $state.params.id})
     .$promise
     .then(response => {
-      vm.cocktail = response.result[0];
+      if(response.result) {
+        vm.cocktail = response.result[0];
 
-      vm.cocktail.imagePath = `http://assets.absolutdrinks.com/drinks/${vm.cocktail.id}.png`;
+        vm.cocktail.imagePath = `http://assets.absolutdrinks.com/drinks/${vm.cocktail.id}.png`;
 
-      // vm.cocktail.videoUrl = `https://www.youtube.com/embed/${vm.cocktail.videos[0].video}`;
+        vm.tabs = {
+          instructions: true,
+          ingredients: false,
+          video: false,
+          comments: false
+        };
+        vm.isAuthenticated = $auth.isAuthenticated;
 
-      vm.tabs = {
-        instructions: true,
-        ingredients: false,
-        video: false,
-        comments: false
-      };
-      vm.isAuthenticated = $auth.isAuthenticated;
+        vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="100%" height="515" src="https://www.youtube.com/embed/${vm.cocktail.videos[0].video}" frameborder="0" allowfullscreen></iframe>`);
 
-      vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="100%" height="515" src="https://www.youtube.com/embed/${vm.cocktail.videos[0].video}" frameborder="0" allowfullscreen></iframe>`);
+        getCommentsOnCocktail();
+      } else {
+        console.log('not in an array');
+        vm.cocktail = response;
+        console.log(vm.cocktail.ingredients);
 
-      getCommentsOnCocktail();
+        vm.tabs = {
+          instructions: true,
+          ingredients: false,
+          video: false,
+          comments: false
+        };
+        vm.isAuthenticated = $auth.isAuthenticated;
 
+        vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="100%" height="515" src="https://www.youtube.com/embed/${vm.cocktail.videos[0].video}" frameborder="0" allowfullscreen></iframe>`);
+      }
     });
-
-
 
   function getCommentsOnCocktail() {
     Cocktail
@@ -51,15 +69,11 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
     vm.tabs[type] = true;
   }
 
-  vm.selectTab = selectTab;
-
   function cocktailsDelete() {
     vm.cocktail
       .$remove()
       .then(() => $state.go('cocktailsIndex'));
   }
-
-  vm.delete = cocktailsDelete;
 
   function addComment() {
 
@@ -74,8 +88,6 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
       });
   }
 
-  vm.addComment = addComment;
-
   function deleteComment(comment) {
 
     Cocktail
@@ -89,16 +101,12 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
       });
   }
 
-  vm.deleteComment = deleteComment;
-
   function favorite() {
     Cocktail
       .favorite({ id: vm.cocktail.id })
       .$promise
       .then((response) => vm.cocktail.favorites = response.favorites);
   }
-
-  vm.favorite = favorite;
 
   function unfavorite() {
     Cocktail
@@ -107,13 +115,9 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce) {
       .then((response) => vm.cocktail.favorites = response.favorites);
   }
 
-  vm.unfavorite = unfavorite;
-
   function userHasFavorited() {
     const userId = $auth.getPayload().userId;
     return vm.cocktail && vm.cocktail.favorites && vm.cocktail.favorites.indexOf(userId) > -1;
   }
-
-  vm.userHasFavorited = userHasFavorited;
 
 }
