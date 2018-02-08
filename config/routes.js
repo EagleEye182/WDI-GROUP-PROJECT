@@ -13,7 +13,7 @@ router.route('/getcocktails')
 
 router.route('/cocktails')
   .get(cocktails.index)
-  .post(cocktails.create);
+  .post(secureRoute, cocktails.create);
 
 router.route('/cocktails/:id')
   .all(secureRoute)

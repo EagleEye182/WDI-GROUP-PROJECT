@@ -33,7 +33,7 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce, User) {
         };
         vm.isAuthenticated = $auth.isAuthenticated;
 
-        vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="100%" height="515" src="https://www.youtube.com/embed/${vm.cocktail.videos[0].video}" frameborder="0" allowfullscreen></iframe>`);
+        vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="600" height="420" src="https://www.youtube.com/embed/${vm.cocktail.videos[0].video}" frameborder="0" allowfullscreen></iframe>`);
 
 
       } else {
