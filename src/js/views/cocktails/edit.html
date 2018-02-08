@@ -28,7 +28,7 @@
             <label class="label" for="mixer">Ingredients</label>
           </p>
           <div ng-repeat="ingredient in vm.cocktail.ingredients track by $index">
-            <input type="text" class="input" id="mixer" name="mixer" ng-model="vm.cocktail.ingredients[$index].textPlain"><p><a ng-click="vm.deleteIngredient(ingredient)">❌</a></p>
+            <input type="text" class="input" id="ingredients" name="ingredients" ng-model="vm.cocktail.ingredients[$index].textPlain"><p><a ng-click="vm.deleteIngredient(ingredient)">❌</a></p>
           </div>
 
           <p><a ng-click="vm.addNewIngredient()">Add</a></p>

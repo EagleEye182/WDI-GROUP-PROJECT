@@ -7,7 +7,7 @@ function CocktailsEditCtrl($state, Cocktail) {
   const vm = this;
   vm.cocktail = Cocktail.get($state.params);
   vm.update = cocktailsUpdate;
-  // console.log(vm.cocktail);
+  console.log(vm.cocktail);
   vm.addNewIngredient = addNewIngredient;
   vm.deleteIngredient = deleteIngredient;
   vm.addNewTaste = addNewTaste;
@@ -16,13 +16,14 @@ function CocktailsEditCtrl($state, Cocktail) {
   vm.deleteOccasion = deleteOccasion;
 
   function cocktailsUpdate(){
+
     Cocktail
       .update({id: $state.params.id}, vm.cocktail)
       .$promise
-      .then((cocktail) => {
-        console.log(cocktail);
+      .then(() => {
+        //     console.log(cocktail);
 
-        // $state.go('cocktailsShow', $state.params);
+        $state.go('cocktailsShow', $state.params);
       });
   }
 
