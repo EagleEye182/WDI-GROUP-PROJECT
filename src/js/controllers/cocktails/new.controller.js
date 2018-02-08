@@ -6,9 +6,10 @@ CocktailsNewCtrl.$inject = ['Cocktail', '$state'];
 function CocktailsNewCtrl(Cocktail, $state) {
   const vm = this;
 
-  vm.cocktail = {};
-  vm.create   = cocktailsCreate;
-
+  vm.cocktail    = { tastes: [] };
+  vm.create      = cocktailsCreate;
+  vm.addOrRemoveTaste = addOrRemoveTaste;
+  vm.tastes      = ['sweet', 'sour', 'fruity', 'fresh', 'herb', 'berry', 'spicy', 'bitter'];
 
   function cocktailsCreate() {
     if(vm.newForm.$valid) {
@@ -23,4 +24,14 @@ function CocktailsNewCtrl(Cocktail, $state) {
         .catch(err => console.log(err));
     }
   }
+
+  function addOrRemoveTaste(taste) {
+    if(vm.cocktail.tastes.indexOf(taste) === -1) {
+      vm.cocktail.tastes.push(taste);
+    } else {
+      const index = vm.cocktail.tastes.indexOf(taste);
+      vm.cocktail.tastes.splice(index, 1);
+    }
+  }
+
 }
