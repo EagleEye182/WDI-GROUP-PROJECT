@@ -20,7 +20,8 @@ function CocktailsEditCtrl($state, Cocktail) {
       .update({id: $state.params.id}, vm.cocktail)
       .$promise
       .then((cocktail) => {
-        console.log(cocktail); //shows unedited cocktail object on submit
+        console.log(cocktail);
+
         // $state.go('cocktailsShow', $state.params);
       });
   }
@@ -45,7 +46,7 @@ function CocktailsEditCtrl($state, Cocktail) {
   }
 
   function addOccasion() {
-    vm.cocktail.tastes.push({});
+    vm.cocktail.occasions.push({});
   }
 
   function deleteOccasion(occasion) {
