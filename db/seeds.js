@@ -82,6 +82,7 @@ User
         ],
         id: 'vadher',
         name: 'Vadher',
+        image: 'http://stevethebartender.com.au/wp-content/uploads/2013/09/japanese-slipper-cocktail.jpg',
         descriptionPlain: 'Fill shaker with ice. Juice the lime using the Citrus Press. Add Lime Juice to shaker, with 1 Part Tequila, 1 Part Triple Sec. Shake until tired',
         createdBy: users[0]
       }]);

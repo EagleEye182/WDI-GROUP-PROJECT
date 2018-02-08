@@ -62,10 +62,11 @@ function showRoute(req, res, next) {
 }
 
 function updateRoute(req, res, next) {
+  // console.log(req.params.id);
   Cocktail
-    .findById(req.params.id)
-    .exec()
+    .findOne({id: req.params.id}) //gives me the cocktail obj
     .then((cocktail) => {
+
       if(!cocktail) return res.notFound();
 
       Object.assign(cocktail, req.body);

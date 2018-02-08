@@ -11,6 +11,7 @@ function CocktailsNewCtrl(Cocktail, $state) {
 
   function cocktailsCreate() {
     if(vm.newForm.$valid) {
+
       Cocktail
         .save(vm.cocktail)
         .$promise
