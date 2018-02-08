@@ -28,7 +28,7 @@
   </div>
 </div>
 
-<button class="button is-info if-fullwidth" ng-click="vm.loadMore()" ng-show="vm.nameSearch || vm.ratingFilter || vm.flavourSearch">Show more</button>
+
 
 <section class="section">
 
@@ -62,6 +62,8 @@
       </a>
     </div>
   </div>
+
+  <button class="button is-medium is-centered is-info if-fullwidth filterSearch" ng-hide="vm.nameSearch || vm.flavourSearch || vm.ratingFilter" ng-click="vm.loadMore()">Get me the next 25 drinks</button>
 
   <!-- <div class="columns is-multiline">
     <div ng-repeat="cocktail in vm.local track by $index" class="column is-3">
