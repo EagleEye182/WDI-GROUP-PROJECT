@@ -43,11 +43,34 @@ function CocktailsIndexCtrl(Cocktail, filterFilter, $scope, $http, orderByFilter
     });
 
   function filterCocktails() {
-    const params = { name: vm.nameSearch};
 
-    if(vm.useNameSearch) params.name = vm.nameSearch;
+    if(vm.all && !(vm.nameSearch || vm.useNameSearch || vm.flavourSearch || vm.ratingFilter)) vm.filtered = vm.local.concat(vm.all);
+    console.log('in here');
 
-    vm.filtered = filterFilter(vm.all, params);
+    if(vm.nameSearch) {
+      const params = { name: vm.nameSearch};
+      $http
+        .get(`/api/quickSearch/${vm.nameSearch}`)
+        .then(response => {
+          vm.filteredApi = response.data;
+          vm.filteredApi.map((cocktail) => {
+            cocktail.imagePath = `http://assets.absolutdrinks.com/drinks/${cocktail.id}.png`;
+          });
+          vm.filteredLocal = filterFilter(vm.local, params);
+
+          vm.filtered = vm.filteredLocal.concat(vm.filteredApi);
+
+          vm.filtered = orderByFilter(vm.filtered, vm.ratingFilter);
+          if(vm.flavourSearch) {
+            vm.filtered = vm.filtered.filter(cocktail => {
+              if(cocktail.tastes.find(obj => obj.id === vm.flavourSearch)) return cocktail;
+            });
+          }
+        });
+
+    }
+
+    // vm.filtered = filterFilter(vm.all, params);
     vm.filtered = orderByFilter(vm.filtered, vm.ratingFilter);
 
     if(vm.flavourSearch) {
