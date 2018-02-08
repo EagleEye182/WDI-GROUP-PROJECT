@@ -36,7 +36,6 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce, User) {
 
         vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="600" height="420" src="https://www.youtube.com/embed/${vm.cocktail.videos[0].video}" frameborder="0" allowfullscreen></iframe>`);
 
-
       } else {
         vm.cocktail = response;
 
