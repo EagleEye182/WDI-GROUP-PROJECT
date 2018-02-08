@@ -6,6 +6,9 @@
       <!-- Left side -->
       <div class="level-left">
         <div class="level-item">
+          <p ng-if="!vm.user.cocktails.length">0 posts</p>
+        </div>
+        <div class="level-item">
           <div class="container profile">
 
             <div class="section profile-heading">
@@ -34,33 +37,34 @@
       <a href="/cocktails/new">
         <input type="submit" class="button is-block" value="Add a cocktail">
       </a>
-      <ul>
+      <ul class="userTab">
         <li class="link"><a><span class="icon"><i class="fa fa-heart"></i></span> <span>My Likes</span></a></li>
         <li class="link"><a><span class="icon"><i class="fa fa-th"></i></span> <span>My Posts</span></a></li>
       </ul>
     </div>
   </div>
-<br>
+  <br>
   <div class="columns is-multiline">
     <div ng-repeat="cocktail in vm.user.cocktails track by $index" class="column is-3">
       <div class="card">
         <div class="card-image">
-          <a ui-sref=" vm.cocktail.id "><h2 class="title">{{ cocktail.name }}</h2></a>
+          <a ui-sref="cocktailsShow ({ id: cocktail.id })"><h2 class="title">{{ cocktail.name }}</h2></a>
           <figure class="image is-4by3">
             <img src="{{cocktail.image}}" alt="{{ cocktail.name }}">
           </figure>
         </div>
         <div class="card-content">
           <div class="content">
-            <span class="tag is-dark">{{ cocktail.name }}</span>
-            <strong class="timestamp">{{ cocktail.name }}</strong>
+            <br>
+            <h3 class="subtitle">Mix difficulty: <em>{{ cocktail.skill.name }}</em></h3>
+            <h3 class="subtitle">Bartender rating: <em>{{ cocktail.rating }} of 100</em></h3>
+            <ul class="flavour">
+              <h4 class="subtitle">
+                <li ng-repeat="taste in cocktail.tastes"><em>{{ taste.text }}</em></li>
+              </h4>
+            </div>
           </div>
         </div>
-        <footer class="card-footer">
-          <a class="card-footer-item">Edit</a>
-          <a class="card-footer-item">Delete</a>
-        </footer>
       </div>
     </div>
-  </div>
-</section>
+  </section>
