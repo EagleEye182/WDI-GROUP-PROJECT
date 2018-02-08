@@ -11,6 +11,7 @@ function CocktailsEditCtrl($state, Cocktail) {
   vm.addNewIngredient = addNewIngredient;
   vm.deleteIngredient = deleteIngredient;
   vm.addNewTaste = addNewTaste;
+  vm.deleteTaste = deleteTaste;
 
   function cocktailsUpdate(){
     // console.log($state.params.id); //gives me ID
@@ -29,14 +30,18 @@ function CocktailsEditCtrl($state, Cocktail) {
     vm.cocktail.ingredients.push({});
   }
 
+  function deleteIngredient(ingredient) {
+    const index = vm.cocktail.ingredients.indexOf(ingredient);
+    vm.cocktail.ingredients.splice(index, 1);
+  }
+
   function addNewTaste() {
     vm.cocktail.tastes.push({});
   }
 
-  function deleteIngredient(ingredient) {
-    // console.log(ingredient);
-    // console.log(vm.cocktail.ingredients);
-    const index = vm.cocktail.ingredients.indexOf(ingredient);
-    vm.cocktail.ingredients.splice(index, 1);
+  function deleteTaste(taste) {
+    console.log(vm.cocktail);
+    const index = vm.cocktail.tastes.indexOf(taste);
+    vm.cocktail.tastes.splice(index, 1);
   }
 }

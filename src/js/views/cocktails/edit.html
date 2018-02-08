@@ -52,41 +52,41 @@
             <label class="label" for="mixer">Ingredients</label>
           </p>
           <div ng-repeat="ingredient in vm.cocktail.ingredients track by $index">
-            <input type="text" class="input" id="mixer" name="mixer" ng-model="vm.cocktail.ingredients[$index].textPlain"><p><a ng-click="vm.deleteIngredient(ingredient)">❌</p></a>
+            <input type="text" class="input" id="mixer" name="mixer" ng-model="vm.cocktail.ingredients[$index].textPlain"><p><a ng-click="vm.deleteIngredient(ingredient)">❌</a></p>
           </div>
 
-          <p><a ng-click="vm.addNewIngredient()">Add</p></a>
+          <p><a ng-click="vm.addNewIngredient()">Add</a></p>
         </div>
 
         <div class="field">
           <p class="control">
-            <label class="label" for="alcoholic">Alcoholic or non-alcoholic?</label>
+            <label class="label" for="alcoholic" ng-if="vm.cocktail.isAlcoholic">Change current from Alcoholic</label>
+            <label class="label" for="alcoholic" ng-if="!vm.cocktail.isAlcoholic">Change current from Non-Alcoholic</label>
           </p>
             <div class="select">
-              <select ng-model="vm.cocktail.alcoholic">
-                <option value="">Alcoholic drink?</option>
-                <option>True</option>
-                <option>False</option>
+              <select ng-model="vm.cocktail.isAlcoholic">
+                <option value="true">Alcoholic</option>
+                <option value="false">Non-Alcoholic</option>
               </select>
             </div>
         </div>
 
         <div class="field">
           <p class="control">
-            <label class="label" for="occassion">Occasion</label>
+            <label class="label" for="occasion">Occasion</label>
           </p>
-          <input type="text" class="input" id="occassion" name="occassion" ng-model="vm.cocktail.occasion">
+          <input type="text" class="input" id="occasion" name="occasion" ng-model="vm.cocktail.occasion">
         </div>
 
         <div class="field">
           <p class="control">
-            <label class="label" for="mixer">Ingredients</label>
+            <label class="label" for="mixer">Tastes</label>
           </p>
-          <div ng-repeat="ingredient in vm.cocktail.tastes track by $index">
-            <input type="text" class="input" id="tastes" name="tastes" ng-model="vm.cocktail.tastes[$index].textPlain"><p><a ng-click="vm.deleteTaste()">❌</p></a>
+          <div ng-repeat="taste in vm.cocktail.tastes track by $index">
+            <input type="text" class="input" id="tastes" name="tastes" ng-model="vm.cocktail.tastes[$index].text"><p><a ng-click="vm.deleteTaste(taste)">❌</a></p>
           </div>
 
-          <p><a ng-click="vm.addNewTaste()">Add</p></a>
+          <p><a ng-click="vm.addNewTaste()">Add</a></p>
         </div>
 
         <div class="field">
