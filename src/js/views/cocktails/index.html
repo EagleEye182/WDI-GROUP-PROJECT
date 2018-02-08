@@ -51,7 +51,8 @@
                 <h3 class="subtitle">Bartender rating: <em>{{ cocktail.rating }} of 100</em></h3>
                 <ul class="flavour">
                   <h4 class="subtitle">
-                    <li ng-repeat="taste in cocktail.tastes"><em>{{ taste.text }}</em></li>
+                    <!-- <li ng-if="cocktail.tastes.text" ng-repeat="taste in cocktail.tastes" ><em>{{ taste }}</em></li>
+                    <li ng-if="!cocktail.tastes.text" ng-repeat="taste in cocktail.tastes"><em>{{ taste }}</em></li> -->
                   </h4>
                 </ul>
               </div>

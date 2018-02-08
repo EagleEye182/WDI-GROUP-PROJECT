@@ -81,27 +81,17 @@ function deleteRoute(req, res, next) {
     .findOne({id: req.params.id})
     .exec()
     .then((cocktail) => {
+      // console.log(cocktail);
+      // if(!cocktail) return res.notFound();
 
-      if(!cocktail) return res.notFound();
-
-      const cocktailForDelete = cocktail.cocktailId;
-      console.log(cocktailForDelete);
-      // cocktail.remove(cocktailForDelete);
+      const cocktailForDelete = cocktail._id;
+      // console.log(cocktailForDelete);
+      cocktail.remove(cocktailForDelete);
 
       return cocktail.save();
     })
     .then(() => res.status(204).end())
     .catch(next);
-  // Cocktail
-  //   .findById(req.params.id)
-  //   .exec()
-  //   .then((cocktail) => {
-  //     if(!cocktail) return res.notFound();
-  //
-  //     return cocktail.remove();
-  //   })
-  //   .then(() => res.status(204).end())
-  //   .catch(next);
 }
 
 function addCommentRoute(req, res, next) {
