@@ -10,8 +10,8 @@ function CocktailsNewCtrl(Cocktail, $state) {
   vm.create   = cocktailsCreate;
 
   function cocktailsCreate() {
-    console.log(vm.newForm.$valid);
     if(vm.newForm.$valid) {
+
       Cocktail
         .save(vm.cocktail)
         .$promise
