@@ -78,12 +78,17 @@ function updateRoute(req, res, next) {
 
 function deleteRoute(req, res, next) {
   Cocktail
-    .findById(req.params.id)
+    .findOne({id: req.params.id})
     .exec()
     .then((cocktail) => {
-      if(!cocktail) return res.notFound();
+      // console.log(cocktail);
+      // if(!cocktail) return res.notFound();
 
-      return cocktail.remove();
+      const cocktailForDelete = cocktail._id;
+      // console.log(cocktailForDelete);
+      cocktail.remove(cocktailForDelete);
+
+      return cocktail.save();
     })
     .then(() => res.status(204).end())
     .catch(next);
