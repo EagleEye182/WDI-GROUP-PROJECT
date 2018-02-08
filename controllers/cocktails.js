@@ -101,9 +101,18 @@ function addCommentRoute(req, res, next) {
 
   Comment
     .create(req.body)
-    .then((comment) => {
+    .then(comment => {
 
-      return res.status(200).json(comment);
+      User
+        .find()
+        .populate('createdBy')
+        .exec()
+        .then((user) => {
+          console.log(user, comment);
+          // return res.status(200).json(comment);
+        });
+
+      // return res.status(200).json(comment);
     })
     .catch(next);
 }
