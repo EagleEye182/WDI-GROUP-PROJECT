@@ -61,21 +61,21 @@
     </div>
   </div>
 
-<div class="columns is-multiline">
-  <div ng-repeat="cocktail in vm.local track by $index" class="column is-3">
-    <div class="card">
-      <div class="card-image">
-        <figure class="image is-4by3">
-          <img src="{{cocktail.imagePath}}" alt="{{ cocktail.name }}">
-        </figure>
-      </div>
-      <div class="card-content">
-        <div class="media">
-          <div class="media-content">
-            <a ui-sref="cocktailsShow({ id: cocktail.id })"><h2 class="title">{{ cocktail.name }}</h2></a>
-            <br>
-            <h3 class="subtitle">Mix difficulty: <em>{{ cocktail.skill.name }}</em></h3>
-            <h4 class="subtitle is-3">Bartender rating: <em>{{ vm.cocktail.rating }} of 100</em></h4>
+  <!-- <div class="columns is-multiline">
+    <div ng-repeat="cocktail in vm.local track by $index" class="column is-3">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img src="{{cocktail.imagePath}}" alt="{{ cocktail.name }}">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <a ui-sref="cocktailsShow({ id: cocktail._id })"><h2 class="title">{{ cocktail.name }}</h2></a>
+              <br>
+              <h3 class="subtitle">Mix difficulty: <em>{{ cocktail.skill.name }}</em></h3>
+              <h4 class="subtitle is-3">Bartender rating: <em>{{ vm.cocktail.rating }} of 100</em></h4>
 
               <ul class="flavour">
                 <h4 class="subtitle">Flavour(s):
@@ -87,5 +87,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </section>
