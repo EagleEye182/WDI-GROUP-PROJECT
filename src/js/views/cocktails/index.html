@@ -1,5 +1,5 @@
 <div class="columns is-centered">
-  <div class="column is-half">
+  <div class="column is-half is-offset-one-quarter">
     <div class="field searchBar">
       <div class="control is-expanded searchBar">
         <input class="input is-medium" name="name" ng-model="vm.nameSearch" placeholder="Search a cocktail by name" autofocus>
@@ -16,6 +16,8 @@
     </div>
   </div>
 </div>
+
+
 <section class="section">
 
   <div class="columns is-multiline">
@@ -33,7 +35,7 @@
                 <h2 class="title">{{ cocktail.name }}</h2>
                 <br>
                 <h3 class="subtitle">Mix difficulty: <em>{{ cocktail.skill.name }}</em></h3>
-
+                <!-- <h4 class="subtitle is-3">Bartender rating: <em>{{ cocktail.rating }} of 100</em></h4> -->
                 <ul class="flavour">
                   <h4 class="subtitle">
                     <li ng-repeat="taste in cocktail.tastes"><em>{{ taste.text }}</em></li>
