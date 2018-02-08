@@ -9,13 +9,17 @@ function CocktailsNewCtrl(Cocktail, $state) {
   vm.cocktail = {};
   vm.create   = cocktailsCreate;
 
+
   function cocktailsCreate() {
     if(vm.newForm.$valid) {
+      vm.cocktail.id = vm.cocktail.name.toLowerCase();
 
       Cocktail
-        .save(vm.cocktail)
+        .create(vm.cocktail)
         .$promise
-        .then(() => $state.go('cocktailsIndex'))
+        .then(() => {
+          $state.go('cocktailsIndex');
+        })
         .catch(err => console.log(err));
     }
   }
