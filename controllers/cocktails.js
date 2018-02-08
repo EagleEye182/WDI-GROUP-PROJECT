@@ -109,7 +109,7 @@ function addCommentRoute(req, res, next) {
         .exec()
         .then((user) => {
           console.log(user, comment);
-          // return res.status(200).json(comment);
+          return res.status(200).json([{comment},{user}]);
         });
 
       // return res.status(200).json(comment);
