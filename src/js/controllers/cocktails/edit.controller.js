@@ -12,11 +12,10 @@ function CocktailsEditCtrl($state, Cocktail) {
   vm.deleteIngredient = deleteIngredient;
   vm.addNewTaste = addNewTaste;
   vm.deleteTaste = deleteTaste;
+  vm.addOccasion = addOccasion;
+  vm.deleteOccasion = deleteOccasion;
 
   function cocktailsUpdate(){
-    // console.log($state.params.id); //gives me ID
-    // console.log(vm.cocktail); // gives full object of cocktail
-
     Cocktail
       .update({id: $state.params.id}, vm.cocktail)
       .$promise
@@ -43,5 +42,14 @@ function CocktailsEditCtrl($state, Cocktail) {
     console.log(vm.cocktail);
     const index = vm.cocktail.tastes.indexOf(taste);
     vm.cocktail.tastes.splice(index, 1);
+  }
+
+  function addOccasion() {
+    vm.cocktail.tastes.push({});
+  }
+
+  function deleteOccasion(occasion) {
+    const index = vm.cocktail.occasions.indexOf(occasion);
+    vm.cocktail.occasions.splice(index, 1);
   }
 }

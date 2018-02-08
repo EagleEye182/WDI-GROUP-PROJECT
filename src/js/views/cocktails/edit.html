@@ -25,30 +25,6 @@
 
         <div class="field">
           <p class="control">
-            <label class="label" for="video">Video Url</label>
-          </p>
-          <input type="text" class="input" id="video" name="video" ng-model="vm.cocktail.video" required>
-          <p class="help">While optional, it would be most useful if you can provide a video on how to make this cocktail</p>
-        </div>
-
-        <!-- <div class="field">
-          <p class="control">
-            <label class="label" for="spirit">Base spirit</label>
-          </p>
-            <div class="select">
-              <select ng-model="vm.cocktail.spirit">
-                <option value="">Select spirit</option>
-                <option>Tequila</option>
-                <option>Vodka</option>
-                <option>Rum</option>
-                <option>Gin</option>
-                <option>Whiskey</option>
-              </select>
-            </div>
-        </div> -->
-
-        <div class="field">
-          <p class="control">
             <label class="label" for="mixer">Ingredients</label>
           </p>
           <div ng-repeat="ingredient in vm.cocktail.ingredients track by $index">
@@ -61,7 +37,7 @@
         <div class="field">
           <p class="control">
             <label class="label" for="alcoholic" ng-if="vm.cocktail.isAlcoholic">Change current from Alcoholic</label>
-            <label class="label" for="alcoholic" ng-if="!vm.cocktail.isAlcoholic">Change current from Non-Alcoholic</label>
+            <label class="label" for="alcoholic" ng-if="!vm.cocktail.isAlcoholic">Change current from: Non-Alcoholic</label>
           </p>
             <div class="select">
               <select ng-model="vm.cocktail.isAlcoholic">
@@ -75,7 +51,11 @@
           <p class="control">
             <label class="label" for="occasion">Occasion</label>
           </p>
-          <input type="text" class="input" id="occasion" name="occasion" ng-model="vm.cocktail.occasion">
+          <div ng-repeat="occasion in vm.cocktail.occasions track by $index">
+            <input type="text" class="input" id="occasions" name="occasions" ng-model="vm.cocktail.occasions[$index].text"><p><a ng-click="vm.deleteOccasion(occasion)">❌</a></p>
+          </div>
+
+          <p><a ng-click="vm.addOccasion()">Add</a></p>
         </div>
 
         <div class="field">
@@ -87,6 +67,15 @@
           </div>
 
           <p><a ng-click="vm.addNewTaste()">Add</a></p>
+        </div>
+
+        <div class="field">
+          <p class="control">
+            <label class="label" for="video">Video Url</label>
+          </p>
+          <input type="text" class="input" id="video" name="video" ng-model="vm.cocktail.video" required>
+          <p class="help">While optional, it would be most useful if you can provide a video on how to make this cocktail</p>
+          <p class="help">Please add this highlight parted of a youtube URL: https://www.youtube.com/watch?<span style="color: red">v=SD1n-DKUIeE</span></p>
         </div>
 
         <div class="field">
