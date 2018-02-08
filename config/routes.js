@@ -11,6 +11,9 @@ const cocktail = require('../controllers/cocktailApi');
 router.route('/getcocktails/:offset')
   .get(cocktail.proxy);
 
+router.route('/quickSearch/:query')
+  .get(cocktail.quickSearch);
+
 router.route('/cocktails')
   .get(cocktails.index)
   .post(secureRoute, cocktails.create);
