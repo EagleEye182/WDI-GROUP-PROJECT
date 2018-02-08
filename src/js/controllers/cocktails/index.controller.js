@@ -44,7 +44,7 @@ function CocktailsIndexCtrl(Cocktail, filterFilter, $scope, $http, orderByFilter
   function filterCocktails() {
 
     if(vm.all && !(vm.nameSearch || vm.useNameSearch || vm.flavourSearch || vm.ratingFilter)) vm.filtered = vm.local.concat(vm.all);
-    console.log('in here');
+
 
     if(vm.nameSearch) {
       const params = { name: vm.nameSearch};
