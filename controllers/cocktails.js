@@ -37,7 +37,7 @@ function showRoute(req, res, next) {
 
   const localDb = function() {
     Cocktail
-      .findById(params.id)
+      .findOne({id: req.params.id})
       .exec()
       .then(cocktail => {
         if(!cocktail) return res.notFound();
