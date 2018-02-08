@@ -7,6 +7,7 @@
             <label class="label" for="name">Cocktail Name</label>
           </p>
           <input type="text" class="input" id="name" name="name" ng-model="vm.cocktail.name" required>
+
           <div ng-messages="vm.newForm.name.$error" role="alert" ng-show="(vm.newForm.$submitted || vm.newForm.name.$touched) && vm.newForm.name.$invalid" class="notification is-danger">
             <div ng-message="required">The name of the cocktail is required.</div>
           </div>
@@ -82,9 +83,12 @@
 
         <div class="field">
           <p class="control">
-            <label class="label" for="tastes">Tastes</label>
+            <label class="label" for="mixer">Tastes</label>
           </p>
-          <input type="text" class="input" id="tastes" name="tastes" ng-model="vm.cocktail.tastes">
+
+          <div ng-repeat="taste in vm.tastes">
+            <input type="checkbox" ng-click="vm.addOrRemoveTaste(taste)"> {{ taste.charAt(0).toUpperCase() + taste.slice(1) }}
+          </div>
         </div>
 
         <div class="field">

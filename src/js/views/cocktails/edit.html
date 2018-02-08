@@ -1,4 +1,4 @@
-<h1 class="title is-1">Edit</h1>
+<h1 class="title is-1">Edit form for: {{ vm.cocktail.name }}</h1>
 
 <section class="section">
   <div class="columns">
@@ -62,11 +62,10 @@
           <p class="control">
             <label class="label" for="mixer">Tastes</label>
           </p>
-          <div ng-repeat="taste in vm.cocktail.tastes track by $index">
-            <input type="text" class="input" id="tastes" name="tastes" ng-model="vm.cocktail.tastes[$index].text"><p><a ng-click="vm.deleteTaste(taste)">❌</a></p>
-          </div>
 
-          <p><a ng-click="vm.addNewTaste()">Add</a></p>
+          <div ng-repeat="taste in vm.tastes">
+            <input type="checkbox" ng-click="vm.addOrRemoveTaste(taste)" ng-checked="vm.cocktail.tastes.indexOf(taste) !== -1"> {{ taste.charAt(0).toUpperCase() + taste.slice(1) }}
+          </div>
         </div>
 
         <div class="field">
