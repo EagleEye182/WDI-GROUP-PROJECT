@@ -15,6 +15,7 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce, User) {
   vm.userHasFavorited = userHasFavorited;
   const currentUserId = $auth.getPayload().userId;
   vm.currentUser = User.get({ id: currentUserId });
+  vm.cocktailForDelete = Cocktail.get($state.params);
 
   Cocktail
     .get({ id: $state.params.id})
@@ -72,7 +73,7 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce, User) {
   }
 
   function cocktailsDelete() {
-    vm.cocktail
+    vm.cocktailForDelete
       .$remove()
       .then(() => $state.go('cocktailsIndex'));
   }
