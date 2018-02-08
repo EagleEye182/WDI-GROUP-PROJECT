@@ -81,6 +81,14 @@ ul {
       }
     }
   }
+  &.occassion {
+    li {
+      text-transform: lowercase;
+      &:after {
+        content: "or ";
+      }
+    }
+  }
 }
 //userProfile
   main.ng-scope {

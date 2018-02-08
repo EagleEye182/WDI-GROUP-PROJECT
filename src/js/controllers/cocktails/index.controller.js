@@ -2,8 +2,8 @@ angular
   .module('cocktailApp')
   .controller('CocktailsIndexCtrl', CocktailsIndexCtrl);
 
-CocktailsIndexCtrl.$inject = ['Cocktail', 'filterFilter', '$scope', '$http'];
-function CocktailsIndexCtrl(Cocktail, filterFilter, $scope, $http) {
+CocktailsIndexCtrl.$inject = ['Cocktail', 'filterFilter', '$scope', '$http', 'orderByFilter'];
+function CocktailsIndexCtrl(Cocktail, filterFilter, $scope, $http, orderByFilter) {
   const vm = this;
 
   vm.flavourFilters = ['fruity', 'fresh', 'sweet', 'sour', 'herb', 'bitter', 'spicy'];
@@ -33,6 +33,7 @@ function CocktailsIndexCtrl(Cocktail, filterFilter, $scope, $http) {
     if(vm.useNameSearch) params.name = vm.nameSearch;
 
     vm.filtered = filterFilter(vm.all, params);
+    vm.filtered = orderByFilter(vm.filtered, vm.ratingFilter);
 
     if(vm.flavourSearch) {
       vm.filtered = vm.filtered.filter(cocktail => {
@@ -43,6 +44,7 @@ function CocktailsIndexCtrl(Cocktail, filterFilter, $scope, $http) {
   $scope.$watchGroup([
     () => vm.nameSearch,
     () => vm.useNameSearch,
-    () => vm.flavourSearch
+    () => vm.flavourSearch,
+    () => vm.ratingFilter
   ], filterCocktails);
 }
