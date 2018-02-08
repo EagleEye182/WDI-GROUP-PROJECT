@@ -12,11 +12,11 @@
               <div class="columns">
                 <div class="column is-2">
                   <div class="image is-128x128 avatar">
-                    <img src="{{ vm.user.image }}">
+                    <img src="{{ vm.user.image ? vm.user.image : 'https://placehold.it/128x128' }}">
                   </div>
                 </div>
                 <div class="column is-4 name">
-                  <strong><h1>{{ vm.user.username }}</h1></strong>
+                  <strong><h1>Hi, {{ vm.user.username }}</h1></strong>
                   <br>
                   <p class="tagline">Bio</p>
                 </div>
