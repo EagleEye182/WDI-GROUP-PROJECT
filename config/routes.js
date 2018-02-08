@@ -8,7 +8,7 @@ const cocktail = require('../controllers/cocktailApi');
 
 // Routes go here
 
-router.route('/getcocktails')
+router.route('/getcocktails/:offset')
   .get(cocktail.proxy);
 
 router.route('/cocktails')

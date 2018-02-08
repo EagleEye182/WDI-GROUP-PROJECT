@@ -6,18 +6,32 @@ CocktailsIndexCtrl.$inject = ['Cocktail', 'filterFilter', '$scope', '$http', 'or
 function CocktailsIndexCtrl(Cocktail, filterFilter, $scope, $http, orderByFilter) {
   const vm = this;
 
-  vm.flavourFilters = ['fruity', 'fresh', 'sweet', 'sour', 'herb', 'bitter', 'spicy'];
+  vm.offset = 0;
 
-  $http
-    .get('/api/getcocktails')
-    .then(response => {
-      vm.all = response.data;
-      vm.all.map((cocktail) => {
-        cocktail.imagePath = `http://assets.absolutdrinks.com/drinks/${cocktail.id}.png`;
+  vm.loadMore = loadMore;
+  vm.flavourFilters = ['fruity', 'fresh', 'sweet', 'sour', 'herb', 'bitter', 'spicy', 'berry'];
+
+  getCocktailsFromApi();
+
+  function getCocktailsFromApi() {
+    $http
+      .get(`/api/getcocktails/${vm.offset}`)
+      .then(response => {
+        vm.all = response.data;
+        vm.all.map((cocktail) => {
+          cocktail.imagePath = `http://assets.absolutdrinks.com/drinks/${cocktail.id}.png`;
+        });
+
+        vm.offset += 25;
+
+        filterCocktails();
       });
+  }
 
-      filterCocktails();
-    });
+  function loadMore() {
+    getCocktailsFromApi();
+  }
+
 
   $http
     .get('/api/cocktails')
