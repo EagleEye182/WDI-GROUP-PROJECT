@@ -7,7 +7,7 @@
             <label class="label" for="name">Cocktail Name</label>
           </p>
           <input type="text" class="input" id="name" name="name" ng-model="vm.cocktail.name" required>
-          <div ng-messages="vm.newForm.name.$error" role="alert" ng-show="(vm.newForm.$submitted || vm.newForm.name.$touched) && vm.newForm.name.$invalid" class="notification">
+          <div ng-messages="vm.newForm.name.$error" role="alert" ng-show="(vm.newForm.$submitted || vm.newForm.name.$touched) && vm.newForm.name.$invalid" class="notification is-danger">
             <div ng-message="required">The name of the cocktail is required.</div>
           </div>
         </div>
@@ -17,8 +17,8 @@
             <label class="label" for="description">Description</label>
           </p>
           <textarea class="textarea" id="description" name="description" ng-model="vm.cocktail.description" required></textarea>
-          <div ng-messages="vm.newForm.description.$error" role="alert" ng-show="(vm.newForm.$submitted || vm.newForm.description.$touched) && vm.newForm.description.$invalid" class="notification">
-            <div ng-message="required">A brief description of how to make the cocktail is required.</div>
+          <div ng-messages="vm.newForm.description.$error" role="alert" ng-show="(vm.newForm.$submitted || vm.newForm.description.$touched) && vm.newForm.description.$invalid" class="notification is-danger">
+            <div ng-message="required">A description is required.</div>
           </div>
         </div>
 
@@ -92,12 +92,10 @@
             <label class="label" for="image">Image Url</label>
           </p>
           <input type="text" class="input" id="image" name="image" ng-model="vm.cocktail.image" required>
-          <div ng-messages="vm.newForm.image.$error" role="alert" ng-show="(vm.newForm.$submitted || vm.newForm.image.$touched) && vm.newForm.image.$invalid" class="notification">
+          <div ng-messages="vm.newForm.image.$error" role="alert" ng-show="(vm.newForm.$submitted || vm.newForm.image.$touched) && vm.newForm.image.$invalid" class="notification is-danger">
             <div ng-message="required">Image is required.</div>
           </div>
         </div>
-
-
         <div class="field">
           <p class="control">
             <input type="submit" class="button is-primary is-fullwidth" value="Add">
