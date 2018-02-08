@@ -11,7 +11,7 @@
               <div class="control">
                 <input class="input is-large" type="email" placeholder="Your Email" autofocus="" name="email" id="email" ng-model="vm.credentials.email" required>
               </div>
-              <div ng-messages="vm.loginForm.email.$error" role="alert" ng-show="(vm.loginForm.$submitted || vm.loginForm.email.$touched) && vm.loginForm.email.$invalid" class="notification">
+              <div ng-messages="vm.loginForm.email.$error" role="alert" ng-show="(vm.loginForm.$submitted || vm.loginForm.email.$touched) && vm.loginForm.email.$invalid" class="notification is-danger">
                 <div ng-message="required">Please enter a value for this field.</div>
                 <div ng-message="email">This field must be a valid email address.</div>
                 <button class="delete is-small"></button>
@@ -22,7 +22,7 @@
               <div class="control">
                 <input class="input is-large" type="password" placeholder="Your Password" name="password" id="password" ng-model="vm.credentials.password" required>
               </div>
-              <div ng-messages="vm.loginForm.password.$error" role="alert" ng-show="(vm.loginForm.$submitted || vm.loginForm.password.$touched) && vm.loginForm.password.$invalid" class="notification">
+              <div ng-messages="vm.loginForm.password.$error" role="alert" ng-show="(vm.loginForm.$submitted || vm.loginForm.password.$touched) && vm.loginForm.password.$invalid" class="notification is-danger">
                 <div ng-message="required">Please enter a value for this field.</div>
               </div>
             </div>
