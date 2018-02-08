@@ -65,9 +65,9 @@ function showRoute(req, res, next) {
 function updateRoute(req, res, next) {
   // console.log(req.params.id);
   Cocktail
-    .findOne({id: req.params.id})
+    .findOne({id: req.params.id}) //gives me the cocktail obj
     .then((cocktail) => {
-      console.log(cocktail);
+
       if(!cocktail) return res.notFound();
 
       Object.assign(cocktail, req.body);
