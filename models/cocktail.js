@@ -18,11 +18,7 @@ const cocktailSchema = new mongoose.Schema({
       textPlain: {type: String}
     }
   ],
-  tastes: [
-    {
-      text: {type: String}
-    }
-  ],
+  tastes: [{type: String}],
   occasions: [
     {
       text: {type: String}

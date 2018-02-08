@@ -6,9 +6,6 @@
       <!-- Left side -->
       <div class="level-left">
         <div class="level-item">
-          <p ng-if="!vm.user.cocktails.length">0 posts</p>
-        </div>
-        <div class="level-item">
           <div class="container profile">
 
             <div class="section profile-heading">
@@ -48,9 +45,9 @@
     <div ng-repeat="cocktail in vm.user.cocktails track by $index" class="column is-3">
       <div class="card">
         <div class="card-image">
-          <a ui-sref="cocktailsShow({ id: cocktail._id })"><h2 class="title">{{ cocktail.name }}</h2></a>
+          <a ui-sref=" vm.cocktail.id "><h2 class="title">{{ cocktail.name }}</h2></a>
           <figure class="image is-4by3">
-            <img src="{{cocktail.imagePath}}" alt="{{ cocktail.name }}">
+            <img src="{{cocktail.image}}" alt="{{ cocktail.name }}">
           </figure>
         </div>
         <div class="card-content">

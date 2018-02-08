@@ -50,17 +50,7 @@ User
             textPlain: 'Ice'
           }
         ],
-        tastes: [
-          {
-            text: 'Fresh'
-          },
-          {
-            text: 'Sour'
-          },
-          {
-            text: 'Sweet'
-          }
-        ],
+        tastes: ['fresh', 'sour', 'sweet'],
         occasions: [
           {
             text: 'Afternoon Drinks'
