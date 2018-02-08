@@ -37,7 +37,6 @@ function CocktailsIndexCtrl(Cocktail, filterFilter, $scope, $http, orderByFilter
     .get('/api/cocktails')
     .then((localresponse) => {
       vm.local = localresponse.data;
-      console.log(vm.local);
 
       filterCocktails();
     });
