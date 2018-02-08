@@ -33,25 +33,24 @@ function createRoute(req, res, next) {
 }
 
 function showRoute(req, res, next) {
+  const params = req.params;
 
-  const localDb = function(req) {
+  const localDb = function() {
     Cocktail
-      .findOne({req})
+      .findById(params.id)
       .exec()
-      .then((cocktail) => {
-
+      .then(cocktail => {
         if(!cocktail) return res.notFound();
-
         res.json(cocktail);
       });
   };
 
   rp({
     method: 'GET',
-    url: `http://addb.absolutdrinks.com/drinks/${req.params.id}?apiKey=f2e2f533899b416ca6705e91908172f2`,
+    url: `http://addb.absolutdrinks.com/drinks/${params.id}?apiKey=f2e2f533899b416ca6705e91908172f2`,
     json: true
   })
-    .then((response) => {
+    .then(response => {
       if(!response.totalResult) {
         localDb();
       } else {
