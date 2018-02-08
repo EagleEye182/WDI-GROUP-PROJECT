@@ -11,7 +11,7 @@
           <div class="media">
             <div class="media-content">
               <h2 class="title is-2">{{ vm.cocktail.name }}</h2>
-              <h4 class="subtitle is-3">Bartender rating: <em>{{ vm.cocktail.rating }} of 100</em></h4>
+              <!-- <h4 class="subtitle is-3">Bartender rating: <em>{{ vm.cocktail.rating }} of 100</em></h4> -->
               <p>{{ !vm.cocktail.isAlcoholic ? !vm.cocktail.isAlcoholic : 'This is an alcoholic drink'}}</p>
               <form ng-submit="vm.addFavorite()" ng-if="main.isAuthenticated()">
                 <button type="submit" class="button is-info" ng-if="!vm.hasFavorited()">❤️</button>
@@ -74,11 +74,12 @@
   </blockquote>
         <br>
 
-        <ul class="flavour">
-          <h4>Enjoy it as
+        <ul class="flavour occassion">
+          <h4>Enjoy it responsibly as
             <li ng-repeat="event in vm.cocktail.occasions">
               {{event.text}}
             </li>
+            .
           </h4>
         </ul>
       </div>
@@ -105,7 +106,7 @@
               <button type="submit" class="button is-info">Comment</button>
             </form>
 
-            <div class="box content">
+            <div class="box content" ng-hide="!vm.cocktail.comments.length">
               <article class="post" ng-repeat="comment in vm.cocktail.comments track by $index">
                 <h4>{{ comment.content }}</h4>
                 <span class="pull-right has-text-grey-light"><i class="fa fa-comments"></i> 1</span>
