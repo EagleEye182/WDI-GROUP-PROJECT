@@ -36,7 +36,6 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce, User) {
 
         vm.cocktail.youtubePlayer = $sce.trustAsHtml(`<iframe width="600" height="420" src="https://www.youtube.com/embed/${vm.cocktail.videos[0].video}" frameborder="0" allowfullscreen></iframe>`);
 
-
       } else {
         vm.cocktail = response;
 
@@ -59,6 +58,7 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce, User) {
       .getComments({id: $state.params.id})
       .$promise
       .then((response) => {
+        console.log(response);
         vm.cocktail.comments = response.comments;
       });
   }
@@ -79,14 +79,13 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce, User) {
   }
 
   function addComment() {
+    // console.log($state.params);
 
     Cocktail
       .addComment({ cocktailId: $state.params.id}, vm.newComment)
       .$promise
-      .then((comment) => {
-
-        vm.cocktail.comments.push(comment);
-
+      .then((response) => {
+        vm.cocktail.comments.push(response.comment);
         vm.newComment = {};
       });
   }
@@ -103,6 +102,7 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce, User) {
   vm.addFavorite = addFavorite;
 
   function deleteComment(comment) {
+    // console.log(comment._id);
 
     Cocktail
       .deleteComment({ id: comment._id, cocktailId: $state.params.id })

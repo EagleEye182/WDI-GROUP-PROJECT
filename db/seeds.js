@@ -14,7 +14,8 @@ User
     username: 'test',
     email: 'test@mail.com',
     password: 'test',
-    passwordConfirmation: 'test'
+    passwordConfirmation: 'test',
+    image: 'https://images-na.ssl-images-amazon.com/images/I/51a8L-dlWzL._UX385_.jpg'
   }])
   .then((users) => {
     console.log(`${users.length} users created!`);
