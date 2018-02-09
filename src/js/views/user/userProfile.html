@@ -60,12 +60,16 @@
             <h3 class="subtitle">Bartender rating: <em>{{ cocktail.rating }} of 100</em></h3>
             <ul class="flavour">
               <h4>
-                <li ng-repeat="taste in cocktail.tastes"><em>{{ taste.text }}</em></li>
-              </ul>
+                <li ng-if="taste.id" ng-repeat="taste in cocktail.tastes track by $index" ><em>{{ taste.id }}</em></li>
+
+                <li ng-if="!taste.id" ng-repeat="taste in cocktail.tastes"><em>{{ taste }}</em></li>
+
               </h4>
-            </div>
+            </ul>
+
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
