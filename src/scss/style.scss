@@ -1,7 +1,7 @@
 @import "search-filters";
 
 //login form and registration form
-.hero.is-success {
+.hero.is-success, .addNew {
   background: #F2F6FA;
 }
 .hero .nav, .hero.is-success .nav {
@@ -22,6 +22,11 @@
   -webkit-box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
   box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
 }
+
+.login img {
+  width: 30%;
+}
+
 input {
   font-weight: 300;
 }
@@ -176,15 +181,20 @@ a.navbar-item {
   border-bottom: 1px solid #bbb;
   box-shadow: none;
   margin-top: 10px;
-  width: 350px;
+  width: 320px;
 }
 
 .filterSearch select {
   margin-top: 10px;
   margin-left: 19px;
-  width: 350px;
+  width: 320px;
 }
 
 ul.userTab {
   border-bottom: none;
+}
+
+.control.has-icons-right .icon {
+  color: #bbb;
+  height: 3em;
 }

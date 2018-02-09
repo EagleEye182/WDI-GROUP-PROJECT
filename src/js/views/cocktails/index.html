@@ -1,8 +1,11 @@
 <div class="columns is-centered">
   <div class="column is-3">
     <div class="field searchBar">
-      <div class="control is-expanded searchBar">
-        <input class="input is-medium" name="name" ng-model="vm.nameSearch" placeholder="Search a cocktail by name" autofocus>
+      <div class="control is-expanded searchBar has-icons-right">
+        <input class="input is-medium" name="name" ng-model="vm.nameSearch" placeholder="Search a cocktail by name">
+        <span class="icon is-small is-right">
+          <i class="fas fa-search"></i>
+        </span>
       </div>
     </div>
   </div>
@@ -27,8 +30,6 @@
     </div>
   </div>
 </div>
-
-
 
 <section class="section">
 
@@ -66,31 +67,4 @@
 
   <button class="button is-medium is-centered is-info if-fullwidth filterSearch" ng-hide="vm.nameSearch || vm.flavourSearch || vm.ratingFilter" ng-click="vm.loadMore()">Get me the next 25 drinks</button>
 
-  <!-- <div class="columns is-multiline">
-    <div ng-repeat="cocktail in vm.local track by $index" class="column is-3">
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="{{cocktail.imagePath}}" alt="{{ cocktail.name }}">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="media">
-            <div class="media-content">
-              <a ui-sref="cocktailsShow({ id: cocktail._id })"><h2 class="title">{{ cocktail.name }}</h2></a>
-              <br>
-              <h3 class="subtitle">Mix difficulty: <em>{{ cocktail.skill.name }}</em></h3>
-              <h4 class="subtitle is-3">Bartender rating: <em>{{ vm.cocktail.rating }} of 100</em></h4>
-
-              <ul class="flavour">
-                <h4 class="subtitle">Flavour(s):
-                  <li ng-repeat="taste in cocktail.tastes track by $index"><em>{{ taste.text }}</em></li>
-                </h4>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
 </section>
