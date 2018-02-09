@@ -44,6 +44,7 @@ function UserProfileCtrl(User, Cocktail, $auth) {
             };
           }
         });
+        console.log('vm.user.favorites', vm.favoriteCocktailsDetails);
     });
   }
 

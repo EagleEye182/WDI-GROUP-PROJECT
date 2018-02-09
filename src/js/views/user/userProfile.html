@@ -71,6 +71,36 @@
     </div>
   </div>
   <div ng-if="vm.tabs.likes" class="columns is-multiline">
-    <p>I'm here</p>
+    <div ng-repeat="favorite in vm.favoriteCocktailsDetails track by $index" class="column is-3">
+      <a ui-sref="cocktailsShow({ id: cocktail.id })">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src="{{favorite.imagePath}}" alt="{{ favorite.name }}">
+              <img src="{{favorite.image}}" alt="">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <h1 class="subtitle"><strong>{{ favorite.name }}</strong></h1>
+                <div class="content">
+
+                  <h4>Mix difficulty: <em>{{ favorite.skill.name }}</em></h4>
+                  <h4>Bartender rating: <em>{{ favorite.rating }} of 100</em></h4>
+                </div>
+                <ul class="flavour">
+                  <h6>
+                    <li ng-if="taste.id" ng-repeat="taste in favorite.tastes track by $index" ><em>{{ taste.id }}</em></li>
+
+                    <li ng-if="!taste.id" ng-repeat="taste in cocktail.tastes"><em>{{ taste }}</em></li>
+                  </h6>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
