@@ -12,8 +12,17 @@
   margin-top: 1rem;
 }
 
+.card-content {
+  min-height: 320px;
+}
+
 .profile-hi {
   font-size: 40px;
+  text-transform: capitalize;
+}
+
+.tastes {
+  font-size: 20px;
   text-transform: capitalize;
 }
 
