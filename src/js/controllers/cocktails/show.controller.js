@@ -102,7 +102,7 @@ function CocktailsShowCtrl(Cocktail, $state, $auth, $sce, User) {
   vm.addFavorite = addFavorite;
 
   function deleteComment(comment) {
-    console.log(comment._id);
+    // console.log(comment._id);
 
     Cocktail
       .deleteComment({ id: comment._id, cocktailId: $state.params.id })
