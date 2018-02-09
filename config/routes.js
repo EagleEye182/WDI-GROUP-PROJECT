@@ -31,6 +31,7 @@ router.route('/cocktails/:id/unfavorite')
   .delete(secureRoute, cocktails.unfavorite);
 
 router.route('/cocktails/:id/comments')
+  .all(secureRoute)
   .get(cocktails.getComments)
   .post(cocktails.addComment);
 

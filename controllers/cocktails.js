@@ -98,21 +98,17 @@ function addCommentRoute(req, res, next) {
 
   req.body.createdBy = req.user;
   req.body.cocktailId = req.params.id;
+  console.log(req.user);
 
   Comment
     .create(req.body)
     .then(comment => {
 
-      User
-        .find()
-        .populate('createdBy')
-        .exec()
-        .then((user) => {
-          console.log(user, comment);
-          return res.status(200).json([{comment},{user}]);
+      return User
+        .findById(req.user.id)
+        .then(user => {
+          return res.json({comment, user});
         });
-
-      // return res.status(200).json(comment);
     })
     .catch(next);
 }
@@ -120,16 +116,14 @@ function addCommentRoute(req, res, next) {
 function deleteCommentRoute(req, res, next) {
 
   Comment
-    .findOne({cocktailId: req.params.id})
+    .findById(req.params.commentId)
     .exec()
     .then((comment) => {
 
       if(!comment) return res.notFound();
 
-      const cocktail = comment.cocktailId;
-      comment.remove(cocktail);
+      return comment.remove();
 
-      return comment.save();
     })
     .then(() => res.status(204).end())
     .catch(next);
@@ -177,6 +171,7 @@ function getCommentsRoute(req, res, next) {
 
   Comment
     .find({cocktailId: req.params.id})
+    .populate('createdBy')
     .exec()
     .then((comments) => {
       return res.status(200).json({comments});
