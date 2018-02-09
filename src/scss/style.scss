@@ -11,6 +11,12 @@
 .box {
   margin-top: 1rem;
 }
+
+.profile-hi {
+  font-size: 40px;
+  text-transform: capitalize;
+}
+
 .avatar {
   margin-top: -70px;
   padding-bottom: 20px;
@@ -21,6 +27,7 @@
   border-radius: 50%;
   -webkit-box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
   box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  margin-top: 10px;
 }
 
 .login img {

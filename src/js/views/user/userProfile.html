@@ -1,37 +1,19 @@
 <section ng-controller="UserProfileCtrl as vm" class="section">
 
   <div class="box">
-    <!-- Main container -->
-    <nav class="level">
-      <!-- Left side -->
-      <div class="level-left">
-        <div class="level-item">
-          <p ng-if="!vm.user.cocktails.length">0 posts</p>
-        </div>
-        <div class="level-item">
-          <div class="container profile">
 
-            <div class="section profile-heading">
-              <div class="columns">
-                <div class="column is-2">
-                  <div class="image is-128x128 avatar">
-                    <img src="{{ vm.user.image ? vm.user.image : 'https://placehold.it/128x128' }}">
-                  </div>
-                </div>
-                <div class="column is-4 name">
-                  <strong><h1>Hi, {{ vm.user.username }}</h1></strong>
-                  <br>
-                  <p class="tagline">Bio</p>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="columns is-multiline">
+      <div class="column is-3 is-offset-5">
+        <div class="image is-128x128 avatar">
+          <img src="{{ vm.user.image ? vm.user.image : 'https://placehold.it/128x128' }}">
+        </div>
+        <div class="column is-12 name">
+          <h1 class="profile-hi"><strong>Hi, {{ vm.user.username }}</strong></h1>
+          <br>
         </div>
       </div>
-      <!-- Right side -->
-    </nav>
+    </div>
   </div>
-  <!-- <div class="spacer"></div> -->
   <div class="profile-options">
     <div class="tabs is-fullwidth">
       <a href="/cocktails/new">
