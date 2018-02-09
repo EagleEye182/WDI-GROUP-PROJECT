@@ -18,8 +18,8 @@
       <nav class="navbar is-transparent">
         <div class="container">
           <div class="navbar-brand">
-            <a class="navbar-item" href="/">
-              Home
+            <a class="navbar-item" href="/cocktails">
+              Sir Mix A Lot
             </a>
             <div class="navbar-burger burger" ng-class="{'is-active': vm.burgerMenuOpen}" ng-click="vm.burgerMenuOpen = !vm.burgerMenuOpen">
               <span></span>
@@ -28,7 +28,7 @@
             </div>
           </div>
           <div class="navbar-menu" ng-class="{'is-active': vm.burgerMenuOpen}">
-            <div class="navbar-start">
+            <div class="navbar-end">
               <a ng-click="vm.burgerMenuOpen = false" class="navbar-item" ui-sref="cocktailsIndex"><i class="fas fa-glass-martini"></i>
                 Cocktails
               </a>

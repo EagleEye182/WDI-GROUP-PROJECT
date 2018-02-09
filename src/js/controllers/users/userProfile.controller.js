@@ -2,12 +2,56 @@ angular
   .module('cocktailApp')
   .controller('UserProfileCtrl', UserProfileCtrl);
 
-UserProfileCtrl.$inject = ['User', '$auth'];
-function UserProfileCtrl(User, $auth) {
+UserProfileCtrl.$inject = ['User', 'Cocktail', '$auth'];
+function UserProfileCtrl(User, Cocktail, $auth) {
   const vm = this;
+  vm.selectUserTab = selectUserTab;
   if($auth.getPayload()) vm.currentUserId = $auth.getPayload().userId;
-  console.log(vm.currentUserId);
-  vm.user = User.get({id: vm.currentUserId});
+  User
+    .get({id: vm.currentUserId})
+    .$promise
+    .then(response => {
+      vm.user = response;
+      getFavorites();
+    });
 
-  console.log(vm.user);
+  function getFavorites() {
+
+    vm.favoriteCocktailsDetails = [];
+
+    vm.user.favorites.forEach((favorite) => {
+
+      Cocktail
+        .get({ id: favorite})
+        .$promise
+        .then(response => {
+          if(response.result) {
+            const cocktail = response.result[0];
+            cocktail.imagePath = `http://assets.absolutdrinks.com/drinks/${cocktail.id}.png`;
+            vm.favoriteCocktailsDetails.push(cocktail);
+
+            vm.tabs = {
+              posts: true,
+              likes: false
+            };
+          } else {
+            const cocktail = response;
+            vm.favoriteCocktailsDetails.push(cocktail);
+
+            vm.tabs = {
+              posts: true,
+              likes: false
+            };
+          }
+        });
+    });
+  }
+
+  function selectUserTab(type) {
+    vm.currentTab = type;
+    vm.tabs.posts = false;
+    vm.tabs.likes = false;
+    vm.tabs[type] = true;
+  }
+
 }
