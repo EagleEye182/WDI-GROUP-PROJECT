@@ -47,15 +47,17 @@
             <div class="media">
               <div class="media-content">
                 <h1 class="subtitle"><strong>{{ cocktail.name }}</strong></h1>
-                <br>
-                <h3 class="subtitle">Mix difficulty: <em>{{ cocktail.skill.name }}</em></h3>
-                <h3 class="subtitle">Bartender rating: <em>{{ cocktail.rating }} of 100</em></h3>
+                <div class="content">
+
+                  <h4>Mix difficulty: <em>{{ cocktail.skill.name }}</em></h4>
+                  <h4>Bartender rating: <em>{{ cocktail.rating }} of 100</em></h4>
+                </div>
                 <ul class="flavour">
-                  <h4 class="subtitle">
+                  <h6>
                     <li ng-if="taste.id" ng-repeat="taste in cocktail.tastes track by $index" ><em>{{ taste.id }}</em></li>
 
                     <li ng-if="!taste.id" ng-repeat="taste in cocktail.tastes"><em>{{ taste }}</em></li>
-                  </h4>
+                  </h6>
                 </ul>
               </div>
             </div>
