@@ -67,6 +67,8 @@ section {
   }
 }
 
+
+
 //registration form
 hr {
   border-top-color: #d3d6db;
@@ -169,6 +171,9 @@ a.navbar-item {
   &:hover {
     text-decoration: underline;
     color: #fff;
+  }
+  &.brand {
+    font-size: 30px;
   }
 }
 
