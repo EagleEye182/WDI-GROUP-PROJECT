@@ -62,9 +62,8 @@ function showRoute(req, res, next) {
 }
 
 function updateRoute(req, res, next) {
-  // console.log(req.params.id);
   Cocktail
-    .findOne({id: req.params.id}) //gives me the cocktail obj
+    .findOne({id: req.params.id})
     .then((cocktail) => {
 
       if(!cocktail) return res.notFound();
@@ -81,13 +80,8 @@ function deleteRoute(req, res, next) {
     .findOne({id: req.params.id})
     .exec()
     .then((cocktail) => {
-      // console.log(cocktail);
-      // if(!cocktail) return res.notFound();
-
       const cocktailForDelete = cocktail._id;
-      // console.log(cocktailForDelete);
       cocktail.remove(cocktailForDelete);
-
       return cocktail.save();
     })
     .then(() => res.status(204).end())
@@ -98,7 +92,6 @@ function addCommentRoute(req, res, next) {
 
   req.body.createdBy = req.user;
   req.body.cocktailId = req.params.id;
-  console.log(req.user);
 
   Comment
     .create(req.body)

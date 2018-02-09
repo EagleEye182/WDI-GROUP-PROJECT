@@ -17,7 +17,6 @@ function RegisterCtrl($auth, $state, $scope, $rootScope) {
 
   $rootScope.$on('uploadedImage', (e, data) => {
     vm.user.image = data.file.url;
-    console.log(vm.user.image);
     $scope.$apply();
   });
 

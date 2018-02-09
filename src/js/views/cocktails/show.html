@@ -123,7 +123,7 @@
                         <a ui-sref="userProfile{ id: comment.createdBy.id })"><strong>{{ comment.createdBy.username }}</strong></a> posted on {{comment.createdAt}}  &nbsp;
                       </p>
                     </div>
-                    <button class="button" ng-click="vm.deleteComment(comment)" ng-if="main.isAuthenticated()">Delete</button>
+                    <button class="button" ng-click="vm.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUserId === comment.createdBy.id">Delete</button>
                   </div>
                 </div>
               </article>

@@ -1,37 +1,19 @@
 <section ng-controller="UserProfileCtrl as vm" class="section">
 
   <div class="box">
-    <!-- Main container -->
-    <nav class="level">
-      <!-- Left side -->
-      <div class="level-left">
-        <div class="level-item">
-          <p ng-if="!vm.user.cocktails.length">0 posts</p>
-        </div>
-        <div class="level-item">
-          <div class="container profile">
 
-            <div class="section profile-heading">
-              <div class="columns">
-                <div class="column is-2">
-                  <div class="image is-128x128 avatar">
-                    <img src="{{ vm.user.image ? vm.user.image : 'https://placehold.it/128x128' }}">
-                  </div>
-                </div>
-                <div class="column is-4 name">
-                  <strong><h1>Hi, {{ vm.user.username }}</h1></strong>
-                  <br>
-                  <p class="tagline">Bio</p>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="columns is-multiline">
+      <div class="column is-3 is-offset-5">
+        <div class="image is-128x128 avatar">
+          <img src="{{ vm.user.image ? vm.user.image : 'https://placehold.it/128x128' }}">
+        </div>
+        <div class="column is-12 name">
+          <h1 class="profile-hi"><strong>Hi, {{ vm.user.username }}</strong></h1>
+          <br>
         </div>
       </div>
-      <!-- Right side -->
-    </nav>
+    </div>
   </div>
-  <!-- <div class="spacer"></div> -->
   <div class="profile-options">
     <div class="tabs is-fullwidth">
       <a href="/cocktails/new">
@@ -57,26 +39,35 @@
   <br>
   <div ng-if="vm.tabs.posts" class="columns is-multiline">
     <div ng-repeat="cocktail in vm.user.cocktails track by $index" class="column is-3">
-      <div class="card">
-        <div class="card-image">
-          <a ui-sref="cocktailsShow ({ id: cocktail.id })"><h2 class="title">{{ cocktail.name }}</h2></a>
-          <figure class="image is-4by3">
-            <img src="{{cocktail.image}}" alt="{{ cocktail.name }}">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <br>
-            <h3 class="subtitle">Mix difficulty: <em>{{ cocktail.skill.name }}</em></h3>
-            <h3 class="subtitle">Bartender rating: <em>{{ cocktail.rating }} of 100</em></h3>
-            <ul class="flavour">
-              <h4>
-                <li ng-repeat="taste in cocktail.tastes"><em>{{ taste.text }}</em></li>
-              </h4>
-            </ul>
+      <a ui-sref="cocktailsShow({ id: cocktail.id })">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src="{{cocktail.imagePath}}" alt="{{ cocktail.name }}">
+              <img src="{{cocktail.image}}" alt="">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <h1 class="subtitle"><strong>{{ cocktail.name }}</strong></h1>
+                <div class="content">
+
+                  <h4>Mix difficulty: <em>{{ cocktail.skill.name }}</em></h4>
+                  <h4>Bartender rating: <em>{{ cocktail.rating }} of 100</em></h4>
+                </div>
+                <ul class="flavour">
+                  <h6>
+                    <li ng-if="taste.id" ng-repeat="taste in cocktail.tastes track by $index" ><em>{{ taste.id }}</em></li>
+
+                    <li ng-if="!taste.id" ng-repeat="taste in cocktail.tastes"><em>{{ taste }}</em></li>
+                  </h6>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
   <div ng-if="vm.tabs.likes" class="columns is-multiline">

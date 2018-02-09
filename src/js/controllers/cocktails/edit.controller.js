@@ -8,7 +8,6 @@ function CocktailsEditCtrl($state, Cocktail) {
   vm.cocktail = Cocktail.get($state.params);
   vm.tastes      = ['sweet', 'sour', 'fruity', 'fresh', 'herb', 'berry', 'spicy', 'bitter'];
   vm.update = cocktailsUpdate;
-  console.log(vm.cocktail);
   vm.addNewIngredient = addNewIngredient;
   vm.deleteIngredient = deleteIngredient;
   vm.addOrRemoveTaste = addOrRemoveTaste;
@@ -21,8 +20,6 @@ function CocktailsEditCtrl($state, Cocktail) {
       .update({id: $state.params.id}, vm.cocktail)
       .$promise
       .then(() => {
-        //     console.log(cocktail);
-
         $state.go('cocktailsShow', $state.params);
       });
   }
