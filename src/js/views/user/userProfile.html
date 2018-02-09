@@ -72,7 +72,7 @@
   </div>
   <div ng-if="vm.tabs.likes" class="columns is-multiline">
     <div ng-repeat="favorite in vm.favoriteCocktailsDetails track by $index" class="column is-3">
-      <a ui-sref="cocktailsShow({ id: cocktail.id })">
+      <a ui-sref="cocktailsShow({ id: favorite.id })">
         <div class="card">
           <div class="card-image">
             <figure class="image is-4by3">

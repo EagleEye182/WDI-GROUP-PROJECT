@@ -6,6 +6,10 @@ UserProfileCtrl.$inject = ['User', 'Cocktail', '$auth'];
 function UserProfileCtrl(User, Cocktail, $auth) {
   const vm = this;
   vm.selectUserTab = selectUserTab;
+  vm.tabs = {
+    posts: true,
+    likes: false
+  };
   if($auth.getPayload()) vm.currentUserId = $auth.getPayload().userId;
   User
     .get({id: vm.currentUserId})
@@ -29,22 +33,11 @@ function UserProfileCtrl(User, Cocktail, $auth) {
             const cocktail = response.result[0];
             cocktail.imagePath = `http://assets.absolutdrinks.com/drinks/${cocktail.id}.png`;
             vm.favoriteCocktailsDetails.push(cocktail);
-
-            vm.tabs = {
-              posts: true,
-              likes: false
-            };
           } else {
             const cocktail = response;
             vm.favoriteCocktailsDetails.push(cocktail);
-
-            vm.tabs = {
-              posts: true,
-              likes: false
-            };
           }
         });
-        console.log('vm.user.favorites', vm.favoriteCocktailsDetails);
     });
   }
 
