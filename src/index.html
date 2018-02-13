@@ -1,14 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="cocktailApp">
 <head>
   <title>WDI Group Project</title>
   <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Barlow:400,700" rel="stylesheet">
   <!-- inject:js -->
   <!-- endinject -->
   <!-- inject:css -->
   <!-- endinject -->
 </head>
-<body>
-  <h1>WDI Group Project!</h1>
+<body ng-controller="MainCtrl as main">
+  <section class="hero mainHeader" ng-if="main.pageName !== 'homepage'">
+    <div class="hero-head">
+      <nav class="navbar is-transparent">
+        <div class="container">
+          <div class="navbar-brand">
+            <a class="navbar-item brand" href="/cocktails">
+              On that wave
+            </a>
+            <div class="navbar-burger burger" ng-class="{'is-active': vm.burgerMenuOpen}" ng-click="vm.burgerMenuOpen = !vm.burgerMenuOpen">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="navbar-menu" ng-class="{'is-active': vm.burgerMenuOpen}">
+            <div class="navbar-end">
+              <a ng-click="vm.burgerMenuOpen = false" class="navbar-item" ui-sref="cocktailsIndex"><i class="fas fa-glass-martini"></i>
+                Cocktails
+              </a>
+              <a ng-click="vm.burgerMenuOpen = false" class="navbar-item" ui-sref="userProfile" ng-if="main.isAuthenticated()">
+                Profile
+              </a>
+              <a ng-click="vm.burgerMenuOpen = false" class="navbar-item" ui-sref="cocktailsNew" ng-if="main.isAuthenticated()">
+                Add a cocktail
+              </a>
+              <a ng-click="vm.burgerMenuOpen = false; main.logout()" class="navbar-item" ng-if="main.isAuthenticated()">
+                Logout
+              </a>
+              <a ng-click="vm.burgerMenuOpen = false" class="navbar-item" ui-sref="login" ng-if="!main.isAuthenticated()">
+                Login
+              </a>
+              <a ng-click="vm.burgerMenuOpen = false" class="navbar-item" ui-sref="register" ng-if="!main.isAuthenticated()">
+                Register
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="hero-body">
+      <div class="container">
+      </div>
+    </div>
+  </section>
+  <main ui-view></main>
 </body>
 </html>

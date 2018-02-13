@@ -1,0 +1,99 @@
+<h1 class="title is-1">Edit form for: {{ vm.cocktail.name }}</h1>
+
+<section class="section">
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+      <form name="vm.newForm" ng-submit="vm.update()" novalidate>
+
+
+        <div class="field">
+          <p class="control">
+            <label class="label" for="description">Description</label>
+          </p>
+          <textarea class="textarea" id="description" name="description" ng-model="vm.cocktail.descriptionPlain" required></textarea>
+          <div ng-messages="vm.newForm.description.$error" role="alert" ng-show="(vm.newForm.$submitted || vm.newForm.description.$touched) && vm.newForm.description.$invalid" class="notification is-danger">
+            <div ng-message="required">A brief description of the cocktail is required.</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <p class="control">
+            <label class="label" for="story">Story</label>
+          </p>
+          <textarea class="textarea" id="story" name="story" ng-model="vm.cocktail.story"></textarea>
+        </div>
+
+        <div class="field">
+          <p class="control">
+            <label class="label" for="mixer">Ingredients</label>
+          </p>
+          <div ng-repeat="ingredient in vm.cocktail.ingredients track by $index">
+            <input type="text" class="input" id="ingredients" name="ingredients" ng-model="vm.cocktail.ingredients[$index].textPlain"><p><a ng-click="vm.deleteIngredient(ingredient)">❌</a></p>
+          </div>
+
+          <p><a ng-click="vm.addNewIngredient()">Add</a></p>
+        </div>
+
+        <div class="field">
+          <p class="control">
+            <label class="label" for="alcoholic" ng-if="vm.cocktail.isAlcoholic">Change current from Alcoholic</label>
+            <label class="label" for="alcoholic" ng-if="!vm.cocktail.isAlcoholic">Change current from: Non-Alcoholic</label>
+          </p>
+            <div class="select">
+              <select ng-model="vm.cocktail.isAlcoholic">
+                <option value="true">Alcoholic</option>
+                <option value="false">Non-Alcoholic</option>
+              </select>
+            </div>
+        </div>
+
+        <div class="field">
+          <p class="control">
+            <label class="label" for="occasion">Occasion</label>
+          </p>
+          <div ng-repeat="occasion in vm.cocktail.occasions track by $index">
+            <input type="text" class="input" id="occasions" name="occasions" ng-model="vm.cocktail.occasions[$index].text"><p><a ng-click="vm.deleteOccasion(occasion)">❌</a></p>
+          </div>
+
+          <p><a ng-click="vm.addOccasion()">Add</a></p>
+        </div>
+
+        <div class="field">
+          <p class="control">
+            <label class="label" for="mixer">Tastes</label>
+          </p>
+
+          <div ng-repeat="taste in vm.tastes">
+            <input type="checkbox" ng-click="vm.addOrRemoveTaste(taste)" ng-checked="vm.cocktail.tastes.indexOf(taste) !== -1"> {{ taste.charAt(0).toUpperCase() + taste.slice(1) }}
+          </div>
+        </div>
+
+        <div class="field">
+          <p class="control">
+            <label class="label" for="video">Video Url</label>
+          </p>
+          <input type="text" class="input" id="video" name="video" ng-model="vm.cocktail.video" required>
+          <p class="help">While optional, it would be most useful if you can provide a video on how to make this cocktail</p>
+          <p class="help">Please add this highlight parted of a youtube URL: https://www.youtube.com/watch?<span style="color: red">v=SD1n-DKUIeE</span></p>
+        </div>
+
+        <div class="field">
+          <p class="control">
+            <label class="label" for="image">Image Url</label>
+          </p>
+          <input type="text" class="input" id="image" name="image" ng-model="vm.cocktail.image" required>
+          <div ng-messages="vm.newForm.image.$error" role="alert" ng-show="(vm.newForm.$submitted || vm.newForm.image.$touched) && vm.newForm.image.$invalid" class="error">
+            <div ng-message="required">Image is required.</div>
+          </div>
+        </div>
+
+
+        <div class="field">
+          <p class="control">
+            <input type="submit" class="button is-primary is-fullwidth" value="Update">
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

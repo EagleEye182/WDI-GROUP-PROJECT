@@ -17,5 +17,5 @@ const gulpSrc = gulp.src;
 gulp.src = function() {
   return gulpSrc.apply(gulp, arguments)
     .pipe(plumber({ errorHandler: onError })
-  );
+    );
 };

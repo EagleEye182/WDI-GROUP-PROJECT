@@ -1,0 +1,70 @@
+<div class="columns is-centered">
+  <div class="column is-3">
+    <div class="field searchBar">
+      <div class="control is-expanded searchBar has-icons-right">
+        <input class="input is-medium" name="name" ng-model="vm.nameSearch" placeholder="Search a cocktail by name">
+        <span class="icon is-small is-right">
+          <i class="fas fa-search"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="column is-3">
+    <div class="field">
+      <div class="select is-medium filterSearch">
+        <select ng-model="vm.flavourSearch" ng-options="flavour for flavour in vm.flavourFilters">
+          <option value="">Filter by flavour</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="column is-3">
+    <div class="field">
+      <div class="select is-medium filterSearch">
+        <select ng-model="vm.ratingFilter">
+          <option value="">Sort by bartender rating</option>
+          <option value="-rating">Highest to lowest</option>
+          <option value="+rating">Lowest to highest</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+
+  <div class="columns is-multiline">
+    <div ng-repeat="cocktail in vm.filtered track by $index" class="column is-3">
+      <a ui-sref="cocktailsShow({ id: cocktail.id })">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src="{{cocktail.imagePath}}" alt="{{ cocktail.name }}">
+              <img src="{{cocktail.image}}" alt="">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <h1 class="subtitle"><strong>{{ cocktail.name }}</strong></h1>
+                <div class="content">
+
+                  <h4>Mix difficulty: <em>{{ cocktail.skill.name }}</em></h4>
+                  <h4>Bartender rating: <em>{{ cocktail.rating }} of 100</em></h4>
+                </div>
+                <ul class="flavour">
+                    <li ng-if="taste.id" ng-repeat="taste in cocktail.tastes track by $index" class="tastes"><em>{{ taste.id }}</em></li>
+
+                    <li ng-if="!taste.id" ng-repeat="taste in cocktail.tastes" class="tastes"><em>{{ taste }}</em></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <button class="button is-medium is-centered is-info if-fullwidth filterSearch" ng-hide="vm.nameSearch || vm.flavourSearch || vm.ratingFilter" ng-click="vm.loadMore()">Get me the next 25 drinks</button>
+
+</section>

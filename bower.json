@@ -1,9 +1,11 @@
 {
-  "name": "wdi group project",
+  "name": "wdigroupproject",
   "description": "wdi group project",
   "main": "index.js",
   "authors": [
-    "Put group member names here"
+    "Alin Chindea",
+    "Anish Vadher",
+    "William Floissac"
   ],
   "license": "ISC",
   "homepage": "",
@@ -15,6 +17,14 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "^1.4.8"
+    "angular-ui-router": "^1.0.14",
+    "angular-resource": "^1.6.8",
+    "angular-messages": "^1.6.8",
+    "satellizer": "^0.15.5",
+    "angular": "^1.6.9",
+    "angular-filepicker": "^1.1.4"
+  },
+  "resolutions": {
+    "angular": ">= 1.2.0"
   }
 }
