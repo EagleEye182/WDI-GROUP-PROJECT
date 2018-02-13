@@ -4,13 +4,8 @@
   "description": "wdi group project",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
     "start": "node index.js",
     "postinstall": "bower install && gulp deploy"
-=======
-    "postinstall": "bower install && gulp deploy",
-    "test": "nyc --reporter=html --reporter=text mocha --exit"
->>>>>>> development
   },
   "author": "put group memeber names here",
   "license": "ISC",
