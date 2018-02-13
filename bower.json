@@ -1,0 +1,30 @@
+{
+  "name": "wdigroupproject",
+  "description": "wdi group project",
+  "main": "index.js",
+  "authors": [
+    "Alin Chindea",
+    "Anish Vadher",
+    "William Floissac"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "^1.0.14",
+    "angular-resource": "^1.6.8",
+    "angular-messages": "^1.6.8",
+    "satellizer": "^0.15.5",
+    "angular": "^1.6.9",
+    "angular-filepicker": "^1.1.4"
+  },
+  "resolutions": {
+    "angular": "^1.6.9"
+  }
+}
