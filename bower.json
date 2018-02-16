@@ -23,5 +23,8 @@
     "angular-messages": "^1.6.9",
     "satellizer": "^0.15.5",
     "angular-filepicker": "^1.1.4"
+  },
+  "resolutions": {
+    "angular": "1.6.9"
   }
 }
