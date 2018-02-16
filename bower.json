@@ -17,14 +17,11 @@
     "tests"
   ],
   "dependencies": {
-    "angular-ui-router": "^1.0.14",
-    "angular-resource": "^1.6.8",
-    "angular-messages": "^1.6.8",
-    "satellizer": "^0.15.5",
     "angular": "^1.6.9",
+    "angular-ui-router": "^1.0.15",
+    "angular-resource": "^1.6.9",
+    "angular-messages": "^1.6.9",
+    "satellizer": "^0.15.5",
     "angular-filepicker": "^1.1.4"
-  },
-  "resolutions": {
-    "angular": "^1.6.9"
   }
 }
