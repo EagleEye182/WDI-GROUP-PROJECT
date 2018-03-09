@@ -69,7 +69,6 @@ function CocktailsIndexCtrl(Cocktail, filterFilter, $scope, $http, orderByFilter
 
     }
 
-    // vm.filtered = filterFilter(vm.all, params);
     vm.filtered = orderByFilter(vm.filtered, vm.ratingFilter);
 
     if(vm.flavourSearch) {
